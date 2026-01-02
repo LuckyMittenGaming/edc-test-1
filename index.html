@@ -1,0 +1,1367 @@
+<div id="lvl-global-config">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* WIDGET ISOLATION */
+        #lvl-global-config, .lvl-section-wrapper { box-sizing: border-box; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+        .lvl-section-wrapper * { box-sizing: border-box; }
+        .lvl-hidden { opacity: 0; visibility: hidden; }
+        
+        /* CUSTOM SCROLLBAR */
+        .lvl-section-wrapper ::-webkit-scrollbar { width: 6px; }
+        .lvl-section-wrapper ::-webkit-scrollbar-track { background: #050505; }
+        .lvl-section-wrapper ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 3px; }
+        
+        html { scroll-behavior: smooth; }
+    </style>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+        console.log("💎 LVL: Global Config Loaded");
+    </script>
+</div>
+
+<div id="lvl-hero" class="lvl-section-wrapper">
+    <style>
+        #lvl-hero {
+            --lvl-gold: #D4AF37;
+            --lvl-black: #050505;
+            --lvl-font-heading: 'Oswald', sans-serif;
+            --lvl-font-body: 'Inter', sans-serif;
+            
+            position: relative; width: 100%; height: 100vh; min-height: 700px;
+            background-color: var(--lvl-black); overflow: hidden;
+            display: flex; align-items: center; justify-content: center; color: #ffffff;
+        }
+
+        #lvl-hero .lvl-bg-video {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; opacity: 0.4; z-index: 0; filter: grayscale(100%) contrast(1.2);
+        }
+        
+        #lvl-hero .lvl-overlay-grad {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, var(--lvl-black) 90%);
+            z-index: 1;
+        }
+
+        #lvl-hero .lvl-content {
+            position: relative; z-index: 10; text-align: center;
+            max-width: 1200px; padding: 0 20px; perspective: 1000px;
+        }
+
+        #lvl-hero .lvl-eyebrow {
+            font-family: var(--lvl-font-body); font-size: 14px; letter-spacing: 4px;
+            text-transform: uppercase; color: var(--lvl-gold); margin-bottom: 20px;
+            display: block; opacity: 0; transform: translateY(20px);
+        }
+
+        #lvl-hero .lvl-headline {
+            font-family: var(--lvl-font-heading); font-size: clamp(60px, 8vw, 120px);
+            line-height: 0.99; text-transform: uppercase; font-weight: 700; margin: 0;
+            background: linear-gradient(180deg, #ffffff 0%, #a1a1a1 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            opacity: 0; transform: translateY(50px) rotateX(10deg); transform-origin: bottom;
+        }
+
+        #lvl-hero .lvl-subheadline {
+            font-family: var(--lvl-font-body); font-size: 18px; color: #cccccc;
+            margin-top: 30px; max-width: 600px; margin-left: auto; margin-right: auto;
+            line-height: 1.6; opacity: 0;
+        }
+
+        /* BUTTONS INSIDE HERO */
+        #lvl-hero .lvl-btn-group { margin-top: 50px; display: flex; gap: 20px; justify-content: center; opacity: 0; }
+
+        #lvl-hero .lvl-btn {
+            padding: 16px 40px; font-family: var(--lvl-font-heading); font-size: 16px;
+            text-transform: uppercase; letter-spacing: 1px; text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1); position: relative;
+            overflow: hidden; border: 1px solid var(--lvl-gold); cursor: pointer;
+        }
+
+        #lvl-hero .lvl-btn-primary { background-color: var(--lvl-gold); color: var(--lvl-black); font-weight: 600; }
+        #lvl-hero .lvl-btn-primary:hover { background-color: #fff; border-color: #fff; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); }
+
+        #lvl-hero .lvl-btn-secondary { background-color: transparent; color: var(--lvl-gold); }
+        #lvl-hero .lvl-btn-secondary:hover { background-color: rgba(212, 175, 55, 0.1); color: #fff; border-color: #fff; }
+
+        #lvl-hero .lvl-glow-cursor {
+            position: absolute; width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%);
+            z-index: 2; opacity: 0; transition: opacity 0.5s ease;
+        }
+      /* --- HERO BACKGROUND UPDATE --- */
+        #lvl-hero {
+            /* Replace with your actual image URL */
+            background-image: url('https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/69576517edb8a21864362997.png'); 
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* 50% Dark Overlay (Overrides previous gradient) */
+        #lvl-hero .lvl-overlay-grad {
+            background: rgba(0, 0, 0, 0.6) !important; /* 50% Black opacity */
+            z-index: 1;
+        }
+        
+        /* Optional: Hide Video if you are using static image */
+        #lvl-hero .lvl-bg-video { display: none; }
+      }
+    </style>
+
+    <div class="lvl-glow-cursor"></div>
+    <div class="lvl-overlay-grad"></div>
+    
+    <video class="lvl-bg-video" autoplay muted loop playsinline poster="https://via.placeholder.com/1920x1080/000000/333333">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-stars-in-space-background-1610-large.mp4" type="video/mp4">
+    </video>
+
+    <div class="lvl-content">
+        <span class="lvl-eyebrow">The Premier EDC Experience</span>
+        <h1 class="lvl-headline">EDC Shuttle<br>Las Vegas</h1>
+        <p class="lvl-subheadline">
+            Elevate your arrival. Exclusive transport for those who demand excellence. 
+            Seamless, private, and unapologetically premium.
+        </p>
+        <div class="lvl-btn-group">
+            <button onclick="document.querySelector('#lvl-options').scrollIntoView({behavior: 'smooth'})" class="lvl-btn lvl-btn-primary">Secure Your Seat</button>
+            <button onclick="document.querySelector('#lvl-features').scrollIntoView({behavior: 'smooth'})" class="lvl-btn lvl-btn-secondary">View Features</button>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const heroSection = document.querySelector('#lvl-hero');
+            const glowCursor = heroSection.querySelector('.lvl-glow-cursor');
+            
+            const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+            tl.to(heroSection.querySelector('.lvl-eyebrow'), { opacity: 1, y: 0, duration: 1, delay: 0.5 })
+              .to(heroSection.querySelector('.lvl-headline'), { opacity: 1, y: 0, rotateX: 0, duration: 1.2 }, "-=0.8")
+              .to(heroSection.querySelector('.lvl-subheadline'), { opacity: 1, duration: 1 }, "-=0.6")
+              .to(heroSection.querySelector('.lvl-btn-group'), { opacity: 1, duration: 1 }, "-=0.8");
+
+            heroSection.addEventListener('mousemove', (e) => {
+                gsap.to(glowCursor, { x: e.clientX, y: e.clientY, opacity: 1, duration: 0.6, ease: "power2.out" });
+                const xPos = (e.clientX / window.innerWidth - 0.5) * 20;
+                const yPos = (e.clientY / window.innerHeight - 0.5) * 20;
+                gsap.to(heroSection.querySelector('.lvl-headline'), { rotationY: xPos, rotationX: -yPos, duration: 1, ease: "power2.out" });
+            });
+
+            heroSection.addEventListener('mouseleave', () => {
+                gsap.to(glowCursor, { opacity: 0, duration: 0.5 });
+                gsap.to(heroSection.querySelector('.lvl-headline'), { rotationY: 0, rotationX: 0, duration: 1 });
+            });
+        })();
+    </script>
+</div>
+
+<div id="lvl-marquee" class="lvl-section-wrapper">
+    <style>
+        #lvl-marquee {
+            --lvl-gold: #D4AF37;
+            --lvl-black: #050505;
+            background-color: var(--lvl-gold); overflow: hidden;
+            padding: 15px 0; white-space: nowrap; position: relative; z-index: 5;
+        }
+        #lvl-marquee .lvl-track {
+            display: inline-block; font-family: 'Oswald', sans-serif;
+            font-size: 24px; font-weight: 500; color: var(--lvl-black);
+            text-transform: uppercase; letter-spacing: 2px; will-change: transform;
+        }
+        #lvl-marquee .lvl-item { margin: 0 40px; }
+    </style>
+
+    <div class="lvl-track">
+        <span class="lvl-item">Las Vegas • Luxury • Shuttle</span>
+        <span class="lvl-item">Las Vegas • Luxury • Shuttle</span>
+        <span class="lvl-item">Las Vegas • Luxury • Shuttle</span>
+        <span class="lvl-item">Las Vegas • Luxury • Shuttle</span>
+        <span class="lvl-item">Las Vegas • Luxury • Shuttle</span>
+        <span class="lvl-item">Las Vegas • Luxury • Shuttle</span>
+        <span class="lvl-item">Las Vegas • Luxury • Shuttle</span>
+        <span class="lvl-item">Las Vegas • Luxury • Shuttle</span>
+    </div>
+
+    <script>
+        (function() {
+            gsap.to("#lvl-marquee .lvl-track", {
+                xPercent: -50, repeat: -1, duration: 10, ease: "linear"
+            });
+        })();
+    </script>
+</div>
+
+<div id="lvl-features" class="lvl-section-wrapper">
+    <style>
+        #lvl-features {
+            --lvl-gold: #D4AF37;
+            --lvl-black: #050505;
+            --lvl-dark-grey: #121212;
+            --lvl-font-heading: 'Oswald', sans-serif;
+            --lvl-font-body: 'Inter', sans-serif;
+
+            background-color: var(--lvl-black); padding: 120px 20px; position: relative;
+        }
+        #lvl-features .lvl-container { max-width: 1200px; margin: 0 auto; }
+        #lvl-features .lvl-header { margin-bottom: 80px; text-align: left; border-left: 2px solid var(--lvl-gold); padding-left: 30px; }
+        #lvl-features .lvl-title { font-family: var(--lvl-font-heading); font-size: 48px; color: #fff; margin: 0 0 10px 0; text-transform: uppercase; }
+        #lvl-features .lvl-subtitle { font-family: var(--lvl-font-body); color: #888; font-size: 16px; max-width: 500px; }
+        
+        #lvl-features .lvl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        #lvl-features .lvl-card {
+            background-color: var(--lvl-dark-grey); padding: 40px;
+            border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s ease;
+            position: relative; overflow: hidden; cursor: default;
+        }
+        #lvl-features .lvl-card:hover { transform: translateY(-10px); border-color: var(--lvl-gold); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+        #lvl-features .lvl-card-icon { font-size: 40px; color: var(--lvl-gold); margin-bottom: 20px; display: block; }
+        #lvl-features .lvl-card-title { font-family: var(--lvl-font-heading); font-size: 24px; color: #fff; margin: 0 0 15px 0; text-transform: uppercase; }
+        #lvl-features .lvl-card-desc { font-family: var(--lvl-font-body); font-size: 14px; color: #aaa; line-height: 1.6; }
+        #lvl-features .lvl-card { opacity: 0; transform: translateY(50px); }
+    </style>
+
+    <div class="lvl-container">
+        <div class="lvl-header">
+            <h2 class="lvl-title">The Gold Standard</h2>
+            <p class="lvl-subtitle">We don't just transport you to the festival. We start the festival the moment you step onboard.</p>
+        </div>
+
+        <div class="lvl-grid">
+            <div class="lvl-card">
+                <span class="lvl-card-icon">✦</span>
+                <h3 class="lvl-card-title">Priority Access</h3>
+                <p class="lvl-card-desc">Skip the general traffic. Our dedicated routes ensure you spend less time on the road and more time under the Electric Sky.</p>
+            </div>
+            <div class="lvl-card">
+                <span class="lvl-card-icon">⚡</span>
+                <h3 class="lvl-card-title">Premium Comfort</h3>
+                <p class="lvl-card-desc">Climate-controlled interiors, plush seating, and onboard amenities designed to keep your energy high.</p>
+            </div>
+            <div class="lvl-card">
+                <span class="lvl-card-icon">★</span>
+                <h3 class="lvl-card-title">Vegas VIP</h3>
+                <p class="lvl-card-desc">From pickup to drop-off, experience the white-glove service that defines Las Vegas luxury hospitality.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            gsap.to("#lvl-features .lvl-card", {
+                scrollTrigger: { trigger: "#lvl-features", start: "top 70%" },
+                opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: "power3.out"
+            });
+        })();
+    </script>
+</div>
+
+<div id="lvl-uv-promo" class="lvl-section-wrapper">
+    <style>
+        /* SCOPED CSS: #lvl-uv-promo */
+        #lvl-uv-promo {
+            --lvl-gold: #D4AF37;
+            --lvl-black: #050505;
+            --lvl-neon: #39ff14; /* Radioactive Green */
+            --lvl-font-heading: 'Oswald', sans-serif;
+            --lvl-font-body: 'Inter', sans-serif;
+            
+            background-color: var(--lvl-black);
+            color: #fff;
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid #1a1a1a;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        #lvl-uv-promo .lvl-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* --- LEFT COLUMN (MEDIA) --- */
+        #lvl-uv-promo .lvl-media-col {
+            position: relative;
+            display: flex;
+            flex-direction: column; /* Default: Stack vertically */
+            gap: 30px; 
+        }
+
+        /* VIDEO FRAME */
+        #lvl-uv-promo .lvl-video-frame {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            position: relative;
+            z-index: 1;
+        }
+        #lvl-uv-promo video {
+            width: 100%;
+            display: block;
+            filter: contrast(1.1) brightness(0.9);
+        }
+
+        /* PRODUCT IMAGE (Default: Stacked Underneath) */
+        #lvl-uv-promo .lvl-product-float {
+            position: relative; /* Default is Relative (Under video) */
+            width: 70%; 
+            margin: 0 auto; /* Center it */
+            border-radius: 12px;
+            border: 2px solid #222;
+            z-index: 2;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            transition: all 0.4s ease;
+            cursor: crosshair;
+            background: #000;
+            overflow: hidden;
+        }
+        #lvl-uv-promo .lvl-product-float img {
+            width: 100%;
+            display: block;
+            filter: grayscale(40%);
+            transition: filter 0.3s;
+        }
+        
+        /* HOVER EFFECT */
+        #lvl-uv-promo .lvl-product-float:hover {
+            transform: scale(1.05);
+            border-color: var(--lvl-neon);
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.4);
+        }
+        #lvl-uv-promo .lvl-product-float:hover img {
+            filter: grayscale(0%) brightness(1.2) contrast(1.1);
+        }
+
+        /* --- RIGHT COLUMN (CONTENT) --- */
+        #lvl-uv-promo .lvl-content-col {
+            text-align: left;
+        }
+
+        #lvl-uv-promo .lvl-eyebrow {
+            font-family: var(--lvl-font-body);
+            color: var(--lvl-neon);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 14px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
+            animation: lvlPulse 3s infinite alternate;
+        }
+
+        #lvl-uv-promo .lvl-heading {
+            font-family: var(--lvl-font-heading);
+            font-size: clamp(40px, 5vw, 64px);
+            line-height: 1;
+            margin: 0 0 25px 0;
+            text-transform: uppercase;
+        }
+        
+        #lvl-uv-promo .lvl-highlight { color: var(--lvl-gold); }
+
+        #lvl-uv-promo .lvl-desc {
+            font-family: var(--lvl-font-body);
+            color: #ccc;
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 35px;
+            border-left: 2px solid #333;
+            padding-left: 20px;
+        }
+
+        /* FEATURES LIST */
+        #lvl-uv-promo .lvl-features { display: grid; gap: 20px; margin-bottom: 45px; }
+        #lvl-uv-promo .lvl-feature-item { display: flex; align-items: flex-start; gap: 15px; }
+        #lvl-uv-promo .lvl-icon {
+            color: var(--lvl-neon); font-size: 20px; margin-top: -2px;
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+        }
+        #lvl-uv-promo .lvl-feature-text { font-family: var(--lvl-font-body); font-size: 14px; color: #aaa; }
+        #lvl-uv-promo .lvl-feature-text strong { color: #fff; display: block; margin-bottom: 3px; font-size: 15px; }
+
+        /* CTA BUTTON (ROUNDED) */
+        #lvl-uv-promo .lvl-cta-btn {
+            background-color: transparent;
+            color: var(--lvl-gold);
+            font-family: var(--lvl-font-heading);
+            font-size: 18px;
+            padding: 18px 40px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid var(--lvl-gold);
+            border-radius: 50px; /* PILL SHAPE */
+            cursor: pointer;
+        }
+        #lvl-uv-promo .lvl-cta-btn:hover {
+            background-color: var(--lvl-gold);
+            color: #000;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+        }
+
+        @keyframes lvlPulse { from { opacity: 0.7; } to { opacity: 1; text-shadow: 0 0 20px var(--lvl-neon); } }
+
+        /* --- RESPONSIVE "SWEET SPOT" LOGIC --- */
+        
+        /* 1. TABLET SWEET SPOT (700px - 900px) -> FLOAT IT! */
+        @media (min-width: 701px) and (max-width: 900px) {
+            #lvl-uv-promo .lvl-container { grid-template-columns: 1fr; gap: 60px; }
+            #lvl-uv-promo .lvl-content-col { order: 2; }
+            #lvl-uv-promo .lvl-media-col { order: 1; display: block; } /* Block needed for absolute pos */
+            
+            #lvl-uv-promo .lvl-product-float { 
+                position: absolute; /* Floating Mode Activated */
+                width: 200px; 
+                bottom: -50px; 
+                right: 0px; 
+                margin: 0;
+            }
+        }
+
+        /* 2. MOBILE (< 700px) -> STACK IT UNDER */
+        @media (max-width: 700px) {
+            #lvl-uv-promo .lvl-container { grid-template-columns: 1fr; gap: 40px; }
+            #lvl-uv-promo .lvl-product-float { width: 90%; max-width: 280px; } /* Big and clear on mobile */
+            #lvl-uv-promo .lvl-heading { font-size: 36px; }
+        }
+        
+        /* 3. DESKTOP (> 900px) -> STACK IT UNDER (Default CSS applies) */
+        /* The image stays relative (under video) as defined in base CSS */
+
+    </style>
+
+    <div class="lvl-container">
+        
+        <div class="lvl-media-col">
+            <div class="lvl-video-frame">
+                <video autoplay muted loop playsinline poster="https://via.placeholder.com/600x400/000">
+                    <source src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/6956fd3e41557c3196b55df5.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="lvl-product-float" title="Hover to Activate Glow">
+                <img src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/6956fd97b831c471068e0e29.jpg" alt="UV Glow Shirt Kit">
+            </div>
+        </div>
+
+        <div class="lvl-content-col">
+            <span class="lvl-eyebrow">Exclusive Free Gift</span>
+            <h2 class="lvl-heading">Light Up <br>The <span class="lvl-highlight">Night</span></h2>
+            <p class="lvl-desc">
+                Included with every shuttle pass: The <strong>UV Interactive Glow Kit</strong>. 
+                Wearable art that lets you draw with light. Designs glow vividly green for 5 minutes before magically fading, ready for your next masterpiece.
+            </p>
+
+            <div class="lvl-features">
+                <div class="lvl-feature-item">
+                    <div class="lvl-icon">✦</div>
+                    <div class="lvl-feature-text">
+                        <strong>Interactive Canvas</strong>
+                        Draw directly on the shirt using the included UV Laser Pen or your phone's flashlight.
+                    </div>
+                </div>
+                <div class="lvl-feature-item">
+                    <div class="lvl-icon">⚡</div>
+                    <div class="lvl-feature-text">
+                        <strong>Magical Fade Effect</strong>
+                        Art lasts ~5 minutes then disappears. Infinite replayability all night long.
+                    </div>
+                </div>
+                <div class="lvl-feature-item">
+                    <div class="lvl-icon">★</div>
+                    <div class="lvl-feature-text">
+                        <strong>Full Kit Included</strong>
+                        Premium Cotton Tee + UV Keychain + UV Laser Pen.
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="document.querySelector('#lvl-options').scrollIntoView({behavior: 'smooth'})" class="lvl-cta-btn">
+                Claim Pass & Gift <span>→</span>
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        (function() {
+            // ANIMATION: Slide In Elements
+            gsap.from("#lvl-uv-promo .lvl-video-frame", {
+                scrollTrigger: { trigger: "#lvl-uv-promo", start: "top 70%" },
+                x: -50, opacity: 0, duration: 1, ease: "power3.out"
+            });
+            // Float animation logic handles itself via CSS, just fading in here
+            gsap.from("#lvl-uv-promo .lvl-product-float", {
+                scrollTrigger: { trigger: "#lvl-uv-promo", start: "top 70%" },
+                y: 50, opacity: 0, duration: 1, delay: 0.3, ease: "back.out(1.5)"
+            });
+            gsap.from("#lvl-uv-promo .lvl-content-col", {
+                scrollTrigger: { trigger: "#lvl-uv-promo", start: "top 70%" },
+                x: 50, opacity: 0, duration: 1, delay: 0.2, ease: "power3.out"
+            });
+        })();
+    </script>
+</div>
+
+<div id="lvl-options" class="lvl-section-wrapper">
+    <style>
+        /* SCOPED CSS: #lvl-options */
+        #lvl-options {
+            --lvl-gold: #D4AF37;
+            --lvl-black: #050505;
+            --lvl-card-bg: #111111;
+            --lvl-font-heading: 'Oswald', sans-serif;
+            --lvl-font-body: 'Inter', sans-serif;
+            --lvl-glow: 0 0 20px rgba(212, 175, 55, 0.3);
+            --lvl-van-glow: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
+            --lvl-error: #ff4444;
+
+            background-color: var(--lvl-black);
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* HEADER */
+        #lvl-options .lvl-section-header { text-align: center; margin-bottom: 60px; z-index: 10; }
+        #lvl-options .lvl-title { font-family: var(--lvl-font-heading); font-size: clamp(36px, 5vw, 60px); color: #fff; text-transform: uppercase; margin: 0; letter-spacing: 2px; }
+        #lvl-options .lvl-gold-text { color: var(--lvl-gold); }
+        #lvl-options .lvl-subtitle { color: #888; font-family: var(--lvl-font-body); margin-top: 10px; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* CARDS */
+        #lvl-options .lvl-card-wrapper { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; width: 100%; max-width: 1400px; perspective: 2000px; }
+        #lvl-options .lvl-card-container { flex: 0 1 350px; height: 700px; perspective: 2000px; position: relative; cursor: pointer; visibility: visible; }
+
+        /* SCENE & LAYERS */
+        #lvl-options .lvl-scene { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1); background: var(--lvl-card-bg); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; }
+        #lvl-options .lvl-card-container.lvl-flipped .lvl-scene { transform: rotateY(180deg); border-color: var(--lvl-gold); box-shadow: var(--lvl-glow); }
+        #lvl-options .lvl-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transform-style: preserve-3d; border-radius: 12px; overflow: hidden; }
+        
+        /* IMAGES */
+        #lvl-options .lvl-layer.lvl-van, #lvl-options .lvl-layer.lvl-van-back { background-size: contain; background-repeat: no-repeat; background-position: center 35%; width: 100%; height: 100%; pointer-events: none; }
+        #lvl-options .lvl-van { transform: translateZ(50px); filter: var(--lvl-van-glow); }
+        #lvl-options .lvl-van-back { transform: rotateY(180deg) translateZ(80px); filter: var(--lvl-van-glow); opacity: 0.1 !important; }
+        #lvl-options .lvl-img-partybus { background-image: url("https://assets.cdn.filesafe.space/3DYuJelsoG9xx3CpW438/media/6717f94f5042ff0a6da095a5.png"); }
+        #lvl-options .lvl-img-sprinter { background-image: url("https://assets.cdn.filesafe.space/3DYuJelsoG9xx3CpW438/media/6717f9dc666eda308a4ade6f.png"); }
+
+        /* TEXT FRONT - FIXED (USER PROVIDED) */
+        #lvl-options .lvl-text-front { 
+            transform: translateZ(80px); 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            align-items: center;  
+            padding: 40px 30px; 
+            text-align: center; 
+            box-sizing: border-box;
+            pointer-events: none; /* User code had this in inline styles, ensuring it's applied */
+        }
+        
+        /* TEXT BACK (SCROLLABLE CONFIG) */
+        #lvl-options .lvl-text-back { 
+            transform: rotateY(180deg) translateZ(80px); 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+            padding: 40px 20px 20px 20px; text-align: left; 
+            background: rgba(0,0,0,0.96); 
+            overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--lvl-gold) #000;
+            cursor: default; 
+        }
+        #lvl-options .lvl-text-back::-webkit-scrollbar { width: 4px; }
+        #lvl-options .lvl-text-back::-webkit-scrollbar-thumb { background: var(--lvl-gold); border-radius: 2px; }
+
+        /* FRONT TYPOGRAPHY - FIXED */
+        #lvl-options .lvl-front-top { 
+            width: 100%; 
+            pointer-events: none; 
+        }
+        #lvl-options .lvl-front-top h3 { 
+            font-family: var(--lvl-font-heading); 
+            color: #fff; 
+            font-size: 32px; 
+            line-height: 1; 
+            text-transform: uppercase; 
+            margin-bottom: 5px; 
+            text-shadow: 0 4px 10px #000; 
+        }
+        #lvl-options .lvl-front-top .lvl-sub { 
+            font-family: var(--lvl-font-body); 
+            color: var(--lvl-gold); 
+            font-size: 13px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            font-weight: 600; 
+        }
+        
+        #lvl-options .lvl-front-bottom { 
+            width: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            margin-top: auto; 
+            pointer-events: auto; /* Changed to auto so button is clickable */
+        }
+        #lvl-options .lvl-helper-text { font-family: var(--lvl-font-body); font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+        #lvl-options .lvl-label-small { font-family: var(--lvl-font-heading); font-size: 12px; color: #fff; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; display: block; }
+        #lvl-options .lvl-price-big { font-family: var(--lvl-font-heading); font-size: 48px; color: var(--lvl-gold); line-height: 1; margin: 5px 0 20px 0; text-shadow: 0 4px 10px #000; display: block; }
+
+        /* BACK TYPOGRAPHY */
+        #lvl-options h3 { font-family: var(--lvl-font-heading); color: var(--lvl-gold); font-size: 24px; margin: 0 0 15px 0; text-transform: uppercase; text-align: center; width: 100%; }
+
+        /* BUTTONS - FIXED */
+        #lvl-options .lvl-grab-btn { 
+            background: rgba(0,0,0,0.6); 
+            border: 1px solid var(--lvl-gold); 
+            color: #fff; 
+            padding: 15px 0; 
+            width: 80%; /* Adjusted for better centering */
+            max-width: 250px; /* Prevents stretching */
+            font-family: var(--lvl-font-heading); 
+            font-size: 16px; 
+            font-weight: 500;
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            display: block; 
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            pointer-events: auto; /* Ensure clickable */
+        }
+        #lvl-options .lvl-grab-btn:hover { background: var(--lvl-gold); color: #000; box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
+
+        #lvl-options .lvl-book-btn { background: var(--lvl-gold); color: var(--lvl-black); font-family: var(--lvl-font-heading); font-size: 16px; font-weight: 700; text-transform: uppercase; padding: 15px; border: none; cursor: pointer; transition: all 0.3s ease; width: 100%; margin-top: 20px; border-radius: 4px; }
+        #lvl-options .lvl-book-btn:hover { background: #fff; transform: scale(1.02); }
+        #lvl-options .lvl-book-btn:disabled { background: #333; color: #555; cursor: not-allowed; transform: none; }
+
+        /* FORM ELEMENTS */
+        #lvl-options .lvl-form-group { width: 100%; margin-bottom: 15px; }
+        #lvl-options label { display: block; color: var(--lvl-gold); font-family: var(--lvl-font-body); font-size: 10px; text-transform: uppercase; margin-bottom: 5px; letter-spacing: 0.5px; }
+        #lvl-options select, #lvl-options input { width: 100%; background: #111; border: 1px solid #333; color: #fff; padding: 10px; font-family: var(--lvl-font-body); font-size: 12px; border-radius: 4px; outline: none; }
+        #lvl-options select:focus, #lvl-options input:focus { border-color: var(--lvl-gold); }
+
+        /* RADIO BUTTONS (Custom) */
+        #lvl-options .lvl-radio-group { display: flex; gap: 10px; margin-bottom: 15px; width: 100%; }
+        #lvl-options .lvl-radio-option { flex: 1; text-align: center; }
+        #lvl-options .lvl-radio-option input { display: none; }
+        #lvl-options .lvl-radio-option span { display: block; padding: 10px; border: 1px solid #333; color: #888; border-radius: 4px; font-size: 11px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; font-family: var(--lvl-font-body); }
+        #lvl-options .lvl-radio-option input:checked + span { background: var(--lvl-gold); color: #000; border-color: var(--lvl-gold); font-weight: 700; }
+
+        /* DYNAMIC SCHEDULE BLOCK */
+        #lvl-options .lvl-schedule-container { width: 100%; border-top: 1px dashed #333; margin-top: 10px; padding-top: 15px; }
+        #lvl-options .lvl-day-row { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; margin-bottom: 10px; }
+        #lvl-options .lvl-day-title { color: #fff; font-size: 11px; margin-bottom: 8px; font-weight: 600; text-transform: uppercase; }
+        #lvl-options .lvl-flex-row { display: flex; gap: 8px; }
+        
+        /* ERROR MESSAGE */
+        #lvl-options .lvl-error-msg { 
+            color: var(--lvl-error); font-family: var(--lvl-font-body); font-size: 11px; 
+            text-align: center; margin-top: 10px; display: none; background: rgba(255,68,68,0.1); 
+            padding: 8px; border: 1px solid var(--lvl-error); border-radius: 4px; width: 100%;
+        }
+
+        /* HOVER REVEAL CLOSE BUTTON */
+        #lvl-options .lvl-close-btn { 
+            position: absolute; top: 15px; right: 15px;
+            height: 26px; width: 26px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 13px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            background: rgba(0,0,0,0.5);
+            z-index: 50;
+            overflow: hidden;
+        }
+        /* Icon (X) */
+        #lvl-options .lvl-close-btn::before {
+            content: "✕"; color: #fff; font-size: 12px;
+            transition: all 0.3s; position: absolute;
+        }
+        /* Text (Flip Card) */
+        #lvl-options .lvl-close-btn::after {
+            content: "FLIP CARD";
+            position: absolute;
+            color: var(--lvl-gold); font-size: 9px; font-weight: 700; letter-spacing: 0.5px;
+            opacity: 0; transform: translateY(10px); transition: all 0.3s;
+            white-space: nowrap; font-family: var(--lvl-font-body);
+        }
+        /* Hover State */
+        #lvl-options .lvl-close-btn:hover {
+            width: 90px; /* Expand pill */
+            border-color: var(--lvl-gold);
+            background: #000;
+        }
+        #lvl-options .lvl-close-btn:hover::before { opacity: 0; transform: translateY(-10px); }
+        #lvl-options .lvl-close-btn:hover::after { opacity: 1; transform: translateY(0); }
+
+        /* FADE */
+        #lvl-options .lvl-layer.lvl-van, #lvl-options .lvl-layer.lvl-text-front { opacity: 1; transition: opacity 0.4s; }
+        #lvl-options .lvl-layer.lvl-text-back { opacity: 0; transition: opacity 0.4s; }
+        #lvl-options .lvl-card-container.lvl-flipped .lvl-layer.lvl-van, #lvl-options .lvl-card-container.lvl-flipped .lvl-layer.lvl-text-front { opacity: 0; }
+        #lvl-options .lvl-card-container.lvl-flipped .lvl-layer.lvl-text-back { opacity: 1; }
+    </style>
+
+    <div class="lvl-section-header">
+        <h2 class="lvl-title">Select Your <span class="lvl-gold-text">Pass</span></h2>
+        <div class="lvl-subtitle">Pickup: Planet Hollywood Hotel & Casino</div>
+    </div>
+
+    <div class="lvl-card-wrapper">
+        
+        <div class="lvl-card-container" id="card-oneway" onclick="toggleCard(this)">
+            <div class="lvl-scene">
+                <div class="lvl-layer lvl-van lvl-img-partybus"></div>
+                <div class="lvl-layer lvl-text-front">
+                    <div class="lvl-front-top">
+                        <h3>One Way Passes</h3>
+                        <p class="lvl-sub">Single Direction Access</p>
+                    </div>
+                    <div class="lvl-front-bottom">
+                        <div class="lvl-helper-text">Pick your dates and times:</div>
+                        <span class="lvl-label-small">EACH PASS</span>
+                        <span class="lvl-price-big">$105</span>
+                        <button class="lvl-grab-btn">Configure Pass</button>
+                    </div>
+                </div>
+                <div class="lvl-layer lvl-van-back lvl-img-partybus"></div>
+                <div class="lvl-layer lvl-text-back" onclick="event.stopPropagation();">
+                    <div class="lvl-close-btn" onclick="toggleCard(this.closest('.lvl-card-container'))"></div>
+                    <h3>Configure One-Way</h3>
+                    
+                    <div class="lvl-form-group">
+                        <label>Direction (Required)</label>
+                        <div class="lvl-radio-group">
+                            <label class="lvl-radio-option">
+                                <input type="radio" name="dir-oneway" value="TO" checked onchange="updateOneWayLogic()">
+                                <span>To Event</span>
+                            </label>
+                            <label class="lvl-radio-option">
+                                <input type="radio" name="dir-oneway" value="FROM" onchange="updateOneWayLogic()">
+                                <span>From Event</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="lvl-form-group">
+                        <label>Number of Days</label>
+                        <select id="days-oneway" onchange="updateOneWayLogic()">
+                            <option value="1">1 Day</option>
+                            <option value="2">2 Days</option>
+                            <option value="3">3 Days</option>
+                        </select>
+                    </div>
+
+                    <div id="schedule-oneway" class="lvl-schedule-container"></div>
+                    <div class="lvl-error-msg" id="error-oneway">⚠️ Please select different dates for each day.</div>
+                    
+                    <button class="lvl-book-btn" onclick="submitPass('One-Way')">Review & Book</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="lvl-card-container" id="card-roundtrip" onclick="toggleCard(this)">
+            <div class="lvl-scene">
+                <div class="lvl-layer lvl-van lvl-img-partybus"></div>
+                <div class="lvl-layer lvl-text-front">
+                    <div class="lvl-front-top">
+                        <h3>Round Trip Passes</h3>
+                        <p class="lvl-sub">Full Service Access</p>
+                    </div>
+                    <div class="lvl-front-bottom">
+                        <div class="lvl-helper-text">Pick your dates and times:</div>
+                        <span class="lvl-label-small">STARTING AT</span>
+                        <span class="lvl-price-big">$150</span>
+                        <button class="lvl-grab-btn">Configure Pass</button>
+                    </div>
+                </div>
+                <div class="lvl-layer lvl-van-back lvl-img-partybus"></div>
+                <div class="lvl-layer lvl-text-back" onclick="event.stopPropagation();">
+                    <div class="lvl-close-btn" onclick="toggleCard(this.closest('.lvl-card-container'))"></div>
+                    <h3>Configure Round Trip</h3>
+
+                    <div class="lvl-form-group">
+                        <label>Number of Days</label>
+                        <select id="days-roundtrip" onchange="updateRoundTripLogic()">
+                            <option value="1">1 Day ($150)</option>
+                            <option value="2">2 Days ($299)</option>
+                            <option value="3">3 Days ($350)</option>
+                        </select>
+                    </div>
+
+                    <div id="schedule-roundtrip" class="lvl-schedule-container"></div>
+                    <div class="lvl-error-msg" id="error-roundtrip">⚠️ Please select different dates for each day.</div>
+
+                    <button class="lvl-book-btn" onclick="submitPass('Round Trip')">Review & Book</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="lvl-card-container" id="card-private" onclick="toggleCard(this)">
+            <div class="lvl-scene">
+                <div class="lvl-layer lvl-van lvl-img-sprinter"></div>
+                <div class="lvl-layer lvl-text-front">
+                    <div class="lvl-front-top">
+                        <h3>Private Service</h3>
+                        <p class="lvl-sub">Custom Times & Luxury</p>
+                    </div>
+                    <div class="lvl-front-bottom">
+                        <div class="lvl-helper-text">Pick your dates and times:</div>
+                        <span class="lvl-label-small">STARTING AT</span>
+                        <span class="lvl-price-big">$196<span style="font-size:24px; vertical-align:middle;">/pp</span></span>
+                        <button class="lvl-grab-btn">Configure Pass</button>
+                    </div>
+                </div>
+                <div class="lvl-layer lvl-van-back lvl-img-sprinter"></div>
+                <div class="lvl-layer lvl-text-back" onclick="event.stopPropagation();">
+                    <div class="lvl-close-btn" onclick="toggleCard(this.closest('.lvl-card-container'))"></div>
+                    <h3 class="lvl-gold-text">Private Booking</h3>
+
+                    <div class="lvl-form-group">
+                        <label>Vehicle Type</label>
+                        <div class="lvl-radio-group">
+                            <label class="lvl-radio-option">
+                                <input type="radio" name="veh-private" value="SUV" checked onchange="updatePrivateLogic()">
+                                <span>SUV (5-7)</span>
+                            </label>
+                            <label class="lvl-radio-option">
+                                <input type="radio" name="veh-private" value="Sprinter" onchange="updatePrivateLogic()">
+                                <span>Sprinter (12-14)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="lvl-flex-row" style="width:100%">
+                        <div class="lvl-form-group" style="flex:1">
+                            <label>Days</label>
+                            <select id="days-private" onchange="updatePrivateLogic()">
+                                <option value="1">1 Day</option>
+                                <option value="2">2 Days</option>
+                                <option value="3">3 Days</option>
+                            </select>
+                        </div>
+                        <div class="lvl-form-group" style="flex:1">
+                            <label>Passengers</label>
+                            <input type="number" id="pax-private" value="4" min="1" max="7" onchange="updatePrivateLogic()">
+                        </div>
+                    </div>
+
+                    <div id="schedule-private" class="lvl-schedule-container"></div>
+                    <div class="lvl-error-msg" id="error-private">⚠️ Please select different dates for each day.</div>
+
+                    <button class="lvl-book-btn" onclick="submitPass('Private')">Review & Book</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const DATES = ["Fri, May 15", "Sat, May 16", "Sun, May 17"];
+        const TIMES_TO = ["4:30 PM", "6:00 PM", "7:00 PM"];
+        const TIMES_FROM = ["3:00 AM", "4:00 AM", "5:30 AM"];
+
+        // TOGGLE FLIP
+        function toggleCard(el) {
+            el.classList.toggle('lvl-flipped');
+        }
+
+        // 1. ONE WAY LOGIC
+        function updateOneWayLogic() {
+            const container = document.getElementById('schedule-oneway');
+            const days = parseInt(document.getElementById('days-oneway').value);
+            const direction = document.querySelector('input[name="dir-oneway"]:checked').value;
+            const timeOptions = direction === "TO" ? TIMES_TO : TIMES_FROM;
+            
+            let html = '';
+            for(let i=0; i<days; i++) {
+                html += `
+                <div class="lvl-day-row">
+                    <div class="lvl-day-title">Day ${i+1} Selection</div>
+                    <select class="lvl-date-select" style="margin-bottom:5px;" onchange="validateDates('oneway')">
+                        ${DATES.map((d, idx) => `<option value="${d}" ${i===idx ? 'selected':''}>${d}</option>`).join('')}
+                    </select>
+                    <select class="lvl-time-select">
+                        ${timeOptions.map(t => `<option value="${t}">${t}</option>`).join('')}
+                    </select>
+                </div>`;
+            }
+            container.innerHTML = html;
+            validateDates('oneway');
+        }
+
+        // 2. ROUND TRIP LOGIC
+        function updateRoundTripLogic() {
+            const container = document.getElementById('schedule-roundtrip');
+            const days = parseInt(document.getElementById('days-roundtrip').value);
+            
+            let html = '';
+            for(let i=0; i<days; i++) {
+                html += `
+                <div class="lvl-day-row">
+                    <div class="lvl-day-title">Day ${i+1} Schedule</div>
+                    <select class="lvl-date-select" style="margin-bottom:5px;" onchange="validateDates('roundtrip')">
+                        ${DATES.map((d, idx) => `<option value="${d}" ${i===idx ? 'selected':''}>${d}</option>`).join('')}
+                    </select>
+                    <div class="lvl-flex-row">
+                        <select class="lvl-dep-select">
+                            <option disabled selected>Departs</option>
+                            ${TIMES_TO.map(t => `<option value="${t}">${t}</option>`).join('')}
+                        </select>
+                        <select class="lvl-ret-select">
+                            <option disabled selected>Returns</option>
+                            ${TIMES_FROM.map(t => `<option value="${t}">${t}</option>`).join('')}
+                        </select>
+                    </div>
+                </div>`;
+            }
+            container.innerHTML = html;
+            validateDates('roundtrip');
+        }
+
+        // 3. PRIVATE LOGIC
+        function updatePrivateLogic() {
+            const container = document.getElementById('schedule-private');
+            const days = parseInt(document.getElementById('days-private').value);
+            const vehicle = document.querySelector('input[name="veh-private"]:checked').value;
+            
+            const paxInput = document.getElementById('pax-private');
+            paxInput.max = (vehicle === 'SUV') ? 7 : 14;
+            if(parseInt(paxInput.value) > paxInput.max) paxInput.value = paxInput.max;
+
+            let html = '';
+            for(let i=0; i<days; i++) {
+                html += `
+                <div class="lvl-day-row">
+                    <div class="lvl-day-title">Day ${i+1} Custom Service</div>
+                    <select class="lvl-date-select" style="margin-bottom:5px;" onchange="validateDates('private')">
+                        ${DATES.map((d, idx) => `<option value="${d}" ${i===idx ? 'selected':''}>${d}</option>`).join('')}
+                    </select>
+                    <div class="lvl-flex-row">
+                        <input type="text" class="lvl-cust-dep" placeholder="Pick-up (e.g. 5:15 PM)">
+                        <input type="text" class="lvl-cust-ret" placeholder="Return (e.g. 4:00 AM)">
+                    </div>
+                </div>`;
+            }
+            container.innerHTML = html;
+            validateDates('private');
+        }
+
+        // 4. VALIDATION
+        function validateDates(type) {
+            let containerId = "";
+            let btnSelector = "";
+            let errorId = "";
+
+            if(type === 'oneway') { containerId = 'schedule-oneway'; btnSelector = '#card-oneway .lvl-book-btn'; errorId = 'error-oneway'; }
+            if(type === 'roundtrip') { containerId = 'schedule-roundtrip'; btnSelector = '#card-roundtrip .lvl-book-btn'; errorId = 'error-roundtrip'; }
+            if(type === 'private') { containerId = 'schedule-private'; btnSelector = '#card-private .lvl-book-btn'; errorId = 'error-private'; }
+
+            const selects = document.querySelectorAll(`#${containerId} .lvl-date-select`);
+            const btn = document.querySelector(btnSelector);
+            const errorMsg = document.getElementById(errorId);
+            const values = [];
+            let hasDuplicate = false;
+
+            selects.forEach(sel => {
+                if (values.includes(sel.value)) hasDuplicate = true;
+                values.push(sel.value);
+            });
+
+            if (hasDuplicate) {
+                btn.disabled = true;
+                errorMsg.style.display = 'block';
+            } else {
+                btn.disabled = false;
+                errorMsg.style.display = 'none';
+            }
+        }
+
+        // 5. SUBMIT & TRANSFER DATA TO BLOCK 4
+        function submitPass(type) {
+            let total = 0;
+            let detailsHtml = "";
+            let detailsText = ""; // Plain text for hidden input
+            let qty = 0;
+            let vehicleName = "";
+
+            // --- DATA COLLECTION ---
+            if(type === 'One-Way') {
+                const days = document.getElementById('days-oneway').value;
+                const dir = document.querySelector('input[name="dir-oneway"]:checked').value;
+                qty = 1; // Or add quantity selector to card if needed
+                total = 105 * days * qty;
+                
+                const rows = document.querySelectorAll('#schedule-oneway .lvl-day-row');
+                rows.forEach(row => {
+                    const d = row.querySelector('.lvl-date-select').value;
+                    const t = row.querySelector('.lvl-time-select').value;
+                    detailsHtml += `<div><strong>${d}:</strong> ${t} (${dir})</div>`;
+                    detailsText += `${d}: ${t} (${dir}) | `;
+                });
+            } 
+            else if (type === 'Round Trip') {
+                const days = document.getElementById('days-roundtrip').value;
+                if(days == 1) total = 150;
+                if(days == 2) total = 299;
+                if(days == 3) total = 350;
+                qty = 1; 
+
+                const rows = document.querySelectorAll('#schedule-roundtrip .lvl-day-row');
+                rows.forEach(row => {
+                    const d = row.querySelector('.lvl-date-select').value;
+                    const dep = row.querySelector('.lvl-dep-select').value;
+                    const ret = row.querySelector('.lvl-ret-select').value;
+                    detailsHtml += `<div><strong>${d}:</strong> ${dep} ➝ ${ret}</div>`;
+                    detailsText += `${d}: ${dep} to ${ret} | `;
+                });
+            }
+            else if (type === 'Private') {
+                const days = document.getElementById('days-private').value;
+                const vehicleVal = document.querySelector('input[name="veh-private"]:checked').value;
+                vehicleName = (vehicleVal === 'SUV') ? "Luxury SUV" : "Sprinter Van";
+                const pax = document.getElementById('pax-private').value;
+                const pricePer = (vehicleVal === 'SUV') ? 196 : 300;
+                total = pricePer * pax * days;
+                qty = pax; 
+
+                const rows = document.querySelectorAll('#schedule-private .lvl-day-row');
+                rows.forEach(row => {
+                    const d = row.querySelector('.lvl-date-select').value;
+                    const dep = row.querySelector('.lvl-cust-dep').value || "TBD";
+                    const ret = row.querySelector('.lvl-cust-ret').value || "TBD";
+                    detailsHtml += `<div><strong>${d}:</strong> Pick: ${dep} / Drop: ${ret}</div>`;
+                    detailsText += `${d}: ${dep}/${ret} | `;
+                });
+            }
+
+            // --- POPULATE BLOCK 4 VISUALS ---
+            document.getElementById('summ-pass-type').innerText = type + " Pass";
+            document.getElementById('summ-qty').innerText = qty;
+            document.getElementById('summ-schedule-details').innerHTML = detailsHtml;
+            document.getElementById('summ-total').innerText = "$" + total.toLocaleString();
+            
+            // Show/Hide Vehicle Row
+            if(type === 'Private') {
+                document.getElementById('summ-veh-row').style.display = 'flex';
+                document.getElementById('summ-vehicle').innerText = vehicleName;
+            } else {
+                document.getElementById('summ-veh-row').style.display = 'none';
+            }
+
+            // --- POPULATE HIDDEN FORM INPUTS (For Bizly/CRM) ---
+            document.getElementById('input-pass-type').value = type;
+            document.getElementById('input-vehicle').value = vehicleName;
+            document.getElementById('input-qty').value = qty;
+            document.getElementById('input-total').value = total;
+            document.getElementById('input-schedule').value = detailsText;
+
+            // --- REVEAL BLOCK 4 ---
+            const checkoutBlock = document.getElementById('lvl-checkout');
+            checkoutBlock.classList.remove('lvl-hidden-checkout');
+            
+            // Smooth Scroll to Checkout
+            gsap.to(window, {duration: 1, scrollTo: "#lvl-checkout", ease: "power2.inOut"});
+            
+            // Animate Opening
+            gsap.fromTo("#lvl-checkout", 
+                {height: 0, opacity: 0}, 
+                {height: "auto", opacity: 1, duration: 1, ease: "power2.out"}
+            );
+        }
+
+        // INIT
+        updateOneWayLogic();
+        updateRoundTripLogic();
+        updatePrivateLogic();
+
+        // ENTRANCE
+        gsap.from("#lvl-options .lvl-card-container", {
+            scrollTrigger: { trigger: "#lvl-options", start: "top 70%" },
+            y: 100, rotationY: 90, opacity: 0, duration: 1, stagger: 0.15, ease: "back.out(1.2)"
+        });
+    </script>
+</div>
+
+<div id="lvl-checkout" class="lvl-section-wrapper lvl-hidden-checkout">
+    <style>
+        /* SCOPED CSS: #lvl-checkout */
+        #lvl-checkout {
+            --lvl-gold: #D4AF37;
+            --lvl-black: #080808;
+            --lvl-gray: #1a1a1a;
+            --lvl-input-bg: #111;
+            --lvl-font-heading: 'Oswald', sans-serif;
+            --lvl-font-body: 'Inter', sans-serif;
+
+            background-color: #fff; /* High contrast for trust/readability */
+            color: var(--lvl-black);
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid #eee;
+        }
+
+        /* HIDDEN STATE (Controlled by Block 3 JS) */
+        .lvl-hidden-checkout { display: none; opacity: 0; height: 0; overflow: hidden; }
+
+        #lvl-checkout .lvl-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr; /* Summary (Narrow) | Form (Wide) */
+            gap: 50px;
+            align-items: start;
+        }
+
+        /* --- LEFT COLUMN: ORDER SUMMARY --- */
+        #lvl-checkout .lvl-summary-card {
+            background: var(--lvl-black);
+            color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--lvl-gold);
+            position: sticky;
+            top: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        #lvl-checkout .lvl-summary-header {
+            font-family: var(--lvl-font-heading);
+            font-size: 24px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            color: var(--lvl-gold);
+        }
+
+        #lvl-checkout .lvl-summary-item {
+            margin-bottom: 15px;
+            font-family: var(--lvl-font-body);
+            font-size: 14px;
+            color: #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #lvl-checkout .lvl-summary-item span:last-child { color: #fff; font-weight: 600; text-align: right; }
+
+        #lvl-checkout .lvl-summary-details {
+            background: #111;
+            padding: 15px;
+            border-radius: 4px;
+            font-size: 12px;
+            line-height: 1.6;
+            color: #999;
+            margin-bottom: 20px;
+            border-left: 2px solid var(--lvl-gold);
+            font-family: var(--lvl-font-body);
+        }
+
+        #lvl-checkout .lvl-total-row {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #lvl-checkout .lvl-total-label { font-family: var(--lvl-font-heading); font-size: 18px; color: #fff; }
+        #lvl-checkout .lvl-total-price { font-family: var(--lvl-font-heading); font-size: 36px; color: var(--lvl-gold); line-height: 1; }
+
+        /* --- RIGHT COLUMN: PAYMENT FORM --- */
+        #lvl-checkout .lvl-form-wrapper {
+            background: #f9f9f9;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        #lvl-checkout .lvl-form-header {
+            font-family: var(--lvl-font-heading);
+            font-size: 32px;
+            text-transform: uppercase;
+            margin: 0 0 30px 0;
+            color: var(--lvl-black);
+        }
+
+        /* CUSTOM FORM STYLES */
+        #lvl-checkout .lvl-input-group { margin-bottom: 20px; }
+        #lvl-checkout label {
+            display: block;
+            font-family: var(--lvl-font-body);
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #555;
+            letter-spacing: 0.5px;
+        }
+        #lvl-checkout input, #lvl-checkout select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background: #fff;
+            border-radius: 4px;
+            font-family: var(--lvl-font-body);
+            font-size: 16px;
+            transition: all 0.3s;
+            color: #000;
+            box-sizing: border-box; /* Ensure padding doesn't break layout */
+        }
+        #lvl-checkout input:focus {
+            border-color: var(--lvl-gold);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        /* SUBMIT BUTTON */
+        #lvl-checkout .lvl-submit-btn {
+            width: 100%;
+            background: var(--lvl-black);
+            color: var(--lvl-gold);
+            font-family: var(--lvl-font-heading);
+            font-size: 20px;
+            text-transform: uppercase;
+            padding: 18px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+        #lvl-checkout .lvl-submit-btn:hover {
+            background: var(--lvl-gold);
+            color: var(--lvl-black);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            #lvl-checkout .lvl-container { grid-template-columns: 1fr; gap: 30px; }
+            #lvl-checkout .lvl-summary-card { position: relative; top: 0; order: -1; margin-bottom: 0; }
+            #lvl-checkout .lvl-form-wrapper { padding: 25px; }
+        }
+    </style>
+
+    <div class="lvl-container">
+        
+        <div class="lvl-summary-card">
+            <div class="lvl-summary-header">Reservation Summary</div>
+            
+            <div class="lvl-summary-item">
+                <span>Pass Type</span>
+                <span id="summ-pass-type">--</span>
+            </div>
+            
+            <div class="lvl-summary-item" id="summ-veh-row" style="display:none;">
+                <span>Vehicle</span>
+                <span id="summ-vehicle">--</span>
+            </div>
+            
+            <div class="lvl-summary-item">
+                <span>Quantity</span>
+                <span id="summ-qty">--</span>
+            </div>
+
+            <div class="lvl-summary-details" id="summ-schedule-details">
+                Select a pass above to see details.
+            </div>
+
+            <div class="lvl-total-row">
+                <span class="lvl-total-label">TOTAL DUE</span>
+                <span class="lvl-total-price" id="summ-total">$0.00</span>
+            </div>
+        </div>
+
+        <div class="lvl-form-wrapper">
+            <h2 class="lvl-form-header">Secure Checkout</h2>
+
+            <div id="bizly-inject-container">
+                </div>
+
+            <form id="lvl-custom-form" action="#" method="POST">
+                
+                <input type="hidden" name="pass_type" id="input-pass-type">
+                <input type="hidden" name="vehicle_type" id="input-vehicle">
+                <input type="hidden" name="schedule_data" id="input-schedule">
+                <input type="hidden" name="total_price" id="input-total">
+                <input type="hidden" name="quantity" id="input-qty">
+
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="lvl-input-group">
+                        <label>First Name</label>
+                        <input type="text" name="first_name" required placeholder="Jane">
+                    </div>
+                    <div class="lvl-input-group">
+                        <label>Last Name</label>
+                        <input type="text" name="last_name" required placeholder="Doe">
+                    </div>
+                </div>
+
+                <div class="lvl-input-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" required placeholder="jane@example.com">
+                </div>
+
+                <div class="lvl-input-group">
+                    <label>Mobile Phone</label>
+                    <input type="tel" name="phone" required placeholder="(555) 123-4567">
+                </div>
+
+                <div class="lvl-input-group" style="margin-top:30px; border-top:1px dashed #ccc; padding-top:20px;">
+                    <label>Card Information</label>
+                    <input type="text" placeholder="0000 0000 0000 0000" style="letter-spacing: 2px;">
+                </div>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="lvl-input-group">
+                        <label>Expiry</label>
+                        <input type="text" placeholder="MM / YY">
+                    </div>
+                    <div class="lvl-input-group">
+                        <label>CVC</label>
+                        <input type="text" placeholder="123">
+                    </div>
+                </div>
+
+                <button type="submit" class="lvl-submit-btn">Complete Purchase</button>
+                
+                <div style="text-align:center; font-size:11px; color:#888; margin-top:15px; font-family:'Inter', sans-serif;">
+                    <span style="color:#22aa22;">🔒 256-Bit SSL Encrypted Payment</span><br>
+                    You will receive a confirmation email immediately.
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
