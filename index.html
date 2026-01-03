@@ -209,59 +209,152 @@
 
 <div id="lvl-options" class="lvl-section-wrapper">
     <style>
-        #lvl-options { --lvl-gold: #D4AF37; --lvl-black: #050505; --lvl-card-bg: #111111; --lvl-font-heading: 'Oswald', sans-serif; --lvl-font-body: 'Inter', sans-serif; --lvl-glow: 0 0 20px rgba(212, 175, 55, 0.3); --lvl-van-glow: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5)); --lvl-error: #ff4444; background-color: var(--lvl-black); padding: 100px 20px; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; }
+       /* SCOPED CSS: #lvl-options */
+        #lvl-options {
+            --lvl-gold: #D4AF37;
+            --lvl-black: #050505;
+            --lvl-card-bg: #111111;
+            --lvl-font-heading: 'Oswald', sans-serif;
+            --lvl-font-body: 'Inter', sans-serif;
+            --lvl-glow: 0 0 20px rgba(212, 175, 55, 0.3);
+            --lvl-van-glow: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
+            --lvl-error: #ff4444;
+
+            background-color: var(--lvl-black);
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* HEADER */
         #lvl-options .lvl-section-header { text-align: center; margin-bottom: 60px; z-index: 10; }
         #lvl-options .lvl-title { font-family: var(--lvl-font-heading); font-size: clamp(36px, 5vw, 60px); color: #fff; text-transform: uppercase; margin: 0; letter-spacing: 2px; }
         #lvl-options .lvl-gold-text { color: var(--lvl-gold); }
         #lvl-options .lvl-subtitle { color: #888; font-family: var(--lvl-font-body); margin-top: 10px; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* CARDS */
         #lvl-options .lvl-card-wrapper { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; width: 100%; max-width: 1400px; perspective: 2000px; }
-        #lvl-options .lvl-card-container { flex: 0 1 350px; height: 700px; perspective: 2000px; position: relative; cursor: pointer; visibility: visible; }
-        #lvl-options .lvl-scene { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1); background: var(--lvl-card-bg); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; }
+        
+        /* 🛠️ FIX #1: Force GPU rendering on the container */
+        #lvl-options .lvl-card-container { 
+            flex: 0 1 350px; height: 700px; 
+            perspective: 2000px; 
+            position: relative; 
+            cursor: pointer; 
+            visibility: visible; 
+            transform: translateZ(0); /* KEY FIX */
+        }
+
+        /* 🛠️ FIX #2: Stabilize the Scene */
+        #lvl-options .lvl-scene { 
+            width: 100%; height: 100%; 
+            position: relative; 
+            transform-style: preserve-3d; 
+            transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1); 
+            background: var(--lvl-card-bg); 
+            border: 1px solid rgba(212, 175, 55, 0.3); 
+            border-radius: 12px; 
+            will-change: transform; /* KEY FIX */
+        }
+        
         #lvl-options .lvl-card-container.lvl-flipped .lvl-scene { transform: rotateY(180deg); border-color: var(--lvl-gold); box-shadow: var(--lvl-glow); }
-        #lvl-options .lvl-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transform-style: preserve-3d; border-radius: 12px; overflow: hidden; }
+        
+        /* 🛠️ FIX #3: Hide Backfaces to stop bleed-through */
+        #lvl-options .lvl-layer { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            transform-style: preserve-3d; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            -webkit-backface-visibility: hidden; /* KEY FIX */
+            backface-visibility: hidden;         /* KEY FIX */
+        }
+        
+        /* IMAGES */
         #lvl-options .lvl-layer.lvl-van, #lvl-options .lvl-layer.lvl-van-back { background-size: contain; background-repeat: no-repeat; background-position: center 35%; width: 100%; height: 100%; pointer-events: none; }
         #lvl-options .lvl-van { transform: translateZ(50px); filter: var(--lvl-van-glow); }
         #lvl-options .lvl-van-back { transform: rotateY(180deg) translateZ(80px); filter: var(--lvl-van-glow); opacity: 0.1 !important; }
         #lvl-options .lvl-img-partybus { background-image: url("https://assets.cdn.filesafe.space/3DYuJelsoG9xx3CpW438/media/6717f94f5042ff0a6da095a5.png"); }
         #lvl-options .lvl-img-sprinter { background-image: url("https://assets.cdn.filesafe.space/3DYuJelsoG9xx3CpW438/media/6717f9dc666eda308a4ade6f.png"); }
-        /* FRONT LAYOUT USER FIX */
-        #lvl-options .lvl-text-front { transform: translateZ(80px); position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 40px 30px; text-align: center; box-sizing: border-box; pointer-events: none; }
-        #lvl-options .lvl-text-back { transform: rotateY(180deg) translateZ(80px); position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding: 40px 20px 20px 20px; text-align: left; background: rgba(0,0,0,0.96); overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--lvl-gold) #000; cursor: default; }
+
+        /* TEXT FRONT */
+        #lvl-options .lvl-text-front { 
+            transform: translateZ(80px); position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            display: flex; flex-direction: column; justify-content: space-between; 
+            align-items: center; padding: 40px 30px; text-align: center; box-sizing: border-box; pointer-events: none; 
+        }
+        
+        /* 🛠️ FIX #4: Bump the scrollable back text 1px forward (81px) */
+        #lvl-options .lvl-text-back { 
+            transform: rotateY(180deg) translateZ(81px); /* KEY FIX: 81px instead of 80px */
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+            padding: 40px 20px 20px 20px; text-align: left; 
+            background: rgba(0,0,0,0.96); 
+            overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--lvl-gold) #000;
+            cursor: default; 
+            will-change: scroll-position; /* KEY FIX */
+        }
         #lvl-options .lvl-text-back::-webkit-scrollbar { width: 4px; }
         #lvl-options .lvl-text-back::-webkit-scrollbar-thumb { background: var(--lvl-gold); border-radius: 2px; }
+
+        /* FRONT TYPOGRAPHY */
         #lvl-options .lvl-front-top { width: 100%; pointer-events: none; }
         #lvl-options .lvl-front-top h3 { font-family: var(--lvl-font-heading); color: #fff; font-size: 32px; line-height: 1; text-transform: uppercase; margin-bottom: 5px; text-shadow: 0 4px 10px #000; }
         #lvl-options .lvl-front-top .lvl-sub { font-family: var(--lvl-font-body); color: var(--lvl-gold); font-size: 13px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+        
         #lvl-options .lvl-front-bottom { width: 100%; display: flex; flex-direction: column; align-items: center; margin-top: auto; pointer-events: auto; }
         #lvl-options .lvl-helper-text { font-family: var(--lvl-font-body); font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
         #lvl-options .lvl-label-small { font-family: var(--lvl-font-heading); font-size: 12px; color: #fff; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; display: block; }
         #lvl-options .lvl-price-big { font-family: var(--lvl-font-heading); font-size: 48px; color: var(--lvl-gold); line-height: 1; margin: 5px 0 20px 0; text-shadow: 0 4px 10px #000; display: block; }
+
+        /* BACK TYPOGRAPHY */
         #lvl-options h3 { font-family: var(--lvl-font-heading); color: var(--lvl-gold); font-size: 24px; margin: 0 0 15px 0; text-transform: uppercase; text-align: center; width: 100%; }
-        #lvl-options .lvl-grab-btn { background: rgba(0,0,0,0.6); border: 1px solid var(--lvl-gold); color: #fff; padding: 15px 0; width: 80%; max-width: 250px; font-family: var(--lvl-font-heading); font-size: 16px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; display: block; backdrop-filter: blur(5px); transition: all 0.3s ease; pointer-events: auto; }
+
+        /* BUTTONS */
+        #lvl-options .lvl-grab-btn { 
+            background: rgba(0,0,0,0.6); border: 1px solid var(--lvl-gold); color: #fff; 
+            padding: 15px 0; width: 80%; max-width: 250px; font-family: var(--lvl-font-heading); font-size: 16px; 
+            font-weight: 500; text-transform: uppercase; letter-spacing: 2px; display: block; 
+            backdrop-filter: blur(5px); transition: all 0.3s ease; pointer-events: auto; 
+        }
         #lvl-options .lvl-grab-btn:hover { background: var(--lvl-gold); color: #000; box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
+
         #lvl-options .lvl-book-btn { background: var(--lvl-gold); color: var(--lvl-black); font-family: var(--lvl-font-heading); font-size: 16px; font-weight: 700; text-transform: uppercase; padding: 15px; border: none; cursor: pointer; transition: all 0.3s ease; width: 100%; margin-top: 20px; border-radius: 4px; }
         #lvl-options .lvl-book-btn:hover { background: #fff; transform: scale(1.02); }
         #lvl-options .lvl-book-btn:disabled { background: #333; color: #555; cursor: not-allowed; transform: none; }
+
+        /* FORM ELEMENTS */
         #lvl-options .lvl-form-group { width: 100%; margin-bottom: 15px; }
         #lvl-options label { display: block; color: var(--lvl-gold); font-family: var(--lvl-font-body); font-size: 10px; text-transform: uppercase; margin-bottom: 5px; letter-spacing: 0.5px; }
         #lvl-options select, #lvl-options input { width: 100%; background: #111; border: 1px solid #333; color: #fff; padding: 10px; font-family: var(--lvl-font-body); font-size: 12px; border-radius: 4px; outline: none; }
         #lvl-options select:focus, #lvl-options input:focus { border-color: var(--lvl-gold); }
+
+        /* RADIO BUTTONS */
         #lvl-options .lvl-radio-group { display: flex; gap: 10px; margin-bottom: 15px; width: 100%; }
         #lvl-options .lvl-radio-option { flex: 1; text-align: center; }
         #lvl-options .lvl-radio-option input { display: none; }
         #lvl-options .lvl-radio-option span { display: block; padding: 10px; border: 1px solid #333; color: #888; border-radius: 4px; font-size: 11px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; font-family: var(--lvl-font-body); }
         #lvl-options .lvl-radio-option input:checked + span { background: var(--lvl-gold); color: #000; border-color: var(--lvl-gold); font-weight: 700; }
+
+        /* SCHEDULE & ERROR */
         #lvl-options .lvl-schedule-container { width: 100%; border-top: 1px dashed #333; margin-top: 10px; padding-top: 15px; }
         #lvl-options .lvl-day-row { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; margin-bottom: 10px; }
         #lvl-options .lvl-day-title { color: #fff; font-size: 11px; margin-bottom: 8px; font-weight: 600; text-transform: uppercase; }
         #lvl-options .lvl-flex-row { display: flex; gap: 8px; }
         #lvl-options .lvl-error-msg { color: var(--lvl-error); font-family: var(--lvl-font-body); font-size: 11px; text-align: center; margin-top: 10px; display: none; background: rgba(255,68,68,0.1); padding: 8px; border: 1px solid var(--lvl-error); border-radius: 4px; width: 100%; }
+
+        /* CLOSE BTN */
         #lvl-options .lvl-close-btn { position: absolute; top: 15px; right: 15px; height: 26px; width: 26px; border: 1px solid rgba(255,255,255,0.3); border-radius: 13px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); background: rgba(0,0,0,0.5); z-index: 50; overflow: hidden; }
         #lvl-options .lvl-close-btn::before { content: "✕"; color: #fff; font-size: 12px; transition: all 0.3s; position: absolute; }
         #lvl-options .lvl-close-btn::after { content: "FLIP CARD"; position: absolute; color: var(--lvl-gold); font-size: 9px; font-weight: 700; letter-spacing: 0.5px; opacity: 0; transform: translateY(10px); transition: all 0.3s; white-space: nowrap; font-family: var(--lvl-font-body); }
         #lvl-options .lvl-close-btn:hover { width: 90px; border-color: var(--lvl-gold); background: #000; }
         #lvl-options .lvl-close-btn:hover::before { opacity: 0; transform: translateY(-10px); }
         #lvl-options .lvl-close-btn:hover::after { opacity: 1; transform: translateY(0); }
+
+        /* FADE LOGIC */
         #lvl-options .lvl-layer.lvl-van, #lvl-options .lvl-layer.lvl-text-front { opacity: 1; transition: opacity 0.4s; }
         #lvl-options .lvl-layer.lvl-text-back { opacity: 0; transition: opacity 0.4s; }
         #lvl-options .lvl-card-container.lvl-flipped .lvl-layer.lvl-van, #lvl-options .lvl-card-container.lvl-flipped .lvl-layer.lvl-text-front { opacity: 0; }
