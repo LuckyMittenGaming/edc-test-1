@@ -291,6 +291,11 @@
     </script>
 </div>
 
+END OF BLOCK 1
+
+START OF BLOCK 2
+
+
 
 <div id="lvl-uv-promo" class="lvl-section-wrapper">
     <style>
@@ -560,6 +565,12 @@
     </script>
 </div>
 
+END OF BLOCK 2
+
+START OF BLOCK 3
+
+[file name]: EDC Block 3 - Passes & Private Booking.txt
+[file content begin]
 <div id="lvl-options" class="lvl-section-wrapper">
     <style>
         /* =================================================
@@ -575,6 +586,7 @@
             --lvl-glow: 0 0 20px rgba(212, 175, 55, 0.3);
             --lvl-van-glow: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
             --lvl-error: #ff4444;
+            --lvl-success: #4CAF50;
 
             background-color: var(--lvl-black);
             padding: 100px 20px;
@@ -600,12 +612,11 @@
             gap: 40px; 
             width: 100%; 
             max-width: 1400px; 
-            /* DO NOT add perspective here - it creates stacking context */
         }
         
         #lvl-options .lvl-card-container { 
             flex: 0 1 350px; 
-            height: 700px; 
+            height: 850px; /* Increased height for glow kit section */
             /* Perspective ONLY on the container */
             perspective: 1500px;
             position: relative; 
@@ -648,22 +659,22 @@
         }
 
        /* IMAGES - Fix z-fighting with proper spacing */
-#lvl-options .lvl-layer.lvl-van, 
-#lvl-options .lvl-layer.lvl-van-back { 
-    background-size: contain; 
-    background-repeat: no-repeat; 
-    background-position: center 25%; 
-    pointer-events: none;
-}
+        #lvl-options .lvl-layer.lvl-van, 
+        #lvl-options .lvl-layer.lvl-van-back { 
+            background-size: contain; 
+            background-repeat: no-repeat; 
+            background-position: center 25%; 
+            pointer-events: none;
+        }
 
-/* SPECIFIC ADJUSTMENT FOR FRONT VAN ONLY */
-#lvl-options .lvl-van { 
-    transform: translateZ(20px); 
-    filter: var(--lvl-van-glow); 
-    z-index: 1;
-    background-size: 70% auto !important;  /* Make the front image smaller */
-    background-position: center 35% !important;  /* Adjust vertical position */
-}
+        /* SPECIFIC ADJUSTMENT FOR FRONT VAN ONLY */
+        #lvl-options .lvl-van { 
+            transform: translateZ(20px); 
+            filter: var(--lvl-van-glow); 
+            z-index: 1;
+            background-size: 70% auto !important;  /* Make the front image smaller */
+            background-position: center 35% !important;  /* Adjust vertical position */
+        }
         
         
         #lvl-options .lvl-van-back { 
@@ -782,12 +793,183 @@
         #lvl-options .lvl-radio-option span { display: block; padding: 10px; border: 1px solid #333; color: #888; border-radius: 10px; font-size: 11px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; font-family: var(--lvl-font-body); }
         #lvl-options .lvl-radio-option input:checked + span { background: var(--lvl-gold); color: #000; border-color: var(--lvl-gold); font-weight: 700; }
 
+        /* CHECKBOX STYLES */
+        #lvl-options .lvl-checkbox-group { 
+            margin: 10px 0; 
+            padding: 10px; 
+            background: rgba(255,255,255,0.05); 
+            border-radius: 6px; 
+            border: 1px solid #333;
+        }
+        #lvl-options .lvl-checkbox-option { 
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 8px; 
+        }
+        #lvl-options .lvl-checkbox-option:last-child { margin-bottom: 0; }
+        #lvl-options .lvl-checkbox-option input { 
+            width: auto; 
+            margin-right: 10px; 
+        }
+        #lvl-options .lvl-checkbox-option label { 
+            margin-bottom: 0; 
+            color: #ccc; 
+            font-size: 11px; 
+            cursor: pointer;
+        }
+        #lvl-options .lvl-checkbox-option input:checked + label { 
+            color: var(--lvl-gold); 
+            font-weight: 700;
+        }
+        #lvl-options .lvl-checkbox-note {
+            font-size: 10px; 
+            color: #888; 
+            font-style: italic; 
+            margin-top: 5px;
+            padding-left: 24px;
+        }
+
+        /* GLOW KIT STYLES */
+        #lvl-options .lvl-glow-kit-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 6px;
+            border: 1px solid #333;
+        }
+        
+        #lvl-options .lvl-glow-kit-header {
+            font-size: 11px;
+            color: #ccc;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        #lvl-options .lvl-glow-kit-header strong {
+            color: var(--lvl-gold);
+        }
+        
+        #lvl-options .lvl-quantity-control {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        
+        #lvl-options .lvl-qty-btn {
+            background: #333;
+            border: 1px solid #555;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        #lvl-options .lvl-qty-btn:hover {
+            background: #444;
+            border-color: var(--lvl-gold);
+        }
+        
+        #lvl-options .lvl-qty-input {
+            width: 50px;
+            text-align: center;
+            margin: 0 10px;
+            background: #111;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 5px;
+            font-size: 14px;
+            /* Remove number input arrows */
+            -moz-appearance: textfield;
+        }
+        
+        #lvl-options .lvl-qty-input::-webkit-inner-spin-button,
+        #lvl-options .lvl-qty-input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        #lvl-options .lvl-glow-kit-total {
+            font-size: 10px;
+            color: #888;
+            margin-top: 8px;
+            text-align: center;
+        }
+        
+        #lvl-options .lvl-glow-kit-total span {
+            color: var(--lvl-gold);
+            font-weight: 700;
+        }
+
         /* SCHEDULE & ERROR */
         #lvl-options .lvl-schedule-container { width: 100%; border-top: 1px dashed #333; margin-top: 10px; padding-top: 15px; }
         #lvl-options .lvl-day-row { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; margin-bottom: 10px; }
         #lvl-options .lvl-day-title { color: #fff; font-size: 11px; margin-bottom: 8px; font-weight: 600; text-transform: uppercase; }
         #lvl-options .lvl-flex-row { display: flex; gap: 8px; }
-        #lvl-options .lvl-error-msg { color: var(--lvl-error); font-family: var(--lvl-font-body); font-size: 11px; text-align: center; margin-top: 10px; display: none; background: rgba(255,68,68,0.1); padding: 8px; border: 1px solid var(--lvl-error); border-radius: 4px; width: 100%; }
+        
+        /* BARTENDER DAILY OPTIONS */
+        #lvl-options .lvl-bartender-daily-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            padding: 8px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 4px;
+        }
+        #lvl-options .lvl-bartender-day-label {
+            font-size: 11px;
+            color: #ccc;
+            flex: 1;
+        }
+        #lvl-options .lvl-bartender-radio-group {
+            display: flex;
+            gap: 5px;
+        }
+        #lvl-options .lvl-bartender-radio {
+            font-size: 10px;
+            padding: 4px 8px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #888;
+        }
+        #lvl-options .lvl-bartender-radio.selected {
+            background: var(--lvl-gold);
+            color: #000;
+            border-color: var(--lvl-gold);
+            font-weight: 700;
+        }
+        
+        /* VALIDATION MESSAGE STYLES */
+        #lvl-options .lvl-validation-msg { 
+            color: var(--lvl-error); 
+            font-family: var(--lvl-font-body); 
+            font-size: 11px; 
+            text-align: center; 
+            margin-top: 10px; 
+            display: none; 
+            background: rgba(255,68,68,0.1); 
+            padding: 8px; 
+            border: 1px solid var(--lvl-error); 
+            border-radius: 4px; 
+            width: 100%; 
+        }
+        #lvl-options .lvl-validation-success { 
+            color: var(--lvl-success); 
+            background: rgba(76, 175, 80, 0.1); 
+            border: 1px solid var(--lvl-success);
+        }
+        #lvl-options .lvl-validation-msg i { 
+            margin-right: 5px; 
+            font-style: normal; 
+        }
 
         /* CLOSE BTN */
         #lvl-options .lvl-close-btn { 
@@ -851,7 +1033,7 @@
         @media (max-width: 992px) {
             #lvl-options .lvl-card-container { 
                 flex: 0 1 300px; 
-                height: 650px; 
+                height: 850px; 
             }
         }
         
@@ -863,13 +1045,13 @@
             #lvl-options .lvl-card-container { 
                 flex: 0 1 100%; 
                 max-width: 400px; 
-                height: 650px; 
+                height: 830px; 
             }
         }
         
         @media (max-width: 480px) {
             #lvl-options .lvl-card-container { 
-                height: 600px; 
+                height: 810px; 
             }
             
             #lvl-options .lvl-price-big { 
@@ -912,19 +1094,20 @@
                         <label>Direction (Required)</label>
                         <div class="lvl-radio-group">
                             <label class="lvl-radio-option">
-                                <input type="radio" name="dir-oneway" value="TO" checked onchange="updateOneWayLogic()">
+                                <input type="radio" name="dir-oneway" value="TO" checked onchange="validateOneWay()">
                                 <span>To Event</span>
                             </label>
                             <label class="lvl-radio-option">
-                                <input type="radio" name="dir-oneway" value="FROM" onchange="updateOneWayLogic()">
+                                <input type="radio" name="dir-oneway" value="FROM" onchange="validateOneWay()">
                                 <span>From Event</span>
                             </label>
                         </div>
                     </div>
 
                     <div class="lvl-form-group">
-                        <label>Number of Days</label>
+                        <label>Number of Days (Required)</label>
                         <select id="days-oneway" onchange="updateOneWayLogic()">
+                            <option value="">Select Days</option>
                             <option value="1">1 Day</option>
                             <option value="2">2 Days</option>
                             <option value="3">3 Days</option>
@@ -932,7 +1115,25 @@
                     </div>
 
                     <div id="schedule-oneway" class="lvl-schedule-container"></div>
-                    <div class="lvl-error-msg" id="error-oneway">⚠️ Please select different dates for each day.</div>
+                    
+                    <!-- GLOW KIT SECTION -->
+                    <div class="lvl-glow-kit-section">
+                        <div class="lvl-glow-kit-header">
+                            <strong>Free Glow Kit:</strong> Each booking includes 1 free Glow Shirt, UV Keychain & Pen. Add additional 3-piece sets for $30 each.
+                        </div>
+                        <div class="lvl-quantity-control">
+                            <button type="button" class="lvl-qty-btn" onclick="adjustGlowKit('oneway', -1)">-</button>
+                            <input type="number" id="glow-kits-oneway" name="glow_kits" value="1" min="1" max="20" class="lvl-qty-input" onchange="updateGlowKitTotal('oneway')">
+                            <button type="button" class="lvl-qty-btn" onclick="adjustGlowKit('oneway', 1)">+</button>
+                        </div>
+                        <div class="lvl-glow-kit-total">
+                            Total Glow Kits: <span id="glow-kit-total-oneway">1</span> (1 free + <span id="additional-kits-oneway">0</span> additional × $30)
+                        </div>
+                    </div>
+                    
+                    <!-- Validation Messages -->
+                    <div class="lvl-validation-msg" id="error-oneway-required">⚠️ Please select direction, number of days, and date/time for each day.</div>
+                    <div class="lvl-validation-msg" id="error-oneway-dates">⚠️ Please select different dates for each day.</div>
                     
                     <button class="lvl-book-btn" onclick="submitPass('One-Way')">Review & Book</button>
                 </div>
@@ -961,8 +1162,9 @@
                     <h3>Configure Round Trip</h3>
 
                     <div class="lvl-form-group">
-                        <label>Number of Days</label>
+                        <label>Number of Days (Required)</label>
                         <select id="days-roundtrip" onchange="updateRoundTripLogic()">
+                            <option value="">Select Days</option>
                             <option value="1">1 Day ($150)</option>
                             <option value="2">2 Days ($299)</option>
                             <option value="3">3 Days ($350)</option>
@@ -970,7 +1172,26 @@
                     </div>
 
                     <div id="schedule-roundtrip" class="lvl-schedule-container"></div>
-                    <div class="lvl-error-msg" id="error-roundtrip">⚠️ Please select different dates for each day.</div>
+                    
+                    <!-- GLOW KIT SECTION -->
+                    <div class="lvl-glow-kit-section">
+                        <div class="lvl-glow-kit-header">
+                            <strong>Free Glow Kit:</strong> Each booking includes 1 free Glow Shirt, UV Keychain & Pen. Add additional 3-piece sets for $30 each.
+                        </div>
+                        <div class="lvl-quantity-control">
+                            <button type="button" class="lvl-qty-btn" onclick="adjustGlowKit('roundtrip', -1)">-</button>
+                            <input type="number" id="glow-kits-roundtrip" name="glow_kits" value="1" min="1" max="20" class="lvl-qty-input" onchange="updateGlowKitTotal('roundtrip')">
+                            <button type="button" class="lvl-qty-btn" onclick="adjustGlowKit('roundtrip', 1)">+</button>
+                        </div>
+                        <div class="lvl-glow-kit-total">
+                            Total Glow Kits: <span id="glow-kit-total-roundtrip">1</span> (1 free + <span id="additional-kits-roundtrip">0</span> additional × $30)
+                        </div>
+                    </div>
+                    
+                    <!-- Validation Messages -->
+                    <div class="lvl-validation-msg" id="error-roundtrip-required">⚠️ Please select number of days, and departs/returns for each day.</div>
+                    <div class="lvl-validation-msg" id="error-roundtrip-dates">⚠️ Please select different dates for each day.</div>
+                    <div class="lvl-validation-msg" id="error-roundtrip-times">⚠️ Please select both departs and returns for each day.</div>
 
                     <button class="lvl-book-btn" onclick="submitPass('Round Trip')">Review & Book</button>
                 </div>
@@ -989,7 +1210,7 @@
                     <div class="lvl-front-bottom">
                         <div class="lvl-helper-text">Pick your dates and times:</div>
                         <span class="lvl-label-small">STARTING AT</span>
-                        <span class="lvl-price-big">$196<span style="font-size:24px; vertical-align:middle;">/pp</span></span>
+                        <span class="lvl-price-big">$600<span style="font-size:24px; vertical-align:middle;">/trip</span></span>
                         <button class="lvl-grab-btn">Choose Vehicle & Time</button>
                     </div>
                 </div>
@@ -997,38 +1218,119 @@
                 <div class="lvl-layer lvl-text-back" onclick="event.stopPropagation();">
                     <div class="lvl-close-btn" onclick="toggleCard(this.closest('.lvl-card-container'))"></div>
                     <h3 class="lvl-gold-text">Private Booking</h3>
+                    
+                    <!-- ADDED NOTE: All trips are round trip -->
+                    <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid var(--lvl-gold); border-radius: 4px; padding: 8px; margin-bottom: 15px; text-align: center;">
+                        <span style="color: var(--lvl-gold); font-size: 10px; font-weight: 700; text-transform: uppercase;">Note:</span>
+                        <span style="color: #ccc; font-size: 10px; margin-left: 5px;">All Private Service trips are round trip</span>
+                    </div>
 
                     <div class="lvl-form-group">
-                        <label>Vehicle Type</label>
-                        <div class="lvl-radio-group">
-                            <label class="lvl-radio-option">
-                                <input type="radio" name="veh-private" value="SUV" checked onchange="updatePrivateLogic()">
+                        <label>Vehicle Type (Required)</label>
+                        <div class="lvl-radio-group" style="flex-wrap: wrap;">
+                            <label class="lvl-radio-option" style="flex: 0 0 48%;">
+                                <input type="radio" name="veh-private" value="SUV" onchange="updatePrivateLogic()">
                                 <span>SUV (5-7)</span>
                             </label>
-                            <label class="lvl-radio-option">
+                            <label class="lvl-radio-option" style="flex: 0 0 48%;">
                                 <input type="radio" name="veh-private" value="Sprinter" onchange="updatePrivateLogic()">
                                 <span>Sprinter (12-14)</span>
+                            </label>
+                            <label class="lvl-radio-option" style="flex: 0 0 48%;">
+                                <input type="radio" name="veh-private" value="PartyBus20" onchange="updatePrivateLogic()">
+                                <span>Party Bus (20)</span>
+                            </label>
+                            <label class="lvl-radio-option" style="flex: 0 0 48%;">
+                                <input type="radio" name="veh-private" value="PartyBus30" onchange="updatePrivateLogic()">
+                                <span>Party Bus (30)</span>
+                            </label>
+                            <label class="lvl-radio-option" style="flex: 0 0 48%;">
+                                <input type="radio" name="veh-private" value="PartyBus40" onchange="updatePrivateLogic()">
+                                <span>Party Bus (40)</span>
+                            </label>
+                            <label class="lvl-radio-option" style="flex: 0 0 48%;">
+                                <input type="radio" name="veh-private" value="PartyBus45" onchange="updatePrivateLogic()">
+                                <span>Party Bus (45)</span>
                             </label>
                         </div>
                     </div>
 
                     <div class="lvl-flex-row" style="width:100%">
                         <div class="lvl-form-group" style="flex:1">
-                            <label>Days</label>
+                            <label>Days (Required)</label>
                             <select id="days-private" onchange="updatePrivateLogic()">
+                                <option value="">Select Days</option>
                                 <option value="1">1 Day</option>
                                 <option value="2">2 Days</option>
                                 <option value="3">3 Days</option>
                             </select>
                         </div>
                         <div class="lvl-form-group" style="flex:1">
-                            <label>Passengers</label>
-                            <input type="number" id="pax-private" value="4" min="1" max="7" onchange="updatePrivateLogic()">
+                            <label>Passengers (Required)</label>
+                            <input type="number" id="pax-private" value="" min="1" max="7" placeholder="e.g., 4" onchange="updatePrivateLogic()">
+                        </div>
+                    </div>
+
+                    <!-- Bartender Add-on Section - Only shown for 30, 40, 45 passenger party buses -->
+                    <div class="lvl-checkbox-group" id="bartender-section" style="margin-top: 20px; margin-bottom: 20px; display: none;">
+                        <div class="lvl-checkbox-option">
+                            <input type="checkbox" id="bartender" name="bartender" onchange="updatePrivateLogic()">
+                            <label for="bartender"><strong>Add Bartender Service</strong></label>
+                        </div>
+                        
+                        <!-- Bartender Options (Hidden by default) -->
+                        <div id="bartender-options" style="margin-left: 24px; margin-top: 8px; display: none;">
+                            <!-- Bartender Type Selection - SIMPLIFIED PRICING -->
+                            <div style="margin-bottom: 10px;">
+                                <div style="font-size: 10px; color: var(--lvl-gold); margin-bottom: 5px;">Bartender Service Type:</div>
+                                <div class="lvl-radio-group" style="flex-wrap: nowrap;">
+                                    <label class="lvl-radio-option" style="flex: 1;">
+                                        <input type="radio" name="bartender-type" value="oneway" onchange="updatePrivateLogic()">
+                                        <span>One-Way (+$650/day)</span>
+                                    </label>
+                                    <label class="lvl-radio-option" style="flex: 1;">
+                                        <input type="radio" name="bartender-type" value="roundtrip" onchange="updatePrivateLogic()">
+                                        <span>Round Trip (+$950/day)</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <!-- Daily Bartender Options - Only show if more than 1 day -->
+                            <div id="bartender-daily-container" style="margin-top: 10px; display: none;">
+                                <!-- Dynamic daily options will go here -->
+                            </div>
+                            
+                            <!-- Updated Bartender Description -->
+                            <div class="lvl-checkbox-note" style="margin-top: 10px;">
+                                Bartender service includes Vodka, Whiskey, Rum, Beer, Hard Seltzer, Mixers, Soda, Water
+                            </div>
                         </div>
                     </div>
 
                     <div id="schedule-private" class="lvl-schedule-container"></div>
-                    <div class="lvl-error-msg" id="error-private">⚠️ Please select different dates for each day.</div>
+                    
+                    <!-- GLOW KIT SECTION -->
+                    <div class="lvl-glow-kit-section">
+                        <div class="lvl-glow-kit-header">
+                            <strong>Free Glow Kit:</strong> Each booking includes 1 free Glow Shirt, UV Keychain & Pen. Add additional 3-piece sets for $30 each.
+                        </div>
+                        <div class="lvl-quantity-control">
+                            <button type="button" class="lvl-qty-btn" onclick="adjustGlowKit('private', -1)">-</button>
+                            <input type="number" id="glow-kits-private" name="glow_kits" value="1" min="1" max="20" class="lvl-qty-input" onchange="updateGlowKitTotal('private')">
+                            <button type="button" class="lvl-qty-btn" onclick="adjustGlowKit('private', 1)">+</button>
+                        </div>
+                        <div class="lvl-glow-kit-total">
+                            Total Glow Kits: <span id="glow-kit-total-private">1</span> (1 free + <span id="additional-kits-private">0</span> additional × $30)
+                        </div>
+                    </div>
+                    
+                    <!-- Validation Messages -->
+                    <div class="lvl-validation-msg" id="error-private-required">⚠️ Please select vehicle type, days, passengers, and pick-up/return times for each day.</div>
+                    <div class="lvl-validation-msg" id="error-private-dates">⚠️ Please select different dates for each day.</div>
+                    <div class="lvl-validation-msg" id="error-private-times">⚠️ Please enter both pick-up and return times for each day.</div>
+                    <div class="lvl-validation-msg" id="error-private-pax">⚠️ Passenger count exceeds vehicle capacity. Max: <span id="max-pax">7</span></div>
+                    <div class="lvl-validation-msg" id="error-private-novehicle">⚠️ Please select a vehicle type.</div>
+                    <div class="lvl-validation-msg" id="error-private-bartender-type">⚠️ Please select bartender service type (One-Way or Round Trip).</div>
 
                     <button class="lvl-book-btn" onclick="submitPass('Private')">Review & Book</button>
                 </div>
@@ -1039,19 +1341,59 @@
     <script>
         /* =================================================
            BLOCK 3 — PASS SELECTION LOGIC
-           Handles: Flip, Validation, & T-Shirt Gen Logic
+           Handles: Flip, Validation, & Integration with Block 6
            ================================================= */
         const DATES = ["Fri, May 15", "Sat, May 16", "Sun, May 17"];
         const TIMES_TO = ["4:30 PM", "6:00 PM", "7:00 PM"];
         const TIMES_FROM = ["3:00 AM", "4:00 AM", "5:30 AM"];
+        
+        // Private booking pricing configurations (backend only - not shown to customer)
+        const PRIVATE_PRICES = {
+            'SUV': { base: 600, perPerson: 50, maxPax: 7, displayName: 'Luxury SUV' },
+            'Sprinter': { base: 720, perPerson: 50, maxPax: 14, displayName: 'Sprinter Van' },
+            'PartyBus20': { base: 750, perPerson: 25, maxPax: 20, displayName: 'Party Bus (20)' },
+            'PartyBus30': { base: 750, perPerson: 25, maxPax: 30, displayName: 'Party Bus (30)' },
+            'PartyBus40': { base: 900, perPerson: 25, maxPax: 40, displayName: 'Party Bus (40)' },
+            'PartyBus45': { base: 1050, perPerson: 25, maxPax: 45, displayName: 'Party Bus (45)' }
+        };
+        
+        // Bartender pricing - SIMPLIFIED
+        const BARTENDER_PRICES = {
+            'oneway': 650,
+            'roundtrip': 950
+        };
+        
+        // Vehicles that allow bartender service
+        const BARTENDER_ALLOWED_VEHICLES = ['PartyBus30', 'PartyBus40', 'PartyBus45'];
 
         function toggleCard(el) { 
             el.classList.toggle('lvl-flipped'); 
         }
 
+        // Glow Kit Functions
+        function adjustGlowKit(cardType, change) {
+            const input = document.getElementById(`glow-kits-${cardType}`);
+            let current = parseInt(input.value);
+            current += change;
+            if (current < 1) current = 1;
+            if (current > 20) current = 20;
+            input.value = current;
+            updateGlowKitTotal(cardType);
+        }
+
+        function updateGlowKitTotal(cardType) {
+            const input = document.getElementById(`glow-kits-${cardType}`);
+            const totalKits = parseInt(input.value);
+            const additionalKits = totalKits - 1;
+            
+            document.getElementById(`glow-kit-total-${cardType}`).textContent = totalKits;
+            document.getElementById(`additional-kits-${cardType}`).textContent = additionalKits;
+        }
+
         function updateOneWayLogic() {
             const container = document.getElementById('schedule-oneway');
-            const days = parseInt(document.getElementById('days-oneway').value);
+            const daysSelect = document.getElementById('days-oneway');
+            const days = daysSelect.value ? parseInt(daysSelect.value) : 0;
             const direction = document.querySelector('input[name="dir-oneway"]:checked').value;
             const timeOptions = direction === "TO" ? TIMES_TO : TIMES_FROM;
             
@@ -1060,122 +1402,410 @@
                 html += `
                 <div class="lvl-day-row">
                     <div class="lvl-day-title">Day ${i + 1} Selection</div>
-                    <select class="lvl-date-select" style="margin-bottom:5px;" onchange="validateDates('oneway')">
-                        ${DATES.map((d, idx) => `<option value="${d}" ${i === idx ? 'selected':''}>${d}</option>`).join('')}
+                    <select class="lvl-date-select" style="margin-bottom:5px;" onchange="validateOneWay()">
+                        <option value="">Select Date</option>
+                        ${DATES.map((d, idx) => `<option value="${d}">${d}</option>`).join('')}
                     </select>
-                    <select class="lvl-time-select">
+                    <select class="lvl-time-select" onchange="validateOneWay()">
+                        <option value="">Select Time</option>
                         ${timeOptions.map(t => `<option value="${t}">${t}</option>`).join('')}
                     </select>
                 </div>`;
             }
             container.innerHTML = html;
-            validateDates('oneway');
+            validateOneWay();
         }
 
         function updateRoundTripLogic() {
             const container = document.getElementById('schedule-roundtrip');
-            const days = parseInt(document.getElementById('days-roundtrip').value);
+            const daysSelect = document.getElementById('days-roundtrip');
+            const days = daysSelect.value ? parseInt(daysSelect.value) : 0;
             
             let html = '';
             for(let i = 0; i < days; i++) {
                 html += `
                 <div class="lvl-day-row">
                     <div class="lvl-day-title">Day ${i + 1} Schedule</div>
-                    <select class="lvl-date-select" style="margin-bottom:5px;" onchange="validateDates('roundtrip')">
-                        ${DATES.map((d, idx) => `<option value="${d}" ${i === idx ? 'selected':''}>${d}</option>`).join('')}
+                    <select class="lvl-date-select" style="margin-bottom:5px;" onchange="validateRoundTrip()">
+                        <option value="">Select Date</option>
+                        ${DATES.map((d, idx) => `<option value="${d}">${d}</option>`).join('')}
                     </select>
                     <div class="lvl-flex-row">
-                        <select class="lvl-dep-select">
-                            <option disabled selected>Departs</option>
+                        <select class="lvl-dep-select" onchange="validateRoundTrip()">
+                            <option value="">Departs</option>
                             ${TIMES_TO.map(t => `<option value="${t}">${t}</option>`).join('')}
                         </select>
-                        <select class="lvl-ret-select">
-                            <option disabled selected>Returns</option>
+                        <select class="lvl-ret-select" onchange="validateRoundTrip()">
+                            <option value="">Returns</option>
                             ${TIMES_FROM.map(t => `<option value="${t}">${t}</option>`).join('')}
                         </select>
                     </div>
                 </div>`;
             }
             container.innerHTML = html;
-            validateDates('roundtrip');
+            validateRoundTrip();
         }
 
         function updatePrivateLogic() {
             const container = document.getElementById('schedule-private');
-            const days = parseInt(document.getElementById('days-private').value);
-            const vehicle = document.querySelector('input[name="veh-private"]:checked').value;
-            
+            const daysSelect = document.getElementById('days-private');
+            const days = daysSelect.value ? parseInt(daysSelect.value) : 0;
+            const vehicleElement = document.querySelector('input[name="veh-private"]:checked');
+            const vehicle = vehicleElement ? vehicleElement.value : '';
             const paxInput = document.getElementById('pax-private');
-            paxInput.max = (vehicle === 'SUV') ? 7 : 14;
-            if(parseInt(paxInput.value) > paxInput.max) paxInput.value = paxInput.max;
-
+            const bartenderSection = document.getElementById('bartender-section');
+            const bartenderCheckbox = document.getElementById('bartender');
+            const bartenderOptions = document.getElementById('bartender-options');
+            const bartenderDailyContainer = document.getElementById('bartender-daily-container');
+            
+            // Show/hide bartender section based on vehicle selection
+            if (vehicle && BARTENDER_ALLOWED_VEHICLES.includes(vehicle)) {
+                bartenderSection.style.display = 'block';
+                
+                // Show/hide bartender options if checkbox is checked
+                if (bartenderCheckbox.checked) {
+                    bartenderOptions.style.display = 'block';
+                    
+                    // Only show daily Yes/No options if more than 1 day
+                    if (days > 1) {
+                        bartenderDailyContainer.style.display = 'block';
+                        
+                        // Generate daily bartender options
+                        let dailyHtml = '';
+                        for(let i = 1; i <= days; i++) {
+                            dailyHtml += `
+                            <div class="lvl-bartender-daily-option">
+                                <span class="lvl-bartender-day-label">Day ${i}:</span>
+                                <div class="lvl-bartender-radio-group">
+                                    <span class="lvl-bartender-radio ${i === 1 ? 'selected' : ''}" data-day="${i}" data-value="yes">YES</span>
+                                    <span class="lvl-bartender-radio ${i !== 1 ? 'selected' : ''}" data-day="${i}" data-value="no">NO</span>
+                                </div>
+                            </div>`;
+                        }
+                        bartenderDailyContainer.innerHTML = dailyHtml;
+                        
+                        // Add click handlers for daily bartender options
+                        const bartenderRadios = document.querySelectorAll('.lvl-bartender-radio');
+                        bartenderRadios.forEach(radio => {
+                            radio.addEventListener('click', function() {
+                                const day = this.getAttribute('data-day');
+                                const value = this.getAttribute('data-value');
+                                
+                                // Remove selected class from all radios for this day
+                                document.querySelectorAll(`.lvl-bartender-radio[data-day="${day}"]`).forEach(r => {
+                                    r.classList.remove('selected');
+                                });
+                                
+                                // Add selected class to clicked radio
+                                this.classList.add('selected');
+                                validatePrivate();
+                            });
+                        });
+                    } else {
+                        bartenderDailyContainer.style.display = 'none';
+                    }
+                } else {
+                    bartenderOptions.style.display = 'none';
+                }
+            } else {
+                // Hide bartender section for vehicles that don't allow it
+                bartenderSection.style.display = 'none';
+                bartenderCheckbox.checked = false;
+                bartenderOptions.style.display = 'none';
+            }
+            
+            // Update passenger limits
+            if (vehicle && PRIVATE_PRICES[vehicle]) {
+                paxInput.max = PRIVATE_PRICES[vehicle].maxPax;
+                document.getElementById('max-pax').textContent = PRIVATE_PRICES[vehicle].maxPax;
+                if (paxInput.value && parseInt(paxInput.value) > PRIVATE_PRICES[vehicle].maxPax) {
+                    paxInput.value = PRIVATE_PRICES[vehicle].maxPax;
+                }
+            }
+            
             let html = '';
             for(let i = 0; i < days; i++) {
                 html += `
                 <div class="lvl-day-row">
                     <div class="lvl-day-title">Day ${i + 1} Custom Service</div>
-                    <select class="lvl-date-select" style="margin-bottom:5px;" onchange="validateDates('private')">
-                        ${DATES.map((d, idx) => `<option value="${d}" ${i === idx ? 'selected':''}>${d}</option>`).join('')}
+                    <select class="lvl-date-select" style="margin-bottom:5px;" onchange="validatePrivate()">
+                        <option value="">Select Date</option>
+                        ${DATES.map((d, idx) => `<option value="${d}">${d}</option>`).join('')}
                     </select>
                     <div class="lvl-flex-row">
-                        <input type="text" class="lvl-cust-dep" placeholder="Pick-up (e.g. 5:15 PM)">
-                        <input type="text" class="lvl-cust-ret" placeholder="Return (e.g. 4:00 AM)">
+                        <input type="text" class="lvl-cust-dep" placeholder="Pick-up (e.g. 5:15 PM)" oninput="validatePrivate()">
+                        <input type="text" class="lvl-cust-ret" placeholder="Return (e.g. 4:00 AM)" oninput="validatePrivate()">
                     </div>
                 </div>`;
             }
             container.innerHTML = html;
-            validateDates('private');
+            validatePrivate();
         }
 
-        function validateDates(type) {
-            let containerId = "";
-            let btnSelector = "";
-            let errorId = "";
+        // ========== VALIDATION FUNCTIONS ==========
 
-            if(type === 'oneway') { 
-                containerId = 'schedule-oneway'; 
-                btnSelector = '#card-oneway .lvl-book-btn'; 
-                errorId = 'error-oneway'; 
-            }
-            if(type === 'roundtrip') { 
-                containerId = 'schedule-roundtrip'; 
-                btnSelector = '#card-roundtrip .lvl-book-btn'; 
-                errorId = 'error-roundtrip'; 
-            }
-            if(type === 'private') { 
-                containerId = 'schedule-private'; 
-                btnSelector = '#card-private .lvl-book-btn'; 
-                errorId = 'error-private'; 
-            }
-
-            const selects = document.querySelectorAll(`#${containerId} .lvl-date-select`);
-            const btn = document.querySelector(btnSelector);
-            const errorMsg = document.getElementById(errorId);
-            const values = [];
-            let hasDuplicate = false;
-
-            selects.forEach(sel => {
-                if (values.includes(sel.value)) hasDuplicate = true;
-                values.push(sel.value);
-            });
-
-            if (hasDuplicate) {
-                btn.disabled = true;
-                errorMsg.style.display = 'block';
+        function validateOneWay() {
+            const direction = document.querySelector('input[name="dir-oneway"]:checked');
+            const daysSelect = document.getElementById('days-oneway');
+            const dateSelects = document.querySelectorAll('#schedule-oneway .lvl-date-select');
+            const timeSelects = document.querySelectorAll('#schedule-oneway .lvl-time-select');
+            const errorRequired = document.getElementById('error-oneway-required');
+            const errorDates = document.getElementById('error-oneway-dates');
+            const bookBtn = document.querySelector('#card-oneway .lvl-book-btn');
+            
+            let isValid = true;
+            let errorMessage = '';
+            
+            // Check required fields
+            if (!daysSelect.value) {
+                isValid = false;
+                errorMessage = 'Please select number of days';
+            } else if (dateSelects.length === 0 || timeSelects.length === 0) {
+                isValid = false;
+                errorMessage = 'Please configure all days';
             } else {
-                btn.disabled = false;
-                errorMsg.style.display = 'none';
+                // Check each day has date and time
+                for (let i = 0; i < dateSelects.length; i++) {
+                    if (!dateSelects[i].value || !timeSelects[i].value) {
+                        isValid = false;
+                        errorMessage = 'Please select date and time for each day';
+                        break;
+                    }
+                }
+                
+                // Check for duplicate dates
+                if (isValid) {
+                    const dates = Array.from(dateSelects).map(sel => sel.value);
+                    const hasDuplicates = dates.some((date, index) => dates.indexOf(date) !== index);
+                    if (hasDuplicates) {
+                        isValid = false;
+                        errorDates.style.display = 'block';
+                        bookBtn.disabled = true;
+                        return false;
+                    } else {
+                        errorDates.style.display = 'none';
+                    }
+                }
             }
+            
+            // Show/hide errors
+            if (!isValid && errorMessage) {
+                errorRequired.innerHTML = `⚠️ ${errorMessage}`;
+                errorRequired.style.display = 'block';
+                bookBtn.disabled = true;
+            } else {
+                errorRequired.style.display = 'none';
+                errorDates.style.display = 'none';
+                bookBtn.disabled = false;
+            }
+            
+            return isValid;
+        }
+
+        function validateRoundTrip() {
+            const daysSelect = document.getElementById('days-roundtrip');
+            const dateSelects = document.querySelectorAll('#schedule-roundtrip .lvl-date-select');
+            const depSelects = document.querySelectorAll('#schedule-roundtrip .lvl-dep-select');
+            const retSelects = document.querySelectorAll('#schedule-roundtrip .lvl-ret-select');
+            const errorRequired = document.getElementById('error-roundtrip-required');
+            const errorDates = document.getElementById('error-roundtrip-dates');
+            const errorTimes = document.getElementById('error-roundtrip-times');
+            const bookBtn = document.querySelector('#card-roundtrip .lvl-book-btn');
+            
+            let isValid = true;
+            let errorMessage = '';
+            
+            // Check required fields
+            if (!daysSelect.value) {
+                isValid = false;
+                errorMessage = 'Please select number of days';
+            } else if (dateSelects.length === 0 || depSelects.length === 0 || retSelects.length === 0) {
+                isValid = false;
+                errorMessage = 'Please configure all days';
+            } else {
+                // Check each day has date, departs, and returns
+                for (let i = 0; i < dateSelects.length; i++) {
+                    if (!dateSelects[i].value || !depSelects[i].value || !retSelects[i].value) {
+                        isValid = false;
+                        errorMessage = 'Please select date, departs, and returns for each day';
+                        break;
+                    }
+                }
+                
+                // Check for duplicate dates
+                if (isValid) {
+                    const dates = Array.from(dateSelects).map(sel => sel.value);
+                    const hasDuplicates = dates.some((date, index) => dates.indexOf(date) !== index);
+                    if (hasDuplicates) {
+                        isValid = false;
+                        errorDates.style.display = 'block';
+                        bookBtn.disabled = true;
+                        return false;
+                    } else {
+                        errorDates.style.display = 'none';
+                    }
+                }
+            }
+            
+            // Show/hide errors
+            errorTimes.style.display = 'none';
+            if (!isValid && errorMessage) {
+                errorRequired.innerHTML = `⚠️ ${errorMessage}`;
+                errorRequired.style.display = 'block';
+                bookBtn.disabled = true;
+            } else {
+                errorRequired.style.display = 'none';
+                errorDates.style.display = 'none';
+                bookBtn.disabled = false;
+            }
+            
+            return isValid;
+        }
+
+        function validatePrivate() {
+            const vehicleElement = document.querySelector('input[name="veh-private"]:checked');
+            const daysSelect = document.getElementById('days-private');
+            const paxInput = document.getElementById('pax-private');
+            const dateSelects = document.querySelectorAll('#schedule-private .lvl-date-select');
+            const depInputs = document.querySelectorAll('#schedule-private .lvl-cust-dep');
+            const retInputs = document.querySelectorAll('#schedule-private .lvl-cust-ret');
+            const bartenderCheckbox = document.getElementById('bartender');
+            const bartenderTypeElement = document.querySelector('input[name="bartender-type"]:checked');
+            const errorRequired = document.getElementById('error-private-required');
+            const errorDates = document.getElementById('error-private-dates');
+            const errorTimes = document.getElementById('error-private-times');
+            const errorPax = document.getElementById('error-private-pax');
+            const errorNoVehicle = document.getElementById('error-private-novehicle');
+            const errorBartenderType = document.getElementById('error-private-bartender-type');
+            const bookBtn = document.querySelector('#card-private .lvl-book-btn');
+            
+            let isValid = true;
+            let errorMessage = '';
+            
+            // Check required fields
+            if (!vehicleElement) {
+                isValid = false;
+                errorNoVehicle.style.display = 'block';
+                bookBtn.disabled = true;
+                return false;
+            } else {
+                errorNoVehicle.style.display = 'none';
+            }
+            
+            // Check bartender type if bartender is selected
+            const vehicle = vehicleElement.value;
+            if (bartenderCheckbox.checked && BARTENDER_ALLOWED_VEHICLES.includes(vehicle) && !bartenderTypeElement) {
+                isValid = false;
+                errorBartenderType.style.display = 'block';
+                bookBtn.disabled = true;
+                return false;
+            } else {
+                errorBartenderType.style.display = 'none';
+            }
+            
+            if (!daysSelect.value) {
+                isValid = false;
+                errorMessage = 'Please select number of days';
+            } else if (!paxInput.value) {
+                isValid = false;
+                errorMessage = 'Please enter number of passengers';
+            } else if (dateSelects.length === 0 || depInputs.length === 0 || retInputs.length === 0) {
+                isValid = false;
+                errorMessage = 'Please configure all days';
+            } else {
+                // Check passenger count
+                const pax = parseInt(paxInput.value);
+                if (PRIVATE_PRICES[vehicle] && pax > PRIVATE_PRICES[vehicle].maxPax) {
+                    isValid = false;
+                    errorPax.style.display = 'block';
+                    bookBtn.disabled = true;
+                    return false;
+                } else {
+                    errorPax.style.display = 'none';
+                }
+                
+                // Check each day has date, pick-up, and return
+                for (let i = 0; i < dateSelects.length; i++) {
+                    if (!dateSelects[i].value || !depInputs[i].value.trim() || !retInputs[i].value.trim()) {
+                        isValid = false;
+                        errorMessage = 'Please select date and enter both pick-up and return times for each day';
+                        break;
+                    }
+                }
+                
+                // Check for duplicate dates
+                if (isValid) {
+                    const dates = Array.from(dateSelects).map(sel => sel.value);
+                    const hasDuplicates = dates.some((date, index) => dates.indexOf(date) !== index);
+                    if (hasDuplicates) {
+                        isValid = false;
+                        errorDates.style.display = 'block';
+                        bookBtn.disabled = true;
+                        return false;
+                    } else {
+                        errorDates.style.display = 'none';
+                    }
+                }
+            }
+            
+            // Show/hide errors
+            errorTimes.style.display = 'none';
+            if (!isValid && errorMessage) {
+                errorRequired.innerHTML = `⚠️ ${errorMessage}`;
+                errorRequired.style.display = 'block';
+                bookBtn.disabled = true;
+            } else {
+                errorRequired.style.display = 'none';
+                errorDates.style.display = 'none';
+                errorTimes.style.display = 'none';
+                bookBtn.disabled = false;
+            }
+            
+            return isValid;
         }
 
         function submitPass(type) {
-            let total = 0, detailsHtml = "", detailsText = "", qty = 0, vehicleName = "";
-
+            // Validate before proceeding
+            let isValid = false;
+            let subtotal = 0, detailsHtml = "", detailsText = "", qty = 0, vehicleName = "";
+            let lineItems = [];
+            let glowKits = 0;
+            
             if(type === 'One-Way') {
-                const days = document.getElementById('days-oneway').value;
+                if (!validateOneWay()) {
+                    alert("Please complete all required One Way fields before proceeding.");
+                    return;
+                }
+                
+                const days = parseInt(document.getElementById('days-oneway').value);
                 const dir = document.querySelector('input[name="dir-oneway"]:checked').value;
                 qty = 1; 
-                total = 105 * days * qty;
+                subtotal = 105 * days * qty;
+                
+                // Get glow kits
+                glowKits = parseInt(document.getElementById('glow-kits-oneway').value);
+                const additionalKits = glowKits - 1;
+                if (additionalKits > 0) {
+                    const glowKitCost = additionalKits * 30;
+                    subtotal += glowKitCost;
+                    
+                    // Add glow kit line item
+                    lineItems.push({
+                        name: `Additional Glow Kits (${additionalKits} × $30)`,
+                        price: 30,
+                        quantity: additionalKits,
+                        total: glowKitCost
+                    });
+                }
+                
+                // Line items for One Way
+                lineItems.push({
+                    name: `One-Way Pass (${dir})`,
+                    price: 105,
+                    quantity: days,
+                    total: 105 * days
+                });
+                
                 const rows = document.querySelectorAll('#schedule-oneway .lvl-day-row');
                 rows.forEach(row => {
                     const d = row.querySelector('.lvl-date-select').value;
@@ -1183,12 +1813,45 @@
                     detailsHtml += `<div><strong>${d}:</strong> ${t} (${dir})</div>`;
                     detailsText += `${d}: ${t} (${dir}) | `;
                 });
+                vehicleName = "Shuttle";
+                
             } else if (type === 'Round Trip') {
-                const days = document.getElementById('days-roundtrip').value;
-                if(days == 1) total = 150; 
-                if(days == 2) total = 299; 
-                if(days == 3) total = 350;
+                if (!validateRoundTrip()) {
+                    alert("Please complete all required Round Trip fields before proceeding.");
+                    return;
+                }
+                
+                const days = parseInt(document.getElementById('days-roundtrip').value);
+                let passPrice = 0;
+                if(days == 1) { passPrice = 150; subtotal = 150; }
+                if(days == 2) { passPrice = 299; subtotal = 299; }
+                if(days == 3) { passPrice = 350; subtotal = 350; }
                 qty = 1;
+                
+                // Get glow kits
+                glowKits = parseInt(document.getElementById('glow-kits-roundtrip').value);
+                const additionalKits = glowKits - 1;
+                if (additionalKits > 0) {
+                    const glowKitCost = additionalKits * 30;
+                    subtotal += glowKitCost;
+                    
+                    // Add glow kit line item
+                    lineItems.push({
+                        name: `Additional Glow Kits (${additionalKits} × $30)`,
+                        price: 30,
+                        quantity: additionalKits,
+                        total: glowKitCost
+                    });
+                }
+                
+                // Line items for Round Trip
+                lineItems.push({
+                    name: "Round Trip Pass",
+                    price: passPrice,
+                    quantity: 1,
+                    total: passPrice
+                });
+                
                 const rows = document.querySelectorAll('#schedule-roundtrip .lvl-day-row');
                 rows.forEach(row => {
                     const d = row.querySelector('.lvl-date-select').value;
@@ -1197,14 +1860,103 @@
                     detailsHtml += `<div><strong>${d}:</strong> ${dep} ➝ ${ret}</div>`;
                     detailsText += `${d}: ${dep} to ${ret} | `;
                 });
+                vehicleName = "Shuttle";
+                
             } else if (type === 'Private') {
-                const days = document.getElementById('days-private').value;
+                if (!validatePrivate()) {
+                    alert("Please complete all required Private Booking fields before proceeding.");
+                    return;
+                }
+                
+                const days = parseInt(document.getElementById('days-private').value);
                 const vehicleVal = document.querySelector('input[name="veh-private"]:checked').value;
-                vehicleName = (vehicleVal === 'SUV') ? "Luxury SUV" : "Sprinter Van";
-                const pax = document.getElementById('pax-private').value;
-                const pricePer = (vehicleVal === 'SUV') ? 196 : 300;
-                total = pricePer * pax * days;
-                qty = parseInt(pax);
+                const pax = parseInt(document.getElementById('pax-private').value);
+                const bartenderCheckbox = document.getElementById('bartender');
+                const bartender = bartenderCheckbox && bartenderCheckbox.checked;
+                const bartenderType = bartender ? document.querySelector('input[name="bartender-type"]:checked').value : null;
+                
+                // Get glow kits
+                glowKits = parseInt(document.getElementById('glow-kits-private').value);
+                const additionalKits = glowKits - 1;
+                
+                // Get vehicle info
+                const vehicleInfo = PRIVATE_PRICES[vehicleVal];
+                vehicleName = vehicleInfo.displayName;
+                qty = pax;
+                
+                // Calculate vehicle base cost
+                const vehicleBaseTotal = vehicleInfo.base * days;
+                subtotal = vehicleBaseTotal;
+                
+                // Line item for vehicle base
+                lineItems.push({
+                    name: `${vehicleName} Base (${days} day${days > 1 ? 's' : ''})`,
+                    price: vehicleInfo.base,
+                    quantity: days,
+                    total: vehicleBaseTotal
+                });
+                
+                // Calculate passenger cost
+                const passengerTotal = vehicleInfo.perPerson * pax * days;
+                subtotal += passengerTotal;
+                
+                // Line item for passengers
+                lineItems.push({
+                    name: `Passenger Fee (${pax} passenger${pax > 1 ? 's' : ''} × ${days} day${days > 1 ? 's' : ''})`,
+                    price: vehicleInfo.perPerson,
+                    quantity: pax * days,
+                    total: passengerTotal
+                });
+                
+                // Add glow kits if any
+                if (additionalKits > 0) {
+                    const glowKitCost = additionalKits * 30;
+                    subtotal += glowKitCost;
+                    
+                    // Add glow kit line item
+                    lineItems.push({
+                        name: `Additional Glow Kits (${additionalKits} × $30)`,
+                        price: 30,
+                        quantity: additionalKits,
+                        total: glowKitCost
+                    });
+                }
+                
+                // Calculate bartender costs - SIMPLIFIED
+                let bartenderDays = 0;
+                let bartenderDaysList = [];
+                if (bartender && BARTENDER_ALLOWED_VEHICLES.includes(vehicleVal)) {
+                    // Count YES days for bartender (if multiple days and daily options exist)
+                    if (days > 1) {
+                        const bartenderRadios = document.querySelectorAll('.lvl-bartender-radio');
+                        for (let i = 1; i <= days; i++) {
+                            const yesRadio = document.querySelector(`.lvl-bartender-radio[data-day="${i}"][data-value="yes"]`);
+                            if (yesRadio && yesRadio.classList.contains('selected')) {
+                                bartenderDays++;
+                                bartenderDaysList.push(i);
+                            }
+                        }
+                    } else {
+                        // For single day, bartender is automatically included
+                        bartenderDays = 1;
+                        bartenderDaysList.push(1);
+                    }
+                    
+                    if (bartenderDays > 0) {
+                        const bartenderPricePerDay = BARTENDER_PRICES[bartenderType];
+                        const bartenderTotal = bartenderPricePerDay * bartenderDays;
+                        subtotal += bartenderTotal;
+                        
+                        // Line item for bartender
+                        lineItems.push({
+                            name: `Bartender Service (${bartenderType === 'oneway' ? 'One-Way' : 'Round Trip'})${days > 1 ? ` - Days: ${bartenderDaysList.join(', ')}` : ''}`,
+                            price: bartenderPricePerDay,
+                            quantity: bartenderDays,
+                            total: bartenderTotal
+                        });
+                    }
+                }
+                
                 const rows = document.querySelectorAll('#schedule-private .lvl-day-row');
                 rows.forEach(row => {
                     const d = row.querySelector('.lvl-date-select').value;
@@ -1217,13 +1969,16 @@
 
             // POPULATE SUMMARY
             document.getElementById('summ-pass-type').innerText = type + " Pass";
-            document.getElementById('summ-qty').innerText = qty;
+            document.getElementById('summ-qty').innerText = type === 'Private' ? qty + " Passengers" : qty;
             document.getElementById('summ-schedule-details').innerHTML = detailsHtml;
-            document.getElementById('summ-total').innerText = "$" + total.toLocaleString();
             
+            // Store line items for checkout display
             if(type === 'Private') {
                 document.getElementById('summ-veh-row').style.display = 'flex';
                 document.getElementById('summ-vehicle').innerText = vehicleName;
+                
+                // Store line items in data attribute for checkout
+                document.getElementById('summ-veh-row').setAttribute('data-line-items', JSON.stringify(lineItems));
             } else {
                 document.getElementById('summ-veh-row').style.display = 'none';
             }
@@ -1232,65 +1987,109 @@
             document.getElementById('input-pass-type').value = type;
             document.getElementById('input-vehicle').value = vehicleName;
             document.getElementById('input-qty').value = qty;
-            document.getElementById('input-total').value = total;
             document.getElementById('input-schedule').value = detailsText;
-
-            // --- GENERATE T-SHIRT DROPDOWNS ---
-            const shirtContainer = document.getElementById('shirt-size-inputs');
-            shirtContainer.innerHTML = ''; // Clear previous
             
-            const loopCount = (type === 'Private') ? qty : 1; 
+            // Store line items and glow kits in hidden fields
+            let lineItemsInput = document.getElementById('input-line-items');
+            if (!lineItemsInput) {
+                lineItemsInput = document.createElement('input');
+                lineItemsInput.type = 'hidden';
+                lineItemsInput.id = 'input-line-items';
+                lineItemsInput.name = 'line_items';
+                document.getElementById('lvl-custom-form').appendChild(lineItemsInput);
+            }
+            lineItemsInput.value = JSON.stringify(lineItems);
+            
+            // Store glow kits count
+            let glowKitsInput = document.getElementById('input-glow-kits');
+            if (!glowKitsInput) {
+                glowKitsInput = document.createElement('input');
+                glowKitsInput.type = 'hidden';
+                glowKitsInput.id = 'input-glow-kits';
+                glowKitsInput.name = 'glow_kits';
+                document.getElementById('lvl-custom-form').appendChild(glowKitsInput);
+            }
+            glowKitsInput.value = glowKits;
 
-            for(let i = 1; i <= loopCount; i++) {
-                shirtContainer.innerHTML += `
-                    <select class="lvl-shirt-select" onchange="collectShirtSizes()" required style="padding:10px; border:1px solid #ccc; border-radius:4px; width:100%; box-sizing:border-box;">
-                        <option value="" disabled selected>Pass #${i} Size</option>
-                        <option value="S">Small</option>
-                        <option value="M">Medium</option>
-                        <option value="L">Large</option>
-                        <option value="XL">XL</option>
-                        <option value="XXL">XXL</option>
-                    </select>`;
+            // CALL THE CHECKOUT FUNCTION IN BLOCK 6
+            if (typeof updateCheckoutSummary !== 'undefined') {
+                updateCheckoutSummary(subtotal, qty, glowKits, lineItems);
+            } else {
+                // Fallback if Block 6 isn't loaded yet
+                console.error('updateCheckoutSummary function not found. Make sure Block 6 is loaded.');
+                // Set total without tax temporarily
+                const taxAmount = subtotal * 0.035;
+                const total = subtotal + taxAmount;
+                document.getElementById('summ-total').innerText = "$" + total.toFixed(2);
+                document.getElementById('input-total').value = total.toFixed(2);
+                
+                // Still need to create shirt inputs
+                updateShirtInputs(glowKits);
             }
 
-            // REVEAL & ANIMATE
+            // REVEAL & ANIMATE CHECKOUT SECTION
             const checkoutBlock = document.getElementById('lvl-checkout');
             checkoutBlock.classList.remove('lvl-hidden-checkout');
             gsap.to(window, {duration: 1, scrollTo: "#lvl-checkout", ease: "power2.inOut"});
             gsap.fromTo("#lvl-checkout", {height: 0, opacity: 0}, {height: "auto", opacity: 1, duration: 1, ease: "power2.out"});
         }
 
-        // HELPER TO COLLECT SHIRT SIZES INTO HIDDEN INPUT
-        window.collectShirtSizes = function() {
-            const selects = document.querySelectorAll('.lvl-shirt-select');
-            let sizes = [];
-            selects.forEach((sel, index) => {
-                if(sel.value) sizes.push(`Pass ${index+1}: ${sel.value}`);
-            });
-            document.getElementById('input-shirt-summary').value = sizes.join(', ');
+        // Fallback shirt function if Block 6 isn't loaded
+        function updateShirtInputs(quantity) {
+            const shirtGrid = document.getElementById('shirt-size-inputs');
+            if (!shirtGrid) return;
+            
+            shirtGrid.innerHTML = '';
+            
+            const shirtSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
+            
+            for (let i = 1; i <= quantity; i++) {
+                const sizeSelect = document.createElement('select');
+                sizeSelect.name = `shirt_size_${i}`;
+                sizeSelect.required = true;
+                sizeSelect.className = 'lvl-shirt-select';
+                sizeSelect.onchange = updateShirtSummary;
+                sizeSelect.innerHTML = `
+                    <option value="">Select Size</option>
+                    ${shirtSizes.map(size => `<option value="${size}">${size}</option>`).join('')}
+                `;
+                
+                const div = document.createElement('div');
+                div.className = 'lvl-input-group';
+                div.innerHTML = `<label>Glow Kit ${i} Shirt Size</label>`;
+                div.appendChild(sizeSelect);
+                
+                shirtGrid.appendChild(div);
+            }
+            
+            updateShirtSummary();
         }
 
-        // INIT
+        // Fallback shirt summary function
+        function updateShirtSummary() {
+            const selects = document.querySelectorAll('#shirt-size-inputs .lvl-shirt-select');
+            const sizes = Array.from(selects).map(select => select.value).filter(Boolean);
+            const shirtSummaryInput = document.getElementById('input-shirt-summary');
+            if (shirtSummaryInput) {
+                shirtSummaryInput.value = sizes.join(', ');
+            }
+        }
+
+        // INITIALIZE ALL PASS OPTIONS
         updateOneWayLogic();
         updateRoundTripLogic();
         updatePrivateLogic();
-
-        // ENTRANCE ANIMATION
-        gsap.from("#lvl-options .lvl-card-container", {
-            scrollTrigger: { 
-                trigger: "#lvl-options", 
-                start: "top 70%",
-                toggleActions: "play none none none"
-            },
-            y: 100, 
-            rotationY: 90, 
-            opacity: 0, 
-            duration: 1, 
-            stagger: 0.15, 
-            ease: "back.out(1.2)"
-        });
+        updateGlowKitTotal('oneway');
+        updateGlowKitTotal('roundtrip');
+        updateGlowKitTotal('private');
     </script>
 </div>
+[file content end]
+
+
+END OF BLOCK 3
+
+START OF BLOCK 4 - EDC Lineup
 
 <div id="lvl-schedule" class="lvl-section-wrapper">
     <style>
@@ -1707,6 +2506,8 @@
     </script>
 </div>
 
+END OF BLOCK 4
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1715,24 +2516,20 @@
     <title>EDC Las Vegas 2026 Shuttle Route: Planet Hollywood to Las Vegas Motor Speedway | Official Transportation</title>
     <meta name="description" content="Official EDC 2026 shuttle route from Planet Hollywood Resort & Casino to Las Vegas Motor Speedway. Real-time Google Maps directions, traffic updates, and EDC transportation booking for May 15-17, 2026.">
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
     
-    <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="EDC 2026 Shuttle Route: Planet Hollywood to Las Vegas Motor Speedway">
     <meta property="og:description" content="Professional transportation route for Electric Daisy Carnival 2026. Real-time Google Maps directions and shuttle schedule for May 15-17.">
     <meta property="og:image" content="https://example.com/edc-2026-route-map-preview.jpg">
     <meta property="og:url" content="https://example.com/edc-shuttle-route-2026">
     <meta property="og:type" content="website">
     
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="EDC 2026 Shuttle Route Map">
     <meta name="twitter:description" content="Plan your EDC 2026 transportation with our professional route map and schedule.">
     
-    <!-- Structured Data for SEO -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -1868,7 +2665,7 @@
             font-size: 1.25rem;
             color: var(--text-secondary);
             max-width: 800px;
-            margin-bottom: 40px;
+            margin-bottom: 20px; /* CHANGE 1: Reduced from 40px to 20px */
             text-align: left;
             font-weight: 300;
             line-height: 1.7;
@@ -1915,83 +2712,8 @@
             border: none;
             display: block;
         }
-        
-        .map-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: 10;
-        }
-        
-        /* Professional Map Markers */
-        .custom-marker {
-            position: absolute;
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--professional-orange), #ff8533);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform: translate(-50%, -50%);
-            box-shadow: var(--orange-glow), 0 4px 12px rgba(0, 0, 0, 0.3);
-            pointer-events: auto;
-            cursor: pointer;
-            transition: var(--transition);
-            z-index: 20;
-            border: 2px solid rgba(255, 255, 255, 0.9);
-        }
-        
-        .custom-marker:hover {
-            transform: translate(-50%, -50%) scale(1.15);
-            box-shadow: 0 0 35px rgba(255, 103, 0, 0.6), 0 6px 20px rgba(0, 0, 0, 0.4);
-        }
-        
-        .custom-marker.start {
-            top: 65%;
-            left: 30%;
-            background: linear-gradient(135deg, var(--professional-orange), #ff8533);
-        }
-        
-        .custom-marker.end {
-            top: 20%;
-            left: 80%;
-            background: linear-gradient(135deg, var(--accent-green), #3aff3a);
-            border-color: rgba(10, 255, 10, 0.8);
-        }
-        
-        .marker-icon {
-            color: white;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-        
-        .marker-tooltip {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.92);
-            color: white;
-            padding: 12px 18px;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            opacity: 0;
-            transition: var(--transition);
-            pointer-events: none;
-            z-index: 30;
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            box-shadow: var(--shadow-medium);
-        }
-        
-        .custom-marker:hover .marker-tooltip {
-            opacity: 1;
-            transform: translateY(-12px);
-        }
+
+        /* CHANGE 2: Removed .map-overlay and custom-marker CSS blocks */
         
         /* Map Controls */
         .map-controls {
@@ -2139,29 +2861,41 @@
             line-height: 1.7;
         }
         
+        /* CHANGE 3: Refactored List Styling */
         .info-list {
             list-style: none;
             margin-top: 20px;
         }
         
         .info-list li {
+            display: block;
             margin-bottom: 16px;
-            padding-left: 32px;
+            padding-left: 36px;
             position: relative;
-            display: flex;
-            align-items: flex-start;
         }
         
         .info-list li:before {
             content: "";
             position: absolute;
             left: 0;
-            top: 8px;
+            top: 10px;
             width: 16px;
             height: 16px;
             background: var(--accent-green);
             border-radius: 50%;
             opacity: 0.8;
+        }
+
+        .info-list li .highlight-text {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 1.05rem;
+        }
+
+        .info-list li .info-desc {
+            display: block;
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
         
         .highlight-text {
@@ -2590,38 +3324,38 @@
             opacity: 1;
             color: var(--professional-orange);
         }
-      /* Mobile line break fix - Add to bottom of CSS */
-@media (max-width: 768px) {
-    .info-list li {
-        min-height: 60px;
-        padding-left: 36px;
-        margin-bottom: 20px;
-    }
-    
-    .info-list li:before {
-        top: 20px;
-    }
-    
-    .highlight-text {
-        display: block !important;
-        width: 100%;
-        margin-bottom: 8px;
-        font-size: 1.1rem;
-    }
-    
-    /* Hide br tags on desktop, show on mobile */
-    br.mobile-break {
-        display: none;
-    }
-    
-    br.mobile-break {
-        display: block;
-    }
-}
+
+      /* Mobile line break fix */
+        @media (max-width: 768px) {
+            .info-list li {
+                min-height: 60px;
+                padding-left: 36px;
+                margin-bottom: 20px;
+            }
+            
+            .info-list li:before {
+                top: 20px;
+            }
+            
+            .highlight-text {
+                display: block !important;
+                width: 100%;
+                margin-bottom: 8px;
+                font-size: 1.1rem;
+            }
+            
+            /* Hide br tags on desktop, show on mobile */
+            br.mobile-break {
+                display: none;
+            }
+            
+            br.mobile-break {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Hero Header -->
     <section class="hero-section fade-in">
         <div class="container">
             <h1 class="hero-title">EDC Las Vegas 2026 Shuttle Route: Planet Hollywood to Las Vegas Motor Speedway</h1>
@@ -2629,11 +3363,8 @@
         </div>
     </section>
 
-    <!-- Main Content Section -->
     <section class="container content-grid">
-        <!-- Left Column: Google Maps -->
         <div class="map-container fade-in">
-            <!-- Map Controls -->
             <div class="map-controls">
                 <a href="https://www.google.com/maps/dir/Planet+Hollywood+Las+Vegas+Resort+%26+Casino,+3667+Las+Vegas+Blvd+S,+Las+Vegas,+NV+89109/Las+Vegas+Motor+Speedway+Infield,+7000+Las+Vegas+Blvd+N,+Las+Vegas,+NV+89115/" 
                    target="_blank" 
@@ -2672,7 +3403,6 @@
                 </button>
             </div>
 
-            <!-- Google Maps Embed -->
             <div class="map-wrapper">
                 <iframe 
                     class="map-frame" 
@@ -2687,20 +3417,8 @@
                     aria-label="Interactive Google Maps showing the optimized EDC shuttle route from Planet Hollywood to Las Vegas Motor Speedway">
                 </iframe>
                 
-                <!-- Custom Markers Overlay -->
-                <div class="map-overlay">
-                    <div class="custom-marker start">
-                        <div class="marker-icon">PH</div>
-                        <div class="marker-tooltip">Planet Hollywood Resort & Casino<br>Official EDC Shuttle Pickup</div>
-                    </div>
-                    <div class="custom-marker end">
-                        <div class="marker-icon">LVMS</div>
-                        <div class="marker-tooltip">Las Vegas Motor Speedway<br>EDC 2026 Festival Grounds</div>
-                    </div>
                 </div>
-            </div>
             
-            <!-- Route Stats -->
             <div class="stats-grid fade-in" style="margin-top: 24px;">
                 <div class="stat-item">
                     <div class="stat-value">12 mi</div>
@@ -2721,9 +3439,7 @@
             </div>
         </div>
 
-        <!-- Right Column: Professional Content -->
         <div class="content-column">
-            <!-- Route Summary Card -->
             <div class="content-card fade-in">
                 <div class="card-header">
                     <div class="card-header-icon">
@@ -2761,7 +3477,6 @@
                 </div>
             </div>
 
-            <!-- Key Benefits Card -->
             <div class="content-card fade-in" style="animation-delay: 0.1s;">
                 <div class="card-header">
                     <div class="card-header-icon">
@@ -2774,18 +3489,38 @@
                 </div>
                 <div class="card-content">
                     <ul class="info-list">
-                        <li><span class="highlight-text">Dedicated Route Access:</span> I-15 North express lanes</li>
-                        <li><span class="highlight-text">Time Efficiency:</span><br> 2+ hours saved vs rideshares during peak</li>
-                        <li><span class="highlight-text">Cost Effective:</span><br> Flat rates, no surge pricing</li>
-                        <li><span class="highlight-text">Direct Festival Access:</span><br> Official shuttle drop-off zone</li>
-                        <li><span class="highlight-text">Professional Service:</span><br> Licensed drivers & staff support</li>
-                        <li><span class="highlight-text">Extended Service:</span><br> Return trips until 5:30 AM</li>
-                        <li><span class="highlight-text">Item Storage:</span><br> Onboard storage for personal items (must be taken when exiting)</li>
+                        <li>
+                            <span class="highlight-text">Dedicated Route Access:</span>
+                            <span class="info-desc">I-15 North express lanes</span>
+                        </li>
+                        <li>
+                            <span class="highlight-text">Time Efficiency:</span>
+                            <span class="info-desc">2+ hours saved vs rideshares during peak</span>
+                        </li>
+                        <li>
+                            <span class="highlight-text">Cost Effective:</span>
+                            <span class="info-desc">Flat rates, no surge pricing</span>
+                        </li>
+                        <li>
+                            <span class="highlight-text">Direct Festival Access:</span>
+                            <span class="info-desc">Official shuttle drop-off zone</span>
+                        </li>
+                        <li>
+                            <span class="highlight-text">Professional Service:</span>
+                            <span class="info-desc">Licensed drivers & staff support</span>
+                        </li>
+                        <li>
+                            <span class="highlight-text">Extended Service:</span>
+                            <span class="info-desc">Return trips until 5:30 AM</span>
+                        </li>
+                        <li>
+                            <span class="highlight-text">Item Storage:</span>
+                            <span class="info-desc">Onboard storage for personal items (must be taken when exiting)</span>
+                        </li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Traffic Advisory Card -->
             <div class="content-card warning-card fade-in" style="animation-delay: 0.2s;">
                 <div class="card-header">
                     <div class="card-header-icon">
@@ -2799,19 +3534,36 @@
                 </div>
                 <div class="card-content">
                     <ul class="info-list">
-                        <li><span class="highlight-text">Peak Congestion:</span> 5:30 PM - 8:00 PM daily</li>
-                        <li><span class="highlight-text">Rideshare Delays:</span> 45-90+ minute waits</li>
-                        <li><span class="highlight-text">Surge Pricing:</span> 3-5x normal rates</li>
-                        <li><span class="highlight-text">Parking Limitations:</span> Limited availability, distant locations</li>
-                        <li><span class="highlight-text">Walking Distance:</span> Up to 1.5 miles from general parking</li>
-                        <li><span class="highlight-text">Shuttle Priority:</span> Dedicated lanes & express access</li>
+                        <li>
+                            <span class="highlight-text">Peak Congestion:</span>
+                            <span class="info-desc">5:30 PM - 8:00 PM daily</span>
+                        </li>
+                        <li>
+                            <span class="highlight-text">Rideshare Delays:</span>
+                            <span class="info-desc">45-90+ minute waits</span>
+                        </li>
+                        <li>
+                            <span class="highlight-text">Surge Pricing:</span>
+                            <span class="info-desc">3-5x normal rates</span>
+                        </li>
+                        <li>
+                            <span class="highlight-text">Parking Limitations:</span>
+                            <span class="info-desc">Limited availability, distant locations</span>
+                        </li>
+                        <li>
+                            <span class="highlight-text">Walking Distance:</span>
+                            <span class="info-desc">Up to 1.5 miles from general parking</span>
+                        </li>
+                        <li>
+                            <span class="highlight-text">Shuttle Priority:</span>
+                            <span class="info-desc">Dedicated lanes & express access</span>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Transportation Options Section -->
     <section class="transportation-section fade-in">
         <div class="container">
             <h2 class="section-title">EDC 2026 Transportation Options</h2>
@@ -2858,7 +3610,6 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
     <section class="faq-section fade-in">
         <div class="container">
             <h2 class="faq-title">Transportation FAQs</h2>
@@ -2887,7 +3638,6 @@
         </div>
     </section>
 
-    <!-- Share Modal -->
     <div class="share-modal" id="share-modal">
         <div class="share-content">
             <button class="close-modal" id="close-modal">×</button>
@@ -3021,6 +3771,10 @@
 </body>
 </html>
 
+End of block 5
+
+Start of block 6 - Checkout
+
 <div id="lvl-checkout" class="lvl-section-wrapper lvl-hidden-checkout">
     <style>
         /* SCOPED CSS: #lvl-checkout */
@@ -3032,7 +3786,7 @@
             --lvl-font-heading: 'Oswald', sans-serif;
             --lvl-font-body: 'Inter', sans-serif;
 
-            background-color: #fff; /* High contrast for trust/readability */
+            background-color: #fff;
             color: var(--lvl-black);
             padding: 100px 20px;
             position: relative;
@@ -3040,149 +3794,302 @@
             border-top: 1px solid #eee;
         }
 
-        /* HIDDEN STATE (Controlled by Block 3 JS) */
         .lvl-hidden-checkout { display: none; opacity: 0; height: 0; overflow: hidden; }
 
         #lvl-checkout .lvl-container {
             max-width: 1100px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1.5fr; /* Summary (Narrow) | Form (Wide) */
+            grid-template-columns: 1fr 1.5fr;
             gap: 50px;
             align-items: start;
         }
 
-        /* --- LEFT COLUMN: ORDER SUMMARY --- */
+        /* LEFT COLUMN: SUMMARY */
         #lvl-checkout .lvl-summary-card {
             background: var(--lvl-black);
             color: #fff;
             padding: 40px;
             border-radius: 8px;
             border: 1px solid var(--lvl-gold);
-            position: sticky;
-            top: 20px;
+            position: sticky; top: 20px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
-
         #lvl-checkout .lvl-summary-header {
-            font-family: var(--lvl-font-heading);
-            font-size: 24px;
-            text-transform: uppercase;
-            border-bottom: 1px solid #333;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-            color: var(--lvl-gold);
+            font-family: var(--lvl-font-heading); font-size: 24px; text-transform: uppercase;
+            border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 20px;
+            letter-spacing: 1px; color: var(--lvl-gold);
         }
-
         #lvl-checkout .lvl-summary-item {
-            margin-bottom: 15px;
-            font-family: var(--lvl-font-body);
-            font-size: 14px;
-            color: #ccc;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            margin-bottom: 15px; font-family: var(--lvl-font-body); font-size: 14px;
+            color: #ccc; display: flex; justify-content: space-between; align-items: center;
         }
         #lvl-checkout .lvl-summary-item span:last-child { color: #fff; font-weight: 600; text-align: right; }
-
-        #lvl-checkout .lvl-summary-details {
-            background: #111;
-            padding: 15px;
-            border-radius: 4px;
-            font-size: 12px;
-            line-height: 1.6;
-            color: #999;
-            margin-bottom: 20px;
-            border-left: 2px solid var(--lvl-gold);
+        #lvl-summary-details {
+            background: #111; padding: 15px; border-radius: 4px; font-size: 12px;
+            line-height: 1.6; color: #999; margin-bottom: 20px; border-left: 2px solid var(--lvl-gold);
             font-family: var(--lvl-font-body);
         }
-
-        #lvl-checkout .lvl-total-row {
+        
+        /* Line Items Breakdown */
+        #lvl-checkout .lvl-line-items {
+            width: 100%;
+            margin: 15px 0;
             border-top: 1px solid #333;
-            padding-top: 20px;
-            margin-top: 20px;
+            border-bottom: 1px solid #333;
+            padding: 15px 0;
+        }
+        
+        #lvl-checkout .lvl-line-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #333;
+        }
+        
+        #lvl-checkout .lvl-line-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        #lvl-checkout .lvl-line-item-name {
+            flex: 1;
+            font-size: 12px;
+            color: #ccc;
+            line-height: 1.4;
+        }
+        
+        #lvl-checkout .lvl-line-item-price {
+            font-size: 12px;
+            color: #fff;
+            font-weight: 600;
+            text-align: right;
+            min-width: 100px;
+        }
+        
+        #lvl-checkout .lvl-line-item-breakdown {
+            font-size: 11px;
+            color: #888;
+            font-style: italic;
+            margin-top: 2px;
+        }
+        
+        /* Subtotal, Tax, Total */
+        #lvl-checkout .lvl-subtotal-row {
+            border-top: 1px solid #333;
+            padding-top: 15px;
+            margin-top: 15px;
+            font-family: var(--lvl-font-body);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            color: #ccc;
         }
-        #lvl-checkout .lvl-total-label { font-family: var(--lvl-font-heading); font-size: 18px; color: #fff; }
-        #lvl-checkout .lvl-total-price { font-family: var(--lvl-font-heading); font-size: 36px; color: var(--lvl-gold); line-height: 1; }
-
-        /* --- RIGHT COLUMN: PAYMENT FORM --- */
-        #lvl-checkout .lvl-form-wrapper {
-            background: #f9f9f9;
-            padding: 40px;
-            border-radius: 8px;
-            border: 1px solid #eee;
+        
+        #lvl-checkout .lvl-subtotal-row span:last-child {
+            color: #fff;
+            font-weight: 600;
         }
-
-        #lvl-checkout .lvl-form-header {
-            font-family: var(--lvl-font-heading);
-            font-size: 32px;
-            text-transform: uppercase;
-            margin: 0 0 30px 0;
-            color: var(--lvl-black);
-        }
-
-        /* CUSTOM FORM STYLES */
-        #lvl-checkout .lvl-input-group { margin-bottom: 20px; }
-        #lvl-checkout label {
-            display: block;
+        
+        #lvl-checkout .lvl-tax-row {
+            border-top: 1px solid #333;
+            padding-top: 15px;
+            margin-top: 15px;
             font-family: var(--lvl-font-body);
-            font-size: 12px;
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #555;
-            letter-spacing: 0.5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ccc;
         }
-        #lvl-checkout input, #lvl-checkout select {
+        
+        #lvl-checkout .lvl-tax-row span:last-child {
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        #lvl-checkout .lvl-total-row {
+            border-top: 2px solid #444; padding-top: 20px; margin-top: 15px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        
+        #lvl-checkout .lvl-total-label { 
+            font-family: var(--lvl-font-heading); 
+            font-size: 18px; 
+            color: #fff; 
+        }
+        
+        #lvl-checkout .lvl-total-price { 
+            font-family: var(--lvl-font-heading); 
+            font-size: 36px; 
+            color: var(--lvl-gold); 
+            line-height: 1; 
+        }
+        
+        /* EDIT OPTIONS BUTTON */
+        #lvl-checkout .lvl-edit-options-btn {
             width: 100%;
-            padding: 15px;
-            border: 1px solid #ddd;
-            background: #fff;
-            border-radius: 4px;
-            font-family: var(--lvl-font-body);
-            font-size: 16px;
-            transition: all 0.3s;
-            color: #000;
-            box-sizing: border-box; /* Ensure padding doesn't break layout */
-        }
-        #lvl-checkout input:focus {
-            border-color: var(--lvl-gold);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
-        }
-
-        /* SUBMIT BUTTON */
-        #lvl-checkout .lvl-submit-btn {
-            width: 100%;
-            background: var(--lvl-black);
+            background: transparent;
+            border: 2px solid var(--lvl-gold);
             color: var(--lvl-gold);
             font-family: var(--lvl-font-heading);
-            font-size: 20px;
+            font-size: 14px;
             text-transform: uppercase;
-            padding: 18px;
-            border: none;
+            padding: 12px;
             cursor: pointer;
             transition: all 0.3s;
             font-weight: 700;
             letter-spacing: 1px;
-            margin-top: 10px;
+            margin-top: 20px;
             border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
-        #lvl-checkout .lvl-submit-btn:hover {
+        
+        #lvl-checkout .lvl-edit-options-btn:hover {
             background: var(--lvl-gold);
             color: var(--lvl-black);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        #lvl-checkout .lvl-edit-options-btn::before {
+            content: "↺";
+            font-size: 16px;
         }
 
-        /* RESPONSIVE */
+        /* RIGHT COLUMN: FORM */
+        #lvl-checkout .lvl-form-wrapper { background: #f9f9f9; padding: 40px; border-radius: 8px; border: 1px solid #eee; }
+        #lvl-checkout .lvl-form-header {
+            font-family: var(--lvl-font-heading); font-size: 32px; text-transform: uppercase;
+            margin: 0 0 30px 0; color: var(--lvl-black);
+        }
+
+        /* INPUTS */
+        #lvl-checkout .lvl-input-group { margin-bottom: 20px; }
+        #lvl-checkout label {
+            display: block; font-family: var(--lvl-font-body); font-size: 12px;
+            text-transform: uppercase; font-weight: 700; margin-bottom: 8px; color: #555;
+        }
+        #lvl-checkout input, #lvl-checkout select {
+            width: 100%; padding: 15px; border: 1px solid #ddd; background: #fff;
+            border-radius: 4px; font-family: var(--lvl-font-body); font-size: 16px;
+            transition: all 0.3s; color: #000; box-sizing: border-box;
+        }
+        #lvl-checkout input:focus, #lvl-checkout select:focus {
+            border-color: var(--lvl-gold); outline: none; box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        /* DYNAMIC SHIRT CONTAINER */
+        #lvl-checkout .lvl-shirt-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
+            background: #eef; padding: 20px; border-radius: 6px; border: 1px solid #dde;
+        }
+        
+        #lvl-checkout .lvl-shirt-select {
+            font-size: 14px;
+        }
+        
+        #lvl-checkout .lvl-shirt-select option:first-child {
+            color: #888;
+        }
+
+        /* SUBMIT BTN */
+        #lvl-checkout .lvl-submit-btn {
+            width: 100%; background: var(--lvl-black); color: var(--lvl-gold);
+            font-family: var(--lvl-font-heading); font-size: 20px; text-transform: uppercase;
+            padding: 18px; border: none; cursor: pointer; transition: all 0.3s;
+            font-weight: 700; letter-spacing: 1px; margin-top: 10px; border-radius: 4px;
+        }
+        #lvl-checkout .lvl-submit-btn:hover {
+            background: var(--lvl-gold); color: var(--lvl-black);
+            transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        /* =========================================
+           SHARE MODAL STYLES 
+           ========================================= */
+        #lvl-share-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 9999;
+            display: none; justify-content: center; align-items: center;
+            padding: 20px; backdrop-filter: blur(5px);
+        }
+        
+        #lvl-share-modal.visible { display: flex; animation: lvlFadeIn 0.3s ease-out; }
+        
+        @keyframes lvlFadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .lvl-modal-content {
+            background: #111; border: 1px solid var(--lvl-gold);
+            width: 100%; max-width: 500px; border-radius: 12px;
+            overflow: hidden; box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+            position: relative; text-align: center;
+        }
+        
+        .lvl-modal-close {
+            position: absolute; top: 15px; right: 15px;
+            color: #fff; font-size: 24px; cursor: pointer; z-index: 10;
+            width: 30px; height: 30px; line-height: 30px;
+            background: rgba(0,0,0,0.5); border-radius: 50%;
+        }
+        
+        .lvl-modal-img {
+            width: 100%; height: 200px; object-fit: cover;
+            border-bottom: 1px solid #333;
+        }
+        
+        .lvl-modal-body { padding: 30px; }
+        
+        .lvl-modal-title {
+            font-family: var(--lvl-font-heading); color: var(--lvl-gold);
+            font-size: 28px; text-transform: uppercase; margin-bottom: 10px;
+        }
+        
+        .lvl-modal-sub {
+            color: #ccc; font-family: var(--lvl-font-body); font-size: 14px; margin-bottom: 20px;
+        }
+        
+        .lvl-share-text-box {
+            background: #222; border: 1px solid #333; color: #fff;
+            padding: 15px; border-radius: 6px; font-family: var(--lvl-font-body);
+            font-size: 13px; width: 100%; box-sizing: border-box;
+            margin-bottom: 20px; resize: none; outline: none;
+        }
+        
+        .lvl-share-text-box:focus { border-color: var(--lvl-gold); }
+        
+        .lvl-social-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px;
+        }
+        
+        .lvl-social-btn {
+            background: #fff; border: none; border-radius: 4px;
+            padding: 10px 0; cursor: pointer; transition: transform 0.2s;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-decoration: none; color: #000; font-family: var(--lvl-font-heading);
+            font-size: 10px; text-transform: uppercase; font-weight: 700;
+        }
+        
+        .lvl-social-btn:hover { transform: translateY(-3px); }
+        
+        .lvl-social-icon { width: 24px; height: 24px; margin-bottom: 5px; }
+        
+        .lvl-copy-btn {
+            background: transparent; border: 1px solid #444; color: #888;
+            padding: 10px; width: 100%; border-radius: 4px; cursor: pointer;
+            font-family: var(--lvl-font-body); font-size: 12px; text-transform: uppercase;
+            transition: all 0.2s;
+        }
+        
+        .lvl-copy-btn:hover { border-color: #fff; color: #fff; }
+
         @media (max-width: 900px) {
             #lvl-checkout .lvl-container { grid-template-columns: 1fr; gap: 30px; }
-            #lvl-checkout .lvl-summary-card { position: relative; top: 0; order: -1; margin-bottom: 0; }
+            #lvl-checkout .lvl-summary-card { position: relative; top: 0; order: -1; }
             #lvl-checkout .lvl-form-wrapper { padding: 25px; }
         }
     </style>
@@ -3197,31 +4104,49 @@
                 <span id="summ-pass-type">--</span>
             </div>
             
+            <div class="lvl-summary-item">
+                <span>Ride Style</span>
+                <span id="summ-ride-style">--</span>
+            </div>
+            
             <div class="lvl-summary-item" id="summ-veh-row" style="display:none;">
                 <span>Vehicle</span>
                 <span id="summ-vehicle">--</span>
             </div>
             
             <div class="lvl-summary-item">
-                <span>Quantity</span>
+                <span id="summ-qty-label">Quantity</span>
                 <span id="summ-qty">--</span>
             </div>
-
-            <div class="lvl-summary-details" id="summ-schedule-details">
-                Select a pass above to see details.
+            
+            <div id="summ-line-items" class="lvl-line-items" style="display:none;"></div>
+            
+            <div id="summ-schedule-details" class="lvl-summary-details">
+                Select a pass to see details.
             </div>
-
+            
+            <div class="lvl-subtotal-row" id="summ-subtotal-row" style="display:none;">
+                <span>Subtotal</span>
+                <span id="summ-subtotal">$0.00</span>
+            </div>
+            
+            <div class="lvl-tax-row" id="summ-tax-row" style="display:none;">
+                <span>Sales Tax (3.5%)</span>
+                <span id="summ-tax">$0.00</span>
+            </div>
+            
             <div class="lvl-total-row">
                 <span class="lvl-total-label">TOTAL DUE</span>
                 <span class="lvl-total-price" id="summ-total">$0.00</span>
             </div>
+            
+            <button class="lvl-edit-options-btn" onclick="editOptions()">EDIT OPTIONS</button>
         </div>
 
         <div class="lvl-form-wrapper">
             <h2 class="lvl-form-header">Secure Checkout</h2>
 
-            <div id="bizly-inject-container">
-                </div>
+            <div id="bizly-inject-container"></div>
 
             <form id="lvl-custom-form" action="#" method="POST">
                 
@@ -3230,55 +4155,471 @@
                 <input type="hidden" name="schedule_data" id="input-schedule">
                 <input type="hidden" name="total_price" id="input-total">
                 <input type="hidden" name="quantity" id="input-qty">
+                <input type="hidden" name="shirt_sizes_summary" id="input-shirt-summary">
+                <input type="hidden" name="subtotal" id="input-subtotal">
+                <input type="hidden" name="tax_amount" id="input-tax">
+                <input type="hidden" name="line_items" id="input-line-items">
+                <input type="hidden" name="glow_kits" id="input-glow-kits">
+
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="lvl-input-group"><label>First Name</label><input type="text" name="first_name" required placeholder="Jane"></div>
+                    <div class="lvl-input-group"><label>Last Name</label><input type="text" name="last_name" required placeholder="Doe"></div>
+                </div>
+                <div class="lvl-input-group"><label>Email Address</label><input type="email" name="email" required placeholder="jane@example.com"></div>
+                <div class="lvl-input-group"><label>Mobile Phone</label><input type="tel" name="phone" required placeholder="(555) 123-4567"></div>
+
+                <div class="lvl-input-group">
+                    <label>Country</label>
+                    <select name="country" id="country-select" required>
+                        <option value="">Select Country</option>
+                        <option value="US">United States</option>
+                        <option value="CA">Canada</option>
+                        <option value="GB">United Kingdom</option>
+                        <option value="AU">Australia</option>
+                        <option value="DE">Germany</option>
+                        <option value="FR">France</option>
+                        <option value="JP">Japan</option>
+                        <option value="SG">Singapore</option>
+                        <option value="AE">United Arab Emirates</option>
+                        <option value="OTHER">Other Country</option>
+                    </select>
+                </div>
+
+                <div class="lvl-input-group">
+                    <label>Address Line 1</label>
+                    <input type="text" name="address1" required placeholder="123 Main St">
+                </div>
+
+                <div class="lvl-input-group">
+                    <label>Address Line 2 (Optional)</label>
+                    <input type="text" name="address2" placeholder="Apt 4B, Suite 100">
+                </div>
 
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div class="lvl-input-group">
-                        <label>First Name</label>
-                        <input type="text" name="first_name" required placeholder="Jane">
+                        <label>City</label>
+                        <input type="text" name="city" required placeholder="New York">
                     </div>
                     <div class="lvl-input-group">
-                        <label>Last Name</label>
-                        <input type="text" name="last_name" required placeholder="Doe">
+                        <label>State / Province / Region</label>
+                        <input type="text" name="state" required placeholder="NY">
+                    </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="lvl-input-group">
+                        <label>ZIP / Postal Code</label>
+                        <input type="text" name="zip" required placeholder="10001">
+                    </div>
+                    <div class="lvl-input-group" id="currency-display-group">
+                        <label>Currency</label>
+                        <input type="text" value="USD" readonly style="background-color: #f0f0f0; color: #666;">
+                        <small style="display:block; color:#888; margin-top:5px; font-size:11px;">All prices in US Dollars</small>
                     </div>
                 </div>
 
                 <div class="lvl-input-group">
-                    <label>Email Address</label>
-                    <input type="email" name="email" required placeholder="jane@example.com">
-                </div>
-
-                <div class="lvl-input-group">
-                    <label>Mobile Phone</label>
-                    <input type="tel" name="phone" required placeholder="(555) 123-4567">
+                    <label>Glow Kit Shirt Sizes (Includes UV Keychain & Pen)</label>
+                    <div id="shirt-size-inputs" class="lvl-shirt-grid">
+                        <div class="lvl-input-group">
+                            <label>Free - Glow Kit 1 Shirt Size</label>
+                            <select name="shirt_size_1" class="lvl-shirt-select" required>
+                                <option value="">Select Size</option>
+                                <option value="XS">XS</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="XXL">XXL</option>
+                                <option value="XXXL">XXXL</option>
+                            </select>
+                        </div>
+                    </div>
+                    <small style="display:block; color:#888; margin-top:5px; font-size:11px;">Each booking includes 1 free glow kit. Additional kits are $30 each.</small>
                 </div>
 
                 <div class="lvl-input-group" style="margin-top:30px; border-top:1px dashed #ccc; padding-top:20px;">
                     <label>Card Information</label>
-                    <input type="text" placeholder="0000 0000 0000 0000" style="letter-spacing: 2px;">
+                    <input type="text" name="card_number" placeholder="0000 0000 0000 0000" style="letter-spacing: 2px;" required>
+                    <small style="display:block; color:#888; margin-top:5px; font-size:11px;">We accept all major international cards (Visa, Mastercard, Amex, Discover)</small>
                 </div>
+                
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div class="lvl-input-group">
                         <label>Expiry</label>
-                        <input type="text" placeholder="MM / YY">
+                        <input type="text" name="card_expiry" placeholder="MM / YY" required>
                     </div>
                     <div class="lvl-input-group">
                         <label>CVC</label>
-                        <input type="text" placeholder="123">
+                        <input type="text" name="card_cvc" placeholder="123" required>
                     </div>
                 </div>
 
                 <button type="submit" class="lvl-submit-btn">Complete Purchase</button>
-                
                 <div style="text-align:center; font-size:11px; color:#888; margin-top:15px; font-family:'Inter', sans-serif;">
                     <span style="color:#22aa22;">🔒 256-Bit SSL Encrypted Payment</span><br>
-                    You will receive a confirmation email immediately.
+                    You will receive a confirmation email immediately. International orders welcome.
                 </div>
             </form>
+        </div>
+    </div>
 
+    <div id="lvl-share-modal">
+        <div class="lvl-modal-content">
+            <div class="lvl-modal-close" onclick="closeShareModal()">✕</div>
+            
+            <img src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/696170a365a0d720fd8984b3.jpg" class="lvl-modal-img" alt="EDC Shuttle Confirmed">
+            
+            <div class="lvl-modal-body">
+                <div class="lvl-modal-title">Booking Confirmed!</div>
+                <div class="lvl-modal-sub">You're going to EDC Las Vegas! Share the news with your squad.</div>
+                
+                <textarea id="lvl-share-text" class="lvl-share-text-box" readonly>I just booked my EDC shuttle pass at EDCshuttle.com! 🎉 See you under the electric sky! #EDCLasVegas #EDC2025 #EDCShuttle</textarea>
+                
+                <div class="lvl-social-grid">
+                    <a href="#" id="btn-share-twitter" class="lvl-social-btn" target="_blank" style="color:#1DA1F2;">
+                        <svg class="lvl-social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        Twitter
+                    </a>
+                    
+                    <a href="#" id="btn-share-facebook" class="lvl-social-btn" target="_blank" style="color:#4267B2;">
+                        <svg class="lvl-social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        Facebook
+                    </a>
+                    
+                    <button class="lvl-social-btn" onclick="copyAndOpen('https://instagram.com')" style="color:#C13584;">
+                        <svg class="lvl-social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        Instagram
+                    </button>
+                    
+                    <button class="lvl-social-btn" onclick="copyAndOpen('https://tiktok.com')" style="color:#000;">
+                        <svg class="lvl-social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.65-1.62-1.12-1.09-.98-1.97-2.17-2.67-3.47v8.3c.01 2.37-.66 4.72-1.94 6.74-1.28 2.02-3.11 3.64-5.32 4.71-2.21 1.07-4.7 1.36-7.09.83-2.39-.53-4.57-1.84-6.19-3.72s-2.52-4.2-2.54-6.64c-.02-2.44.86-4.79 2.46-6.68 1.6-1.89 3.77-3.21 6.16-3.75 2.39-.54 4.9-.26 7.12.79v4.15c-2.09-1.2-4.59-1.25-6.72-.14-2.13 1.11-3.48 3.32-3.6 5.71.12 2.39 1.47 4.6 3.6 5.71 2.13 1.11 4.63 1.06 6.72-.14 1.36-.78 2.39-2.06 2.85-3.56.46-1.5.32-3.13-.39-4.52H12.52V.02z"/></svg>
+                        TikTok
+                    </button>
+                </div>
+                
+                <button class="lvl-copy-btn" onclick="copyToClipboard()">
+                    Copy Text to Clipboard
+                </button>
+            </div>
         </div>
     </div>
 </div>
 
+<script>
+// Tax rate (3.5%)
+const TAX_RATE = 0.035;
+
+// Function to calculate tax and update summary - UPDATED FOR GLOW KITS
+function updateCheckoutSummary(subtotal, displayQty, glowKits, lineItems = []) {
+    const passType = document.getElementById('input-pass-type').value;
+    const vehicleName = document.getElementById('input-vehicle').value || '';
+    
+    // Update Pass Type
+    document.getElementById('summ-pass-type').textContent = passType === 'One-Way' ? 'One-Way Pass' : 
+                                                           passType === 'Round Trip' ? 'Round Trip Pass' : 
+                                                           passType === 'Private' ? 'Private Service' : '--';
+    
+    // Update Ride Style - All bookings are round trip except One-Way
+    let rideStyle = 'Round Trip';
+    if (passType === 'One-Way') {
+        rideStyle = 'One-Way';
+    }
+    document.getElementById('summ-ride-style').textContent = rideStyle;
+    
+    // Update label based on pass type
+    if (passType === 'Private') {
+        document.getElementById('summ-qty-label').textContent = 'Passengers';
+        document.getElementById('summ-veh-row').style.display = 'flex';
+        document.getElementById('summ-vehicle').textContent = vehicleName;
+    } else {
+        document.getElementById('summ-qty-label').textContent = 'Quantity';
+        document.getElementById('summ-veh-row').style.display = 'none';
+    }
+    
+    // Update quantity display
+    document.getElementById('summ-qty').textContent = passType === 'Private' ? displayQty + " Passengers" : displayQty;
+    
+    // Show line items for private bookings
+    const lineItemsContainer = document.getElementById('summ-line-items');
+    if (lineItems && lineItems.length > 0 && passType === 'Private') {
+        let lineItemsHtml = '';
+        
+        lineItems.forEach(item => {
+            let breakdownText = '';
+            if (item.quantity > 1) {
+                breakdownText = `${item.quantity} × $${item.price.toFixed(2)}`;
+            }
+            
+            lineItemsHtml += `
+                <div class="lvl-line-item">
+                    <div class="lvl-line-item-name">
+                        ${item.name}
+                        ${breakdownText ? `<div class="lvl-line-item-breakdown">${breakdownText}</div>` : ''}
+                    </div>
+                    <div class="lvl-line-item-price">
+                        $${item.total.toFixed(2)}
+                    </div>
+                </div>
+            `;
+        });
+        
+        lineItemsContainer.innerHTML = lineItemsHtml;
+        lineItemsContainer.style.display = 'block';
+    } else {
+        lineItemsContainer.style.display = 'none';
+    }
+    
+    // Calculate tax
+    const taxAmount = subtotal * TAX_RATE;
+    const total = subtotal + taxAmount;
+    
+    // Update display
+    document.getElementById('summ-subtotal').textContent = '$' + subtotal.toFixed(2);
+    document.getElementById('summ-tax').textContent = '$' + taxAmount.toFixed(2);
+    document.getElementById('summ-total').textContent = '$' + total.toFixed(2);
+    
+    // Show subtotal and tax rows
+    document.getElementById('summ-subtotal-row').style.display = 'flex';
+    document.getElementById('summ-tax-row').style.display = 'flex';
+    
+    // Update hidden inputs
+    document.getElementById('input-subtotal').value = subtotal.toFixed(2);
+    document.getElementById('input-tax').value = taxAmount.toFixed(2);
+    document.getElementById('input-total').value = total.toFixed(2);
+    document.getElementById('input-qty').value = displayQty;
+    document.getElementById('input-glow-kits').value = glowKits;
+    
+    // Update shirt inputs based on glow kits
+    updateShirtInputs(glowKits);
+}
+
+// Function to update shirt size inputs based on glow kits
+function updateShirtInputs(glowKits) {
+    const shirtGrid = document.getElementById('shirt-size-inputs');
+    shirtGrid.innerHTML = '';
+    
+    // Common shirt sizes
+    const shirtSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
+    
+    // Create dropdown for each glow kit
+    for (let i = 1; i <= glowKits; i++) {
+        const sizeSelect = document.createElement('select');
+        sizeSelect.name = `shirt_size_${i}`;
+        sizeSelect.required = true;
+        sizeSelect.className = 'lvl-shirt-select';
+        sizeSelect.onchange = updateShirtSummary;
+        sizeSelect.innerHTML = `
+            <option value="">Select Size</option>
+            ${shirtSizes.map(size => `<option value="${size}">${size}</option>`).join('')}
+        `;
+        
+        const div = document.createElement('div');
+        div.className = 'lvl-input-group';
+        
+        // First glow kit is free
+        if (i === 1) {
+            div.innerHTML = `<label>Free - Glow Kit ${i} Shirt Size</label>`;
+        } else {
+            div.innerHTML = `<label>Glow Kit ${i} Shirt Size (Additional)</label>`;
+        }
+        
+        div.appendChild(sizeSelect);
+        shirtGrid.appendChild(div);
+    }
+    
+    // Update shirt summary for hidden input
+    updateShirtSummary();
+}
+
+// Function to update shirt sizes summary
+function updateShirtSummary() {
+    const selects = document.querySelectorAll('#shirt-size-inputs .lvl-shirt-select');
+    const sizes = Array.from(selects).map(select => select.value).filter(Boolean);
+    document.getElementById('input-shirt-summary').value = sizes.join(', ');
+}
+
+// EDIT OPTIONS FUNCTION - Scrolls back to the appropriate card
+function editOptions() {
+    const passType = document.getElementById('input-pass-type').value;
+    let cardId = '';
+    
+    // Determine which card to go back to
+    if (passType === 'One-Way') {
+        cardId = 'card-oneway';
+    } else if (passType === 'Round Trip') {
+        cardId = 'card-roundtrip';
+    } else if (passType === 'Private') {
+        cardId = 'card-private';
+    } else {
+        // Default to first card if no type
+        cardId = 'card-oneway';
+    }
+    
+    // Scroll to the options block
+    if (typeof gsap !== 'undefined') {
+        gsap.to(window, {duration: 1, scrollTo: "#lvl-options", ease: "power2.inOut"});
+    } else {
+        // Fallback if GSAP isn't available
+        document.getElementById('lvl-options').scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Find the card and flip it to the back if not already flipped
+    const card = document.getElementById(cardId);
+    if (card && !card.classList.contains('lvl-flipped')) {
+        card.classList.add('lvl-flipped');
+    }
+}
+
+// ===============================================
+// SOCIAL SHARE MODAL FUNCTIONS
+// ===============================================
+
+function showShareModal() {
+    const modal = document.getElementById('lvl-share-modal');
+    modal.classList.add('visible');
+    
+    // Setup Twitter & Facebook Links with correct URL
+    const text = "I just booked my EDC shuttle pass at EDCshuttle.com! 🎉 See you under the electric sky! #EDCLasVegas #EDC2025 #EDCShuttle";
+    const url = "https://EDCshuttle.com";
+    
+    // Twitter Intent
+    document.getElementById('btn-share-twitter').href = 
+        `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+        
+    // Facebook Sharer
+    document.getElementById('btn-share-facebook').href = 
+        `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+}
+
+function closeShareModal() {
+    const modal = document.getElementById('lvl-share-modal');
+    modal.classList.remove('visible');
+}
+
+function copyToClipboard() {
+    const copyText = document.getElementById("lvl-share-text");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
+    navigator.clipboard.writeText(copyText.value).then(() => {
+        const btn = document.querySelector('.lvl-copy-btn');
+        btn.innerHTML = "✅ Copied to Clipboard!";
+        setTimeout(() => { btn.innerHTML = "Copy Text to Clipboard"; }, 2000);
+    });
+}
+
+function copyAndOpen(url) {
+    // Copy text first
+    copyToClipboard();
+    
+    // Open URL after brief delay
+    setTimeout(() => {
+        window.open(url, '_blank');
+    }, 500);
+}
+
+// Close modal when clicking outside content
+document.getElementById('lvl-share-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeShareModal();
+    }
+});
+
+// Form submission handler
+document.getElementById('lvl-custom-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Validate all required fields
+    const requiredFields = this.querySelectorAll('[required]');
+    let isValid = true;
+    
+    requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+            isValid = false;
+            field.style.borderColor = 'red';
+        } else {
+            field.style.borderColor = '';
+        }
+    });
+    
+    if (!isValid) {
+        alert('Please fill in all required fields.');
+        return;
+    }
+    
+    // Prepare order data
+    const orderData = {
+        customer: {
+            firstName: this.querySelector('[name="first_name"]').value,
+            lastName: this.querySelector('[name="last_name"]').value,
+            email: this.querySelector('[name="email"]').value,
+            phone: this.querySelector('[name="phone"]').value,
+            address: {
+                line1: this.querySelector('[name="address1"]').value,
+                line2: this.querySelector('[name="address2"]').value || '',
+                city: this.querySelector('[name="city"]').value,
+                state: this.querySelector('[name="state"]').value,
+                zip: this.querySelector('[name="zip"]').value,
+                country: this.querySelector('[name="country"]').value
+            }
+        },
+        order: {
+            passType: document.getElementById('input-pass-type').value,
+            rideStyle: document.getElementById('summ-ride-style').textContent,
+            vehicleType: document.getElementById('input-vehicle').value || '',
+            passengers: document.getElementById('input-qty').value,
+            glowKits: document.getElementById('input-glow-kits').value,
+            subtotal: document.getElementById('input-subtotal').value,
+            tax: document.getElementById('input-tax').value,
+            total: document.getElementById('input-total').value,
+            shirtSizes: document.getElementById('input-shirt-summary').value,
+            schedule: document.getElementById('input-schedule').value,
+            lineItems: document.getElementById('input-line-items').value ? 
+                        JSON.parse(document.getElementById('input-line-items').value) : [],
+            currency: 'USD'
+        },
+        payment: {
+            // In production, you would use a payment processor like Stripe
+            // DO NOT store raw card details in your database
+            last4: this.querySelector('[name="card_number"]').value.slice(-4),
+            timestamp: new Date().toISOString()
+        }
+    };
+    
+    console.log('Order data:', orderData);
+    
+    // Simulate order processing
+    const submitBtn = this.querySelector('.lvl-submit-btn');
+    submitBtn.textContent = 'Processing...';
+    submitBtn.disabled = true;
+    
+    // Simulate API call
+    setTimeout(() => {
+        // OLD CODE: alert('Order submitted successfully! A confirmation has been sent to your email.');
+        
+        // NEW CODE: Show Social Share Modal
+        submitBtn.textContent = 'Complete Purchase';
+        submitBtn.disabled = false;
+        
+        // Hide the checkout form (optional, or just show modal over it)
+        // document.getElementById('lvl-checkout').style.display = 'none';
+        
+        // Show the modal
+        showShareModal();
+        
+    }, 1500);
+});
+
+// Listen for shirt size changes
+document.addEventListener('change', function(e) {
+    if (e.target.name && e.target.name.startsWith('shirt_size_')) {
+        updateShirtSummary();
+    }
+});
+</script>
+</div>
+
+End of Block 6 - Checkout
 
 <div id="lvl-faq" class="lvl-section-wrapper">
     <style>
@@ -3552,6 +4893,10 @@
         }
     </script>
 </div>
+
+End of block 7
+
+Start of Blo0ck 8
 
 <!DOCTYPE html>
 <html lang="en">
