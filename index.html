@@ -68,11 +68,14 @@
 
     <style>
         /* GLOBAL RESET & UTILITIES */
+        /* FIX #2: REMOVE WHITE BORDER */
+        html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+        
         #lvl-global-config, .lvl-section-wrapper, header, section { box-sizing: border-box; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
         .lvl-section-wrapper * { box-sizing: border-box; }
         .lvl-hidden { opacity: 0; visibility: hidden; }
         
-        /* SCREEN READER ONLY CLASS (For LLMs & Accessibility) */
+        /* SCREEN READER ONLY CLASS */
         .lvl-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
 
         /* CUSTOM SCROLLBAR */
@@ -101,7 +104,6 @@
             position: relative; width: 100%; height: 100vh; min-height: 700px;
             background-color: var(--lvl-black); overflow: hidden;
             display: flex; align-items: center; justify-content: center; color: #ffffff;
-            /* Optimized Background Image */
             background-image: url('https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/696dc73f4e42b979ebd0766f.jpg');
             background-size: cover;
             background-position: center;
@@ -126,13 +128,19 @@
             display: block; opacity: 0; transform: translateY(20px);
         }
 
+        /* FIX #1: UPDATED H1 SPACING & AMPERSAND */
         #lvl-hero .lvl-headline {
             font-family: var(--lvl-font-heading);
-            font-size: clamp(60px, 8vw, 120px);
-            line-height: 0.99; text-transform: uppercase; font-weight: 700; margin: 0;
+            font-size: clamp(50px, 7vw, 110px);
+            line-height: 1.1; text-transform: uppercase; font-weight: 700; margin: 0;
             background: linear-gradient(180deg, #ffffff 0%, #a1a1a1 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             opacity: 0; transform: translateY(50px) rotateX(10deg); transform-origin: bottom;
+        }
+        
+        #lvl-hero .lvl-ampersand {
+            display: block; font-size: 0.6em; color: var(--lvl-gold); margin: 10px 0;
+            -webkit-text-fill-color: var(--lvl-gold); /* Override gradient */
         }
 
         #lvl-hero .lvl-subheadline {
@@ -189,7 +197,11 @@
     <div class="lvl-content">
         <span class="lvl-eyebrow">The Official Event Day Commuter for EDC 2026</span>
         
-        <h1 class="lvl-headline">EDC Shuttle<br> & Party Bus LV</h1>
+        <h1 class="lvl-headline">
+            EDC Shuttle
+            <span class="lvl-ampersand">&</span>
+            Party Bus LV
+        </h1>
         
         <p class="lvl-subheadline">
             One Way or Non-stop round-trip transport to Las Vegas Motor Speedway. 
@@ -228,44 +240,7 @@
         })();
     </script>
 </header>
-
-<div id="lvl-marquee" class="lvl-section-wrapper">
-    <style>
-        /* MARQUEE STYLES */
-        #lvl-marquee {
-            --lvl-gold: #D4AF37;
-            --lvl-black: #050505;
-            background-color: var(--lvl-gold); overflow: hidden;
-            padding: 15px 0; white-space: nowrap; position: relative; z-index: 5;
-        }
-        #lvl-marquee .lvl-track {
-            display: inline-block;
-            font-family: 'Oswald', sans-serif;
-            font-size: 24px; font-weight: 500; color: var(--lvl-black);
-            text-transform: uppercase; letter-spacing: 2px; will-change: transform;
-        }
-        #lvl-marquee .lvl-item { margin: 0 40px; }
-    </style>
-
-    <div class="lvl-track">
-        <span class="lvl-item">EDC 2026 Shuttle • Private Party Bus • No Wait Times</span>
-        <span class="lvl-item">EDC 2026 Shuttle • Private Party Bus • No Wait Times</span>
-        <span class="lvl-item">EDC 2026 Shuttle • Private Party Bus • No Wait Times</span>
-        <span class="lvl-item">EDC 2026 Shuttle • Private Party Bus • No Wait Times</span>
-        <span class="lvl-item">EDC 2026 Shuttle • Private Party Bus • No Wait Times</span>
-    </div>
-
-    <script>
-        /* MARQUEE LOGIC */
-        (function() {
-            gsap.to("#lvl-marquee .lvl-track", {
-                xPercent: -50, repeat: -1, duration: 20, ease: "linear"
-            });
-        })();
-    </script>
-</div>
-
-<section id="lvl-features" class="lvl-section-wrapper" aria-label="EDC Shuttle Options">
+ <section id="lvl-features" class="lvl-section-wrapper" aria-label="EDC Shuttle Options">
     
     <script type="application/ld+json">
     {
@@ -356,15 +331,21 @@
             border-color: var(--professional-orange); box-shadow: var(--shadow-medium);
         }
         
+        /* --- UPDATED SIZE: 3X BIGGER (192px) --- */
         #lvl-features .option-icon {
-            width: 64px; height: 64px;
+            width: 192px; 
+            height: 192px;
             background: linear-gradient(135deg, rgba(255, 103, 0, 0.1), rgba(255, 103, 0, 0.05));
-            border-radius: 16px; display: flex; align-items: center; justify-content: center;
+            border-radius: 24px; /* Increased radius slightly for larger size */
+            display: flex; align-items: center; justify-content: center;
             margin-bottom: 24px; border: 1px solid rgba(255, 103, 0, 0.2);
         }
         
-        #lvl-features .option-icon svg {
-            width: 32px; height: 32px; stroke: var(--professional-orange);
+        /* --- UPDATED IMAGE SIZE: 3X BIGGER (120px) --- */
+        #lvl-features .option-icon img {
+            height: 120px; 
+            width: auto; 
+            object-fit: contain;
         }
         
         #lvl-features .transportation-option h3 {
@@ -382,13 +363,10 @@
         <p class="section-subtitle">Choose the transportation solution that best fits your EDC 2026 experience requirements</p>
         
         <div class="transportation-options">
+            
             <a href="#standard-shuttles" class="transportation-option">
                 <div class="option-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M16 3H1v16h15V3z"></path>
-                        <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                        <circle cx="18.5" cy="18.5" r="2.5"></circle>
-                    </svg>
+                    <img src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/69759024a87beb7fefbcbb23.png" alt="Standard Shuttle Bus" loading="lazy">
                 </div>
                 <h3>Standard Shuttles</h3>
                 <p>Official <strong>Party Bus</strong> transportation. Departures are from Planet Hollywood Resort and Casino on The Strip. 60-90 minute avg. travel time.</p>
@@ -396,11 +374,7 @@
             
             <a href="#premium-service" class="transportation-option">
                 <div class="option-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="16 12 12 8 8 12"></polyline>
-                        <line x1="12" y1="16" x2="12" y2="8"></line>
-                    </svg>
+                    <img src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/69759024eb392b11af3c76ca.png" alt="Premium VIP Service" loading="lazy">
                 </div>
                 <h3>Premium Service</h3>
                 <p>Voted Best Party Buses in Las Vegas with on-board <strong>state of the art sound system</strong>, AC, and alcohol allowed. Skip the standard lines & grab a free T-Shirt.</p>
@@ -408,12 +382,7 @@
             
             <a href="#group-transport" class="transportation-option">
                 <div class="option-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="9" cy="7" r="4"></circle>
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                    </svg>
+                    <img src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/69759024eb392b62b53c76c9.png" alt="Group Transport" loading="lazy">
                 </div>
                 <h3>Group Transport</h3>
                 <p>Dedicated vehicles for groups and organizations attending EDC 2026. Custom pickup locations available.</p>
@@ -431,10 +400,8 @@
         })();
     </script>
 </section>
-</body>
-</html>
 
-<section id="lvl-uv-promo" class="lvl-section-wrapper" aria-label="Exclusive Free Gift Promotion">
+  <section id="lvl-uv-promo" class="lvl-section-wrapper" aria-label="Exclusive Free Gift Promotion">
     
     <script type="application/ld+json">
     {
@@ -464,6 +431,7 @@
             --lvl-gold: #D4AF37;
             --lvl-black: #050505;
             --lvl-neon: #39ff14; /* Radioactive Green */
+            --lvl-alert: #ff0033; /* Neon Red */
             --lvl-font-heading: 'Oswald', sans-serif;
             --lvl-font-body: 'Inter', sans-serif;
             
@@ -519,12 +487,27 @@
         /* CONTENT COLUMN */
         #lvl-uv-promo .lvl-content-col { text-align: left; }
 
+        /* --- UPDATED EYEBROW TEXT STYLES --- */
         #lvl-uv-promo .lvl-eyebrow {
-            font-family: var(--lvl-font-body); color: var(--lvl-neon);
-            text-transform: uppercase; letter-spacing: 3px; font-size: 14px;
+            font-family: var(--lvl-font-body); 
+            color: var(--lvl-neon); /* Green Part */
+            text-transform: uppercase; letter-spacing: 2px; font-size: 13px;
             font-weight: 700; display: block; margin-bottom: 15px;
-            text-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
-            animation: lvlPulse 3s infinite alternate;
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+        }
+
+        /* Red Pulsing Part */
+        #lvl-uv-promo .lvl-alert-pulse {
+            color: var(--lvl-alert);
+            margin-left: 5px;
+            display: inline-block;
+            font-weight: 800;
+            animation: lvlRedPulse 0.8s infinite alternate ease-in-out;
+        }
+
+        @keyframes lvlRedPulse {
+            from { text-shadow: 0 0 5px rgba(255, 0, 51, 0.4); opacity: 0.85; }
+            to { text-shadow: 0 0 20px rgba(255, 0, 51, 1); opacity: 1; transform: scale(1.02); }
         }
 
         #lvl-uv-promo .lvl-heading {
@@ -572,8 +555,6 @@
             box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
         }
 
-        @keyframes lvlPulse { from { opacity: 0.7; } to { opacity: 1; text-shadow: 0 0 20px var(--lvl-neon); } }
-
         /* RESPONSIVE LOGIC */
         @media (min-width: 701px) and (max-width: 900px) {
             #lvl-uv-promo .lvl-container { grid-template-columns: 1fr; gap: 60px; }
@@ -595,7 +576,7 @@
         <figure class="lvl-media-col">
             <div class="lvl-video-frame">
                 <video autoplay muted loop playsinline poster="https://via.placeholder.com/600x400/000" aria-label="Demonstration of UV Glow Shirt light painting effect">
-                    <source src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/6956fd3e41557c3196b55df5.mp4" type="video/mp4">
+                    <source src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/6975236e59a77b1319c759d2.mp4">
                 </video>
             </div>
             <div class="lvl-product-float" title="Hover to Activate Glow">
@@ -604,7 +585,11 @@
         </figure>
 
         <div class="lvl-content-col">
-            <span class="lvl-eyebrow">Exclusive Free Gift with EDC Shuttle Pass or Private Booking - 1st 200 Purchases</span>
+            <span class="lvl-eyebrow">
+                Exclusive Free Gift with EDC Shuttle Pass or Private Booking | 
+                <span class="lvl-alert-pulse">Limited to 1st 200 Purchases</span>
+            </span>
+            
             <h2 class="lvl-heading">Light Up <br>The <span class="lvl-highlight">Night</span></h2>
             <p class="lvl-desc">
                 Included with every <strong>2026 Shuttle reservation</strong>: The UV Interactive Glow Kit. 
@@ -660,7 +645,7 @@
         })();
     </script>
 </section>
-
+  
 <section id="lvl-options" class="lvl-section-wrapper" aria-label="Shuttle Pass Booking Configuration">
     
     <script type="application/ld+json">
@@ -670,47 +655,17 @@
         {
           "@type": "Product",
           "name": "One-Way EDC Shuttle Pass",
-          "description": "Single direction flexible transfer between Las Vegas Strip and Motor Speedway.",
-          "image": "https://assets.cdn.filesafe.space/3DYuJelsoG9xx3CpW438/media/6717f94f5042ff0a6da095a5.png",
-          "offers": {
-            "@type": "Offer",
-            "price": "105.00",
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock",
-            "url": "https://edcshuttle.com/#card-oneway"
-          }
+          "offers": { "@type": "Offer", "price": "105.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
         },
         {
           "@type": "Product",
           "name": "Round-Trip EDC Shuttle Pass",
-          "description": "Full service round-trip transportation for 1, 2, or 3 days.",
-          "image": "https://assets.cdn.filesafe.space/3DYuJelsoG9xx3CpW438/media/6717f94f5042ff0a6da095a5.png",
-          "offers": {
-            "@type": "Offer",
-            "price": "150.00",
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock",
-            "url": "https://edcshuttle.com/#card-roundtrip"
-          }
+          "offers": { "@type": "Offer", "price": "150.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
         },
         {
           "@type": "Service",
           "name": "Private Charter EDC Transport",
-          "description": "Luxury SUV, Sprinter, or Party Bus private charter for groups.",
-          "image": "https://assets.cdn.filesafe.space/3DYuJelsoG9xx3CpW438/media/6717f9dc666eda308a4ade6f.png",
-          "offers": {
-            "@type": "Offer",
-            "price": "600.00",
-            "priceCurrency": "USD",
-            "priceSpecification": {
-              "@type": "UnitPriceSpecification",
-              "price": "600.00",
-              "priceCurrency": "USD",
-              "unitCode": "C62",
-              "unitText": "Per Trip"
-            },
-            "availability": "https://schema.org/InStock"
-          }
+          "offers": { "@type": "Offer", "price": "600.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
         }
       ]
     }
@@ -745,7 +700,7 @@
         #lvl-options .lvl-section-header { text-align: center; margin-bottom: 60px; z-index: 10; }
         #lvl-options .lvl-title { font-family: var(--lvl-font-heading); font-size: clamp(36px, 5vw, 60px); color: #fff; text-transform: uppercase; margin: 0; letter-spacing: 2px; }
         #lvl-options .lvl-gold-text { color: var(--lvl-gold); }
-        #lvl-options .lvl-subtitle { color: #888; font-family: var(--lvl-font-body); margin-top: 10px; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; }
+        #lvl-options .lvl-subtitle { color: #ccc; font-family: var(--lvl-font-body); margin-top: 10px; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; }
 
         /* CARDS */
         #lvl-options .lvl-card-wrapper { 
@@ -757,12 +712,9 @@
             flex: 0 1 350px; height: 850px; 
             perspective: 1500px; position: relative; 
             cursor: pointer; transform-style: flat;
-            outline: none; /* Handled by focus-visible */
+            outline: none;
         }
-        /* KEYBOARD FOCUS ACCESSIBILITY */
-        #lvl-options .lvl-card-container:focus-visible .lvl-scene {
-            box-shadow: 0 0 0 3px var(--lvl-gold);
-        }
+        #lvl-options .lvl-card-container:focus-visible .lvl-scene { box-shadow: 0 0 0 3px var(--lvl-gold); }
 
         /* SCENE */
         #lvl-options .lvl-scene { 
@@ -790,7 +742,6 @@
             outline: 1px solid transparent;
         }
 
-        /* IMAGES & TEXTURES */
         #lvl-options .lvl-layer.lvl-van, 
         #lvl-options .lvl-layer.lvl-van-back { 
             background-size: contain; background-repeat: no-repeat; background-position: center 25%; 
@@ -807,7 +758,7 @@
             filter: var(--lvl-van-glow); opacity: 0.1; z-index: 1;
         }
         
-        #lvl-options .lvl-img-partybus { background-image: url("https://assets.cdn.filesafe.space/3DYuJelsoG9xx3CpW438/media/6717f94f5042ff0a6da095a5.png"); }
+        #lvl-options .lvl-img-partybus { background-image: url("https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/6975624fa87beb29e2b68d6c.png"); }
         #lvl-options .lvl-img-sprinter { background-image: url("https://assets.cdn.filesafe.space/3DYuJelsoG9xx3CpW438/media/6717f9dc666eda308a4ade6f.png"); }
 
         /* FRONT CONTENT */
@@ -828,15 +779,11 @@
             backface-visibility: hidden; -webkit-backface-visibility: hidden;
         }
         
-        #lvl-options .lvl-card-container.lvl-flipped .lvl-text-back {
-            overflow-y: auto; -webkit-overflow-scrolling: touch;
-        }
-        
+        #lvl-options .lvl-card-container.lvl-flipped .lvl-text-back { overflow-y: auto; -webkit-overflow-scrolling: touch; }
         #lvl-options .lvl-text-back::-webkit-scrollbar { width: 4px; }
         #lvl-options .lvl-text-back::-webkit-scrollbar-thumb { background: var(--lvl-gold); border-radius: 2px; }
 
-        /* TYPOGRAPHY */
-        #lvl-options .lvl-front-top { width: 100%; pointer-events: none; }
+        /* TYPOGRAPHY - BRIGHTENED */
         #lvl-options .lvl-front-top h3 { 
             font-family: var(--lvl-font-heading); color: #fff; font-size: 32px;
             line-height: 1; text-transform: uppercase; margin-bottom: 5px; text-shadow: 0 4px 10px #000;
@@ -847,8 +794,8 @@
         }
 
         #lvl-options .lvl-front-bottom { width: 100%; display: flex; flex-direction: column; align-items: center; margin-top: auto; pointer-events: auto; }
-        #lvl-options .lvl-helper-text { font-family: var(--lvl-font-body); font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
-        #lvl-options .lvl-label-small { font-family: var(--lvl-font-heading); font-size: 12px; color: #fff; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; display: block; }
+        #lvl-options .lvl-helper-text { font-family: var(--lvl-font-body); font-size: 12px; color: #fff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; text-shadow: 0 2px 4px #000; }
+        #lvl-options .lvl-label-small { font-family: var(--lvl-font-heading); font-size: 12px; color: #fff; text-transform: uppercase; letter-spacing: 1px; display: block; }
         #lvl-options .lvl-price-big { 
             font-family: var(--lvl-font-heading); font-size: 48px; color: var(--lvl-gold); 
             line-height: 1; margin: 5px 0 20px 0; text-shadow: 0 4px 10px #000; display: block;
@@ -856,7 +803,7 @@
 
         #lvl-options h3 { font-family: var(--lvl-font-heading); color: var(--lvl-gold); font-size: 24px; margin: 0 0 15px 0; text-transform: uppercase; text-align: center; width: 100%; }
 
-        /* INTERACTIVE ELEMENTS */
+        /* BUTTONS */
         #lvl-options .lvl-grab-btn { 
             background: rgba(0,0,0,0.6); border: 3px solid var(--lvl-gold); border-radius: 20px;
             color: #fff; padding: 15px 0; width: 80%; max-width: 250px; 
@@ -878,9 +825,9 @@
 
         /* FORM STYLES */
         #lvl-options .lvl-form-group { width: 100%; margin-bottom: 15px; }
-        #lvl-options label { display: block; color: var(--lvl-gold); font-family: var(--lvl-font-body); font-size: 10px; text-transform: uppercase; margin-bottom: 5px; letter-spacing: 0.5px; }
+        #lvl-options label { display: block; color: var(--lvl-gold); font-family: var(--lvl-font-body); font-size: 11px; text-transform: uppercase; margin-bottom: 5px; letter-spacing: 0.5px; font-weight: 600; }
         #lvl-options select, #lvl-options input { 
-            width: 100%; background: #111; border: 1px solid #333; color: #fff; 
+            width: 100%; background: #111; border: 1px solid #444; color: #fff; 
             padding: 10px; font-family: var(--lvl-font-body); font-size: 12px; border-radius: 4px; outline: none; cursor: pointer;
         }
         #lvl-options select:focus, #lvl-options input:focus { border-color: var(--lvl-gold); }
@@ -889,40 +836,40 @@
         #lvl-options .lvl-radio-option { flex: 1; text-align: center; }
         #lvl-options .lvl-radio-option input { display: none; }
         #lvl-options .lvl-radio-option span { 
-            display: block; padding: 10px; border: 1px solid #333; color: #888; 
+            display: block; padding: 10px; border: 1px solid #444; color: #ddd; 
             border-radius: 10px; font-size: 11px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; font-family: var(--lvl-font-body);
         }
         #lvl-options .lvl-radio-option input:checked + span { background: var(--lvl-gold); color: #000; border-color: var(--lvl-gold); font-weight: 700; }
 
         /* CHECKBOX & GLOW KIT */
-        #lvl-options .lvl-checkbox-group { margin: 10px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 6px; border: 1px solid #333; }
+        #lvl-options .lvl-checkbox-group { margin: 10px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 6px; border: 1px solid #444; }
         #lvl-options .lvl-checkbox-option { display: flex; align-items: center; margin-bottom: 8px; }
         #lvl-options .lvl-checkbox-option input { width: auto; margin-right: 10px; }
-        #lvl-options .lvl-checkbox-option label { margin-bottom: 0; color: #ccc; font-size: 11px; cursor: pointer; }
+        #lvl-options .lvl-checkbox-option label { margin-bottom: 0; color: #fff; font-size: 12px; cursor: pointer; }
         #lvl-options .lvl-checkbox-option input:checked + label { color: var(--lvl-gold); font-weight: 700; }
-        #lvl-options .lvl-checkbox-note { font-size: 10px; color: #888; font-style: italic; margin-top: 5px; padding-left: 24px; }
+        #lvl-options .lvl-checkbox-note { font-size: 11px; color: #ccc; font-style: italic; margin-top: 5px; padding-left: 24px; }
 
-        #lvl-options .lvl-glow-kit-section { margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px; border: 1px solid #333; }
-        #lvl-options .lvl-glow-kit-header { font-size: 11px; color: #ccc; margin-bottom: 10px; line-height: 1.4; }
+        #lvl-options .lvl-glow-kit-section { margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px; border: 1px solid #444; }
+        #lvl-options .lvl-glow-kit-header { font-size: 12px; color: #eee; margin-bottom: 10px; line-height: 1.4; }
         #lvl-options .lvl-glow-kit-header strong { color: var(--lvl-gold); }
         #lvl-options .lvl-quantity-control { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
         #lvl-options .lvl-qty-btn { background: #333; border: 1px solid #555; color: #fff; width: 30px; height: 30px; border-radius: 4px; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
         #lvl-options .lvl-qty-btn:hover { background: #444; border-color: var(--lvl-gold); }
         #lvl-options .lvl-qty-input { width: 50px; text-align: center; margin: 0 10px; background: #111; border: 1px solid #333; color: #fff; padding: 5px; font-size: 14px; -moz-appearance: textfield; }
         #lvl-options .lvl-qty-input::-webkit-inner-spin-button, #lvl-options .lvl-qty-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-        #lvl-options .lvl-glow-kit-total { font-size: 10px; color: #888; margin-top: 8px; text-align: center; }
+        #lvl-options .lvl-glow-kit-total { font-size: 11px; color: #bbb; margin-top: 8px; text-align: center; }
         #lvl-options .lvl-glow-kit-total span { color: var(--lvl-gold); font-weight: 700; }
 
         /* VALIDATION & CLOSE */
-        #lvl-options .lvl-schedule-container { width: 100%; border-top: 1px dashed #333; margin-top: 10px; padding-top: 15px; }
+        #lvl-options .lvl-schedule-container { width: 100%; border-top: 1px dashed #444; margin-top: 10px; padding-top: 15px; }
         #lvl-options .lvl-day-row { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; margin-bottom: 10px; }
-        #lvl-options .lvl-day-title { color: #fff; font-size: 11px; margin-bottom: 8px; font-weight: 600; text-transform: uppercase; }
+        #lvl-options .lvl-day-title { color: #fff; font-size: 12px; margin-bottom: 8px; font-weight: 600; text-transform: uppercase; }
         #lvl-options .lvl-flex-row { display: flex; gap: 8px; }
         
         #lvl-options .lvl-bartender-daily-option { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; padding: 8px; background: rgba(255,255,255,0.03); border-radius: 4px; }
-        #lvl-options .lvl-bartender-day-label { font-size: 11px; color: #ccc; flex: 1; }
+        #lvl-options .lvl-bartender-day-label { font-size: 11px; color: #eee; flex: 1; }
         #lvl-options .lvl-bartender-radio-group { display: flex; gap: 5px; }
-        #lvl-options .lvl-bartender-radio { font-size: 10px; padding: 4px 8px; border: 1px solid #333; border-radius: 4px; cursor: pointer; color: #888; }
+        #lvl-options .lvl-bartender-radio { font-size: 10px; padding: 4px 8px; border: 1px solid #444; border-radius: 4px; cursor: pointer; color: #ccc; }
         #lvl-options .lvl-bartender-radio.selected { background: var(--lvl-gold); color: #000; border-color: var(--lvl-gold); font-weight: 700; }
 
         #lvl-options .lvl-validation-msg { color: var(--lvl-error); font-family: var(--lvl-font-body); font-size: 11px; text-align: center; margin-top: 10px; display: none; background: rgba(255,68,68,0.1); padding: 8px; border: 1px solid var(--lvl-error); border-radius: 4px; width: 100%; }
@@ -937,6 +884,22 @@
         #lvl-options .lvl-layer.lvl-text-back { opacity: 0; visibility: hidden; transition: opacity 0.4s, visibility 0.4s; }
         #lvl-options .lvl-card-container.lvl-flipped .lvl-layer.lvl-van, #lvl-options .lvl-card-container.lvl-flipped .lvl-layer.lvl-text-front { opacity: 0; visibility: hidden; pointer-events: none; }
         #lvl-options .lvl-card-container.lvl-flipped .lvl-layer.lvl-text-back { opacity: 1; visibility: visible; pointer-events: auto; }
+
+        /* FIX #1: CENTER ON SMALL SCREENS */
+        @media (max-width: 330px) {
+            #lvl-options .lvl-text-back { text-align: center; }
+            #lvl-options .lvl-form-group label { text-align: center; }
+            #lvl-options .lvl-radio-group { justify-content: center; }
+        }
+
+        /* FIX #2: SHORTEN LABEL ON SMALL SCREENS */
+        .lvl-pax-label::after { content: "Passengers (Required)"; }
+        @media (max-width: 390px) {
+            .lvl-pax-label::after { content: "Passengers (Req)"; }
+        }
+
+        /* FIX #3: PST HELPER TEXT */
+        .lvl-pst-note { font-size: 9px; color: #ddd; margin-top: 3px; display: block; text-align: right; font-style: italic; }
 
         /* RESPONSIVE */
         @media (max-width: 1200px) { #lvl-options .lvl-card-container { flex: 0 1 320px; } }
@@ -1102,7 +1065,7 @@
                     <div class="lvl-front-bottom">
                         <div class="lvl-helper-text">SUVs, Sprinters & Party Buses:</div>
                         <span class="lvl-label-small">STARTING AT</span>
-                        <span class="lvl-price-big">$600<span style="font-size:24px; vertical-align:middle;">/trip</span></span>
+                        <span class="lvl-price-big">$1400<span style="font-size:24px; vertical-align:middle;">/round trip</span></span>
                         <button class="lvl-grab-btn">Customize Trip</button>
                     </div>
                 </div>
@@ -1148,7 +1111,7 @@
 
                     <div class="lvl-flex-row" style="width:100%">
                         <div class="lvl-form-group" style="flex:1">
-                            <label>Days (Required)</label>
+                            <label>Days (REQ)</label>
                             <select id="days-private" onchange="updatePrivateLogic()">
                                 <option value="">Select Days</option>
                                 <option value="1">1 Day</option>
@@ -1157,7 +1120,7 @@
                             </select>
                         </div>
                         <div class="lvl-form-group" style="flex:1">
-                            <label>Passengers (Required)</label>
+                            <label class="lvl-pax-label"></label>
                             <input type="number" id="pax-private" value="" min="1" max="7" placeholder="e.g., 4" onchange="updatePrivateLogic()">
                         </div>
                     </div>
@@ -1236,14 +1199,26 @@
     const DATES = ["Fri, May 15", "Sat, May 16", "Sun, May 17"];
     const TIMES_TO = ["4:30 PM", "6:00 PM", "7:00 PM"];
     const TIMES_FROM = ["3:00 AM", "4:00 AM", "5:30 AM"];
+     
+     const PRIVATE_TIMES_DEPART = [
+    "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM",
+    "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM",
+    "9:00 PM", "9:30 PM", "10:00 PM", "10:30 PM", "11:00 PM"
+];
+
+const PRIVATE_TIMES_RETURN = [
+    "12:00 AM", "12:30 AM", "1:00 AM", "1:30 AM", "2:00 AM", "2:30 AM",
+    "3:00 AM", "3:30 AM", "4:00 AM", "4:30 AM", "5:00 AM", "5:30 AM",
+    "6:00 AM", "6:30 AM", "7:00 AM", "7:30 AM", "8:00 AM"
+];
     
     const PRIVATE_PRICES = {
-        'SUV': { base: 600, perPerson: 50, maxPax: 7, displayName: 'Luxury SUV' },
-        'Sprinter': { base: 720, perPerson: 50, maxPax: 14, displayName: 'Sprinter Van' },
-        'PartyBus20': { base: 750, perPerson: 25, maxPax: 20, displayName: 'Party Bus (20)' },
-        'PartyBus30': { base: 750, perPerson: 25, maxPax: 30, displayName: 'Party Bus (30)' },
-        'PartyBus40': { base: 900, perPerson: 25, maxPax: 40, displayName: 'Party Bus (40)' },
-        'PartyBus45': { base: 1050, perPerson: 25, maxPax: 45, displayName: 'Party Bus (45)' }
+        'SUV': { flatRate: 1400, maxPax: 7, displayName: 'Luxury SUV (1-7)' },
+        'Sprinter': { flatRate: 1800, maxPax: 14, displayName: 'Sprinter Van (12-14)' },
+        'PartyBus20': { flatRate: 2000, maxPax: 20, displayName: 'Party Bus (20)' },
+        'PartyBus30': { flatRate: 2240, maxPax: 30, displayName: 'Party Bus (30)' },
+        'PartyBus40': { flatRate: 2880, maxPax: 40, displayName: 'Party Bus (40)' },
+        'PartyBus45': { flatRate: 3200, maxPax: 45, displayName: 'Party Bus (45)' }
     };
     const BARTENDER_PRICES = {
         'oneway': 650,
@@ -1254,6 +1229,28 @@
     function toggleCard(el) { 
         el.classList.toggle('lvl-flipped');
     }
+
+    // --- RESET FUNCTION ---
+    // Exposed globally so Block 6 can call it on payment success
+    window.resetAllCards = function() {
+        document.querySelectorAll('.lvl-card-container').forEach(c => c.classList.remove('lvl-flipped'));
+        document.querySelectorAll('select').forEach(s => s.selectedIndex = 0);
+        document.querySelectorAll('input[type="checkbox"]').forEach(c => c.checked = false);
+        document.querySelectorAll('input[type="text"], input[type="number"]').forEach(i => i.value = '');
+        
+        // Clear generated HTML
+        document.getElementById('schedule-oneway').innerHTML = '';
+        document.getElementById('schedule-roundtrip').innerHTML = '';
+        document.getElementById('schedule-private').innerHTML = '';
+        
+        // Reset counters
+        ['oneway', 'roundtrip', 'private'].forEach(type => {
+            const input = document.getElementById(`glow-kits-${type}`);
+            if(input) input.value = 1;
+            updateGlowKitTotal(type);
+            updateShirtSizes(type);
+        });
+    };
 
     // Glow Kit Functions
     function adjustGlowKit(cardType, change) {
@@ -1461,13 +1458,14 @@
         
         if (vehicle && PRIVATE_PRICES[vehicle]) {
             paxInput.max = PRIVATE_PRICES[vehicle].maxPax;
-            document.getElementById('max-pax').textContent = PRIVATE_PRICES[vehicle].maxPax;
+            // Removed direct text content update to handle safely
+            // document.getElementById('max-pax').textContent = PRIVATE_PRICES[vehicle].maxPax; 
             if (paxInput.value && parseInt(paxInput.value) > PRIVATE_PRICES[vehicle].maxPax) {
                 paxInput.value = PRIVATE_PRICES[vehicle].maxPax;
             }
         }
         
-        let html = '';
+                let html = '';
         for(let i = 0; i < days; i++) {
             html += `
             <div class="lvl-day-row">
@@ -1477,9 +1475,16 @@
                     ${DATES.map((d, idx) => `<option value="${d}">${d}</option>`).join('')}
                 </select>
                 <div class="lvl-flex-row">
-                    <input type="text" class="lvl-cust-dep" placeholder="Pick-up (e.g. 5:15 PM)" oninput="validatePrivate()">
-                    <input type="text" class="lvl-cust-ret" placeholder="Return (e.g. 4:00 AM)" oninput="validatePrivate()">
+                    <select class="lvl-cust-dep" onchange="validatePrivate()">
+                        <option value="">Depart (TO)</option>
+                        ${PRIVATE_TIMES_DEPART.map(t => `<option value="${t}">${t}</option>`).join('')}
+                    </select>
+                    <select class="lvl-cust-ret" onchange="validatePrivate()">
+                        <option value="">Return (FROM)</option>
+                        ${PRIVATE_TIMES_RETURN.map(t => `<option value="${t}">${t}</option>`).join('')}
+                    </select>
                 </div>
+                <span class="lvl-pst-note">All times are PST</span>
             </div>`;
         }
         container.innerHTML = html;
@@ -1547,8 +1552,8 @@
         const daysSelect = document.getElementById('days-private');
         const paxInput = document.getElementById('pax-private');
         const dateSelects = document.querySelectorAll('#schedule-private .lvl-date-select');
-        const depInputs = document.querySelectorAll('#schedule-private .lvl-cust-dep');
-        const retInputs = document.querySelectorAll('#schedule-private .lvl-cust-ret');
+        const depSelects = document.querySelectorAll('#schedule-private .lvl-cust-dep');
+        const retSelects = document.querySelectorAll('#schedule-private .lvl-cust-ret');
         const bookBtn = document.querySelector('#card-private .lvl-book-btn');
         const errorShirts = document.getElementById('error-private-shirts');
         
@@ -1558,7 +1563,7 @@
         let isValid = true;
         if (!daysSelect.value || !paxInput.value) isValid = false;
         else {
-            for (let i = 0; i < dateSelects.length; i++) if (!dateSelects[i].value || !depInputs[i].value || !retInputs[i].value) isValid = false;
+            for (let i = 0; i < dateSelects.length; i++) if (!dateSelects[i].value || !depSelects[i].value || !retSelects[i].value) isValid = false;
         }
         
         // Check Pax
@@ -1573,7 +1578,7 @@
         return isValid;
     }
 
-    // --- SUBMIT FUNCTION ---
+    // --- SUBMIT FUNCTION (FIX #6 & #8 & #9) ---
     function submitPass(type) {
         let mapKey = "";
         if(type === 'One-Way') { if (!validateOneWay()) return; mapKey = "oneway"; }
@@ -1646,54 +1651,96 @@
             vehicleName = vehicleInfo.displayName;
             document.getElementById('input-ride-style').value = "Private Charter";
 
-            const vehicleBaseTotal = vehicleInfo.base * days;
-            subtotal = vehicleBaseTotal;
-            lineItems.push({ name: `${vehicleName} Base`, price: vehicleInfo.base, quantity: days, total: vehicleBaseTotal });
-            
-            const passengerTotal = vehicleInfo.perPerson * passengerCount * days;
-            subtotal += passengerTotal;
-            lineItems.push({ name: `Passenger Fee`, price: vehicleInfo.perPerson, quantity: passengerCount * days, total: passengerTotal });
+            // NEW: Flat rate pricing (no per-person fees)
+            const vehicleTotal = vehicleInfo.flatRate * days;
+            subtotal = vehicleTotal;
+            lineItems.push({ 
+                name: `${vehicleName} (Flat Rate)`, 
+                price: vehicleInfo.flatRate, 
+                quantity: days, 
+                total: vehicleTotal 
+            });
 
             const bartenderCheckbox = document.getElementById('bartender');
             const bartender = bartenderCheckbox && bartenderCheckbox.checked;
-            const bartenderType = bartender ? document.querySelector('input[name="bartender-type"]:checked').value : null;
+            
+            let bartenderDaysSelected = 0;
+            let bartenderType = "";
+            let addonsStr = "";
             
             if (bartender && BARTENDER_ALLOWED_VEHICLES.includes(vehicleVal)) {
-                let bartenderDays = 0;
+                bartenderType = document.querySelector('input[name="bartender-type"]:checked')?.value;
+                bartenderDaysSelected = 0;
+                
                 if (days > 1) {
+                    let selectedDays = [];
                     for (let i = 1; i <= days; i++) {
                         const yesRadio = document.querySelector(`.lvl-bartender-radio[data-day="${i}"][data-value="yes"]`);
                         if (yesRadio && yesRadio.classList.contains('selected')) {
-                            bartenderDays++;
+                            bartenderDaysSelected++;
+                            selectedDays.push(i);
                         }
                     }
+                    
+                    if (bartenderDaysSelected > 0) {
+                        const bartenderPricePerDay = BARTENDER_PRICES[bartenderType];
+                        const bartenderTotal = bartenderPricePerDay * bartenderDaysSelected;
+                        subtotal += bartenderTotal;
+                        lineItems.push({
+                            name: `Bartender Service (${bartenderType})`,
+                            price: bartenderPricePerDay,
+                            quantity: bartenderDaysSelected,
+                            total: bartenderTotal
+                        });
+                        // CLEARER FORMAT: Shows "Day 1, Day 3" instead of just "1,3"
+                        const formattedDays = selectedDays.map(day => `Day ${day}`).join(', ');
+                        addonsStr = `Bartender: ${bartenderType} | Selected Days: ${formattedDays}`;
+                    }
                 } else {
-                    bartenderDays = 1;
-                }
-                
-                if (bartenderDays > 0) {
+                    bartenderDaysSelected = 1;
                     const bartenderPricePerDay = BARTENDER_PRICES[bartenderType];
-                    const bartenderTotal = bartenderPricePerDay * bartenderDays;
+                    const bartenderTotal = bartenderPricePerDay;
                     subtotal += bartenderTotal;
                     lineItems.push({
                         name: `Bartender Service (${bartenderType})`,
                         price: bartenderPricePerDay,
-                        quantity: bartenderDays,
+                        quantity: 1,
                         total: bartenderTotal
                     });
+                    // CLEARER FORMAT: Shows "Selected Days: Day 1" instead of just "Day: 1"
+                    addonsStr = `Bartender: ${bartenderType} | Selected Days: Day 1`;
                 }
             }
+            
+            // CAPTURE SHIRT SIZES
+            const shirtSelects = document.querySelectorAll(`#shirt-inputs-private select`);
+            const collectedSizes = Array.from(shirtSelects).map(sel => sel.value).filter(val => val !== "");
+            const shirtString = collectedSizes.join(', ');
+            const shirtQty = collectedSizes.length;
+            
+            // Store in hidden fields
+            document.getElementById('input-shirt-summary').value = shirtString;
+            document.getElementById('input-glow-kits').value = shirtQty;
+            document.getElementById('input-shirt-qty').value = shirtQty; // ADD THIS LINE
             
             const rows = document.querySelectorAll('#schedule-private .lvl-day-row');
             rows.forEach(row => {
                 const d = row.querySelector('.lvl-date-select').value;
-                const depInput = row.querySelector('.lvl-cust-dep');
-                const retInput = row.querySelector('.lvl-cust-ret');
-                const dep = depInput ? depInput.value : "TBD";
-                const ret = retInput ? retInput.value : "TBD";
-                detailsHtml += `<div><strong>${d}:</strong> Pick ${dep} / Drop ${ret}</div>`;
-                detailsText += `${d}: ${dep}/${ret} | `;
+                const depSelect = row.querySelector('.lvl-cust-dep');
+                const retSelect = row.querySelector('.lvl-cust-ret');
+                const dep = depSelect ? depSelect.value : "";
+                const ret = retSelect ? retSelect.value : "";
+                
+                if (d && dep && ret) {
+                    detailsHtml += `<div><strong>${d}:</strong> ${dep} (TO) / ${ret} (FROM)</div>`;
+                    detailsText += `${d}: ${dep} (TO) / ${ret} (FROM) | `;
+                }
             });
+            
+            // Pass ALL data to Block 6
+            if(typeof setAddonsInput === 'function') {
+                setAddonsInput(addonsStr);
+            }
         }
 
         // Glow Kits
@@ -1710,6 +1757,7 @@
         document.getElementById('input-qty').value = passengerCount; 
         document.getElementById('input-schedule').value = detailsText;
         
+        // Shirt Sizes Capture
         const shirtSelects = document.querySelectorAll(`#shirt-inputs-${mapKey} select`);
         const collectedSizes = Array.from(shirtSelects).map(sel => sel.value).filter(val => val !== "");
         const shirtString = collectedSizes.join(', ');
@@ -1723,22 +1771,34 @@
         }
         shirtSummaryInput.value = shirtString;
 
-        if (typeof updateCheckoutSummary !== 'undefined') {
-            updateCheckoutSummary(subtotal, days, passengerCount, glowKits, lineItems, rideStyleText, detailsHtml, vehicleName);
-        } else {
-            console.error("Block 6 not loaded");
-        }
+        // --- 🟢 SAFELY CALL CHECKOUT FUNCTION ---
+        if (typeof updateCheckoutSummary === 'function') {
+            // Pass the card type to Block 6 so it knows which card to flip back to
+            updateCheckoutSummary(subtotal, days, passengerCount, glowKits, lineItems, rideStyleText, detailsHtml, vehicleName, mapKey);
+            
+            // --- SCROLL TO CHECKOUT ---
+            const checkoutBlock = document.getElementById('lvl-checkout');
+            if(checkoutBlock) {
+                // Ensure it's visible
+                checkoutBlock.classList.remove('lvl-hidden-checkout');
+                checkoutBlock.style.display = 'block'; 
+                checkoutBlock.style.height = 'auto'; 
+                checkoutBlock.style.opacity = '1'; 
+                checkoutBlock.style.overflow = 'visible';
 
-        const checkoutBlock = document.getElementById('lvl-checkout');
-        if(checkoutBlock) {
-            checkoutBlock.classList.remove('lvl-hidden-checkout');
-            if(window.gsap) {
-                gsap.to(window, {duration: 1, scrollTo: "#lvl-checkout", ease: "power2.inOut"});
-                gsap.fromTo("#lvl-checkout", {height: 0, opacity: 0}, {height: "auto", opacity: 1, duration: 1, ease: "power2.out"});
+                if(window.gsap) {
+                    gsap.to(window, {duration: 1, scrollTo: "#lvl-checkout", ease: "power2.inOut"});
+                    gsap.fromTo("#lvl-checkout", {height: 0, opacity: 0}, {height: "auto", opacity: 1, duration: 1, ease: "power2.out"});
+                } else {
+                    checkoutBlock.scrollIntoView({ behavior: 'smooth' });
+                }
             } else {
-                checkoutBlock.style.display = 'block';
-                checkoutBlock.scrollIntoView({ behavior: 'smooth' });
+                console.error("CRITICAL ERROR: Checkout Block #lvl-checkout not found in DOM.");
+                alert("System Error: Checkout form unavailable. Please refresh.");
             }
+        } else {
+            console.error("CRITICAL ERROR: updateCheckoutSummary function missing. Block 6 likely not loaded.");
+            alert("System Error: Pricing logic unavailable. Please refresh.");
         }
     }
 
@@ -1754,8 +1814,8 @@
     updateShirtSizes('private');
    </script>
 </section>
-
-<section id="lvl-schedule" class="lvl-section-wrapper" aria-label="EDC Las Vegas 2026 Set Times">
+  
+  <section id="lvl-schedule" class="lvl-section-wrapper" aria-label="EDC Las Vegas 2026 Set Times">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script type="application/ld+json">
@@ -3330,49 +3390,26 @@
         });
     </script>
 </section>
-
-<section id="lvl-checkout" class="lvl-section-wrapper lvl-hidden-checkout" aria-label="Secure Payment Terminal">
   
+  <section id="lvl-checkout" class="lvl-section-wrapper lvl-hidden-checkout" aria-label="Secure Payment Terminal">
+  <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
   <script src="https://js.stripe.com/v3/" async></script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Secure Checkout - EDC Shuttle",
-    "description": "Finalize your EDC 2026 shuttle reservation. 256-bit SSL encrypted payment powered by Stripe.",
-    "potentialAction": {
-      "@type": "BuyAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://edcshuttle.com/#lvl-checkout",
-        "actionPlatform": [
-          "http://schema.org/DesktopWebPlatform",
-          "http://schema.org/MobileWebPlatform"
-        ]
-      },
-      "result": {
-        "@type": "Reservation",
-        "name": "EDC Shuttle Pass"
-      }
-    }
-  }
-  </script>
+  
+  <div id="fireworks-overlay" style="position:fixed; inset:0; pointer-events:none; z-index:99999;"></div>
 
   <style>
-    /* SCOPED CSS: #lvl-checkout */
+    /* =================================================
+       BLOCK 6 STYLES - FULL & COMPLETE
+       ================================================= */
     #lvl-checkout {
       --lvl-gold: #D4AF37;
       --lvl-black: #080808;
-      --lvl-gray: #1a1a1a;
-      --lvl-input-bg: #111;
       --lvl-font-heading: 'Oswald', sans-serif;
       --lvl-font-body: 'Inter', sans-serif;
       background-color: #fff;
       color: var(--lvl-black);
       padding: 100px 20px;
       position: relative;
-      overflow: hidden;
       border-top: 1px solid #eee;
     }
     .lvl-hidden-checkout { display: none; opacity: 0; height: 0; overflow: hidden; }
@@ -3382,8 +3419,8 @@
       display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px;
       align-items: start;
     }
-    
-    /* LEFT COLUMN: SUMMARY (ASIDE) */
+
+    /* --- LEFT COLUMN: SUMMARY --- */
     #lvl-checkout .lvl-summary-card {
       background: var(--lvl-black); color: #fff; padding: 40px;
       border-radius: 8px; border: 1px solid var(--lvl-gold);
@@ -3407,13 +3444,17 @@
       line-height: 1.6; color: #999; margin-bottom: 20px; border-left: 2px solid var(--lvl-gold);
       font-family: var(--lvl-font-body); white-space: pre-wrap;
     }
+    
+    /* Line Items (Bartender/Extras) */
     #lvl-checkout .lvl-line-items {
       width: 100%; margin: 15px 0; border-top: 1px solid #333; border-bottom: 1px solid #333; padding: 15px 0;
     }
-    #lvl-checkout .lvl-line-item {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed #333;
+    .lvl-line-item-row {
+      display: flex; justify-content: space-between; font-size: 13px; color: #aaa; margin-bottom: 8px;
     }
+    .lvl-line-item-row strong { color: #fff; }
+
+    /* Totals & Tax */
     #lvl-checkout .lvl-subtotal-row, #lvl-checkout .lvl-tax-row {
       border-top: 1px solid #333; padding-top: 15px; margin-top: 15px;
       display: flex; justify-content: space-between; color: #ccc;
@@ -3424,6 +3465,7 @@
     }
     #lvl-checkout .lvl-total-price { font-family: var(--lvl-font-heading); font-size: 36px; color: var(--lvl-gold); }
     
+    /* Change Options Button */
     #lvl-change-options-btn {
       width: 100%; margin-top: 20px; background: transparent; border: none;
       color: #777; font-family: var(--lvl-font-body); font-size: 12px;
@@ -3432,61 +3474,133 @@
     }
     #lvl-change-options-btn:hover { color: var(--lvl-gold); }
 
-    /* PAYMENT UI */
+    /* --- PAYMENT UI (STRIPE CARD) --- */
     #lvl-stripe-payment-card { display: none; margin-top: 20px; }
     .lvl-stripe-card { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 8px; padding: 30px; }
     .lvl-stripe-title { font-family: var(--lvl-font-heading); font-size: 20px; margin-bottom: 5px; color: #333; text-transform: uppercase; }
     
-    .lvl-secure-text { 
-      font-size: 12px; color: #555; display: flex; align-items: center; gap: 10px; 
-      margin-bottom: 20px; font-weight: 600; flex-wrap: wrap;
-    }
-    .lvl-secure-text svg { width: 14px; height: 14px; fill: #27ae60; }
-    .lvl-stripe-badge { height: 96px; margin-left: auto; width: auto; object-fit: contain; }
-
-    .lvl-stripe-element { padding: 14px; border: 1px solid #ccc; border-radius: 4px; background: #fff; margin-bottom: 10px; }
-    .lvl-stripe-errors { color: #c0392b; font-size: 13px; min-height: 18px; margin-bottom: 12px; }
-    
-    .lvl-terms-wrapper { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px; font-size: 13px; color: #555; line-height: 1.4; }
+    /* Terms & Marketing Checkboxes */
+    .lvl-terms-wrapper { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 15px; font-size: 13px; color: #555; line-height: 1.4; }
     .lvl-terms-wrapper input { width: 18px; height: 18px; margin-top: 2px; cursor: pointer; }
-    .lvl-terms-wrapper a { color: #333; text-decoration: underline; font-weight: 600; }
+    .lvl-terms-wrapper a { color: var(--lvl-gold); text-decoration: none; font-weight: bold; }
 
+        /* Pay Button */
     #stripe-pay-btn {
       width: 100%; padding: 16px; font-size: 18px; font-family: var(--lvl-font-heading);
       text-transform: uppercase; background: #111; color: #fff; border: none; border-radius: 4px;
-      cursor: not-allowed; opacity: 0.6; transition: all 0.3s;
+      cursor: pointer; opacity: 0.6; transition: all 0.2s ease;
     }
-    
-    /* SUPPORT */
-    .lvl-support-row { margin-top: 20px; padding-top: 15px; border-top: 1px solid #ddd; text-align: center; }
-    .lvl-support-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
-    .lvl-support-icons { display: flex; justify-content: center; gap: 20px; }
-    .lvl-supp-btn {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      color: #333; text-decoration: none; font-size: 13px; font-weight: 600;
-      border: 1px solid #ccc; padding: 8px 15px; border-radius: 4px;
-      transition: all 0.3s; background: #fff;
+    #stripe-pay-btn:disabled {
+      cursor: not-allowed; opacity: 0.6;
     }
-    .lvl-supp-btn:hover { border-color: var(--lvl-gold); color: #000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    .lvl-supp-btn svg { width: 16px; height: 16px; fill: #555; }
+    #stripe-pay-btn:not(:disabled) {
+      opacity: 1; background: var(--lvl-black); color: var(--lvl-gold);
+    }
+    #stripe-pay-btn:not(:disabled):hover { 
+      transform: scale(1.02); box-shadow: 0 5px 15px rgba(0,0,0,0.2); background: var(--lvl-gold); color: var(--lvl-black);
+    }
+    #stripe-pay-btn:not(:disabled):active { transform: scale(0.98); }
 
-    /* RIGHT COLUMN: FORM */
+    /* --- RIGHT COLUMN: CUSTOMER FORM --- */
     #lvl-checkout .lvl-form-wrapper { background: #f9f9f9; padding: 40px; border-radius: 8px; border: 1px solid #eee; }
     #lvl-checkout .lvl-form-header { font-family: var(--lvl-font-heading); font-size: 32px; text-transform: uppercase; margin-bottom: 30px; }
     #lvl-checkout .lvl-input-group { margin-bottom: 20px; }
     #lvl-checkout label { display: block; font-size: 12px; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; color: #555; }
     #lvl-checkout input, #lvl-checkout select { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; }
     
+    /* Save & Proceed Button */
     #lvl-checkout .lvl-submit-btn {
       width: 100%; background: var(--lvl-black); color: var(--lvl-gold); font-family: var(--lvl-font-heading);
       font-size: 20px; text-transform: uppercase; padding: 18px; border: none; cursor: pointer; border-radius: 4px;
+      transition: all 0.2s ease;
     }
+    #lvl-checkout .lvl-submit-btn:hover { transform: scale(1.02); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
+    /* Private Notes (Split Addresses) */
+    #private-location-group { display: none; margin-top: 20px; }
+    .lvl-split-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    @media (max-width: 500px) { .lvl-split-notes { grid-template-columns: 1fr; } }
+
+    /* --- SUCCESS MODAL --- */
+    .lvl-modal-overlay {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85); z-index: 9999;
+      justify-content: center; align-items: center;
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    .lvl-modal-content {
+      background: #111; border: 2px solid var(--lvl-gold); border-radius: 12px;
+      padding: 40px; text-align: center; max-width: 500px; width: 90%;
+      color: #fff; transform: scale(0.9); transition: transform 0.3s ease;
+      box-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
+    }
+    .lvl-modal-title {
+      font-family: var(--lvl-font-heading); font-size: 32px; 
+      color: var(--lvl-gold); margin-bottom: 15px; text-transform: uppercase;
+    }
+    .lvl-modal-body {
+      font-family: var(--lvl-font-body); font-size: 16px; 
+      color: #ccc; margin-bottom: 30px; line-height: 1.5;
+    }
+    
+    /* Share Grid (Social Icons) */
+    .share-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
+    .share-option {
+      background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px;
+      cursor: pointer; transition: 0.2s; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .share-option:hover { background: rgba(212, 175, 55, 0.2); border: 1px solid var(--lvl-gold); }
+    .share-option i { font-size: 1.5rem; margin-bottom: 5px; display: block; color: var(--lvl-gold); }
+    .share-option span { font-family: var(--lvl-font-heading); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* Final Close Button */
+    .lvl-close-final-btn {
+        background: transparent; border: 1px solid #555; color: #777; 
+        padding: 10px 20px; cursor: pointer; margin-top: 20px; width: 100%;
+        text-transform: uppercase; font-weight: bold; transition: all 0.3s;
+    }
+    .lvl-close-final-btn:hover { border-color: #fff; color: #fff; }
+
+    .lvl-modal-open { display: flex; opacity: 1; }
+    .lvl-modal-open .lvl-modal-content { transform: scale(1); }
+
+    /* Responsive Layout */
     @media (max-width: 900px) {
       #lvl-checkout .lvl-container { grid-template-columns: 1fr; }
       #lvl-checkout .lvl-summary-card { position: relative; order: -1; }
     }
   </style>
+
+  <div id="lvl-success-modal" class="lvl-modal-overlay">
+    <div class="lvl-modal-content">
+      <div class="lvl-modal-title">Ride Confirmed!</div>
+      <div class="lvl-modal-body">
+        Check your email for details.<br>Tell your friends you're going to EDC 2026!
+      </div>
+      <img src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/696170a365a0d720fd8984b3.jpg" alt="I'm Going!" style="width:100%; border-radius:8px; border:1px solid #333; margin-bottom:15px;">
+      
+      <div class="share-grid">
+        <div class="share-option" onclick="shareLink()">
+            <i class="fas fa-link"></i>
+            <span>Share Link</span>
+        </div>
+        <div class="share-option" onclick="shareSuccessToInstagram()">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+        </div>
+        <div class="share-option" onclick="shareSuccessToTwitter()">
+            <i class="fab fa-twitter"></i>
+            <span>Twitter / X</span>
+        </div>
+        <div class="share-option" onclick="downloadSuccessImage()">
+            <i class="fas fa-mobile-alt"></i>
+            <span>Save Image</span>
+        </div>
+      </div>
+
+      <button class="lvl-close-final-btn" onclick="closeSuccessAndReset()">Close & Return Home</button>
+    </div>
+  </div>
 
   <div class="lvl-container">
     <div>
@@ -3506,48 +3620,31 @@
         </div>
 
         <div id="summ-line-items" class="lvl-line-items" style="display:none;"></div>
+
         <div id="summ-schedule-details">Select a pass to see details.</div>
+        
         <div class="lvl-subtotal-row" id="summ-subtotal-row" style="display:none;"><span>Subtotal</span><span id="summ-subtotal">$0.00</span></div>
         <div class="lvl-tax-row" id="summ-tax-row" style="display:none;"><span>Sales Tax (3.5%)</span><span id="summ-tax">$0.00</span></div>
         <div class="lvl-total-row"><span class="lvl-total-label">TOTAL DUE</span><span class="lvl-total-price" id="summ-total">$0.00</span></div>
         
-        <button id="lvl-change-options-btn" type="button" aria-label="Modify Reservation">Change Options</button>
+        <button id="lvl-change-options-btn" type="button" onclick="changeOptionsAndGoBack()">Change Options</button>
       </aside>
 
-      <div id="lvl-stripe-payment-card">
-        <div class="lvl-stripe-card">
+      <div id="lvl-stripe-payment-card" style="display:none; margin-top:20px;">
+        <div class="lvl-stripe-card" style="background:#f9f9f9; padding:30px; border-radius:8px;">
           <h3 class="lvl-stripe-title">Secure Payment</h3>
-          <div class="lvl-secure-text">
-            <svg viewBox="0 0 24 24"><path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zm6 10v8H6v-8h12zm-9-5V7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9z"/></svg>
-            <span>SSL Encrypted</span>
-            <img src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/6969f3014e42b944dd26b0c6.svg" alt="Powered by Stripe" class="lvl-stripe-badge">
-          </div>
           
-          <div id="stripe-card-element" class="lvl-stripe-element"></div>
-          <div id="stripe-card-errors" class="lvl-stripe-errors" role="alert"></div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Powered by Stripe" style="height:25px; margin-bottom:15px; display:block;">
+          
+          <div id="stripe-card-element" style="padding:14px; border:1px solid #ccc; background:#fff; margin-bottom:10px;"></div>
+          <div id="stripe-card-errors" style="color:red; margin-bottom:10px;"></div>
           
           <div class="lvl-terms-wrapper">
-            <input type="checkbox" id="lvl-terms-check" aria-required="true">
-            <label for="lvl-terms-check">
-              I agree to the <a href="https://edcshuttle.com/edc-shuttle-bus-tnc" target="_blank" rel="noopener noreferrer">Terms of Service</a>. I understand that <strong>all sales are final</strong>.
-            </label>
+            <input type="checkbox" id="lvl-terms-check">
+            <label for="lvl-terms-check">I agree to the <a href="https://edcshuttle.com/edc-shuttle-bus-tnc" target="_blank">Terms of Service</a>. All sales final.</label>
           </div>
 
           <button id="stripe-pay-btn" disabled>Pay Securely</button>
-          
-          <div class="lvl-support-row">
-             <div class="lvl-support-label">Having trouble? Contact Support</div>
-             <div class="lvl-support-icons">
-               <a href="mailto:Book@EDCshuttle.com" class="lvl-supp-btn">
-                 <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                 Email
-               </a>
-               <a href="tel:7258888457" class="lvl-supp-btn">
-                 <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                 Call
-               </a>
-             </div>
-          </div>
         </div>
       </div>
     </div>
@@ -3566,539 +3663,418 @@
         <input type="hidden" name="line_items" id="input-line-items">
         <input type="hidden" name="glow_kits" id="input-glow-kits">
         <input type="hidden" name="ride_style" id="input-ride-style">
+        <input type="hidden" name="addons" id="input-addons"> 
+        <input type="hidden" name="vehicle" id="input-vehicle-name">
+        <input type="hidden" name="passengers" id="input-passengers">
+        <input type="hidden" name="shirt_qty" id="input-shirt-qty">
+        <input type="hidden" name="shirt_sizes" id="input-shirt-sizes">
+        <input type="hidden" name="subtotal" id="input-subtotal">
+        <input type="hidden" name="tax" id="input-tax">
+        <input type="hidden" name="total_days" id="input-total-days">
+        <input type="hidden" name="bartender_info" id="input-bartender-info">
         
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-          <div class="lvl-input-group">
-              <label for="first_name">First Name</label>
-              <input type="text" id="first_name" name="first_name" required autocomplete="given-name">
-          </div>
-          <div class="lvl-input-group">
-              <label for="last_name">Last Name</label>
-              <input type="text" id="last_name" name="last_name" required autocomplete="family-name">
-          </div>
+          <div class="lvl-input-group"><label>First Name</label><input type="text" name="first_name" required></div>
+          <div class="lvl-input-group"><label>Last Name</label><input type="text" name="last_name" required></div>
         </div>
+        <div class="lvl-input-group"><label>Email Address</label><input type="email" name="email" required></div>
+        <div class="lvl-input-group"><label>Mobile Phone</label><input type="tel" name="phone" required></div>
+        
         <div class="lvl-input-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" required autocomplete="email">
+            <label>Country</label>
+            <select name="country" id="country-select" required>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="GB">United Kingdom</option>
+                <option value="AU">Australia</option>
+                <option value="OTHER">Other</option>
+            </select>
         </div>
-        <div class="lvl-input-group">
-            <label for="phone">Mobile Phone</label>
-            <input type="tel" id="phone" name="phone" required autocomplete="tel">
-        </div>
-        <div class="lvl-input-group">
-          <label for="country-select">Country</label>
-          <select name="country" id="country-select" required autocomplete="country-name">
-            <option value="US">United States</option>
-            <option value="CA">Canada</option>
-            <option value="GB">United Kingdom</option>
-            <option value="OTHER">Other</option>
-          </select>
-        </div>
-        <div class="lvl-input-group">
-            <label for="address1">Address Line 1</label>
-            <input type="text" id="address1" name="address1" required autocomplete="address-line1">
-        </div>
+        <div class="lvl-input-group"><label>Street Address</label><input type="text" name="address1" required placeholder="1234 Main St"></div>
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-          <div class="lvl-input-group">
-              <label for="city">City</label>
-              <input type="text" id="city" name="city" required autocomplete="address-level2">
-          </div>
-          <div class="lvl-input-group">
-              <label for="state">State</label>
-              <input type="text" id="state" name="state" required autocomplete="address-level1">
-          </div>
+            <div class="lvl-input-group"><label>City</label><input type="text" name="city" required></div>
+            <div class="lvl-input-group"><label>State / Province</label><input type="text" name="state" required></div>
         </div>
-        <div class="lvl-input-group">
-            <label for="zip">ZIP / Postal Code</label>
-            <input type="text" id="zip" name="zip" required autocomplete="postal-code">
+        <div class="lvl-input-group"><label>ZIP / Postal Code</label><input type="text" name="zip" required></div>
+        
+        <div id="private-location-group" class="lvl-input-group" style="display:none;">
+           <label style="color:var(--lvl-gold);">Pick-Up & Drop-Off Locations</label>
+           <div class="lvl-split-notes">
+               <input type="text" id="private-pickup" placeholder="Pick-Up Address">
+               <input type="text" id="private-dropoff" placeholder="Return Address">
+           </div>
+        </div>
+
+        <div class="lvl-terms-wrapper">
+            <input type="checkbox" name="marketing" value="yes" checked>
+            <label>Yes, I would like to receive exclusive offers, product updates, and newsletters via email. I understand I can unsubscribe at any time.</label>
         </div>
 
         <button type="submit" class="lvl-submit-btn" id="lvl-save-proceed-btn">Save & Proceed to Payment</button>
       </form>
     </div>
   </div>
-</div>
 
 <script>
-/* =========================================================
-   CONFIG & STATE
-   ========================================================= */
-const STRIPE_PUBLISHABLE_KEY = "pk_test_51Snpg5JeGMANXsyePBqDoMHGuBzjMoofmRdWUzl52FEVciocrRlBa5PZZzdvZx1wzPAqvQszO034ymk5nIg8INtZ002x7QC3YT"; 
-const GOOGLE_SHEETS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyP94hI0NOjDE5kM1r5X6NIwhrCxQ6C2oJ1cxwzsHN6tlAQvSec7-8cAli3csJo5fv2nw/exec";
-const TAX_RATE = 0.035;
+/* CONFIG */
+const STRIPE_KEY = "pk_test_51Snpg5JeGMANXsyePBqDoMHGuBzjMoofmRdWUzl52FEVciocrRlBa5PZZzdvZx1wzPAqvQszO034ymk5nIg8INtZ002x7QC3YT"; 
+const GOOGLE_URL = "https://script.google.com/macros/s/AKfycbyP94hI0NOjDE5kM1r5X6NIwhrCxQ6C2oJ1cxwzsHN6tlAQvSec7-8cAli3csJo5fv2nw/exec";
+const SHARE_IMAGE_URL = "https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/696170a365a0d720fd8984b3.jpg";
 
-let stripe = null;
-let elements = null;
-let cardElement = null;
-let stripeReady = false;
+let stripe, elements, cardElement;
+let fireworksInstance = null;
 
-/* =========================================================
-   HELPERS
-   ========================================================= */
-function safeText(id) { const el = document.getElementById(id); return el ? (el.innerText || el.textContent || "").trim() : ""; }
-function safeValueByName(formEl, name) { const el = formEl.querySelector(`[name="${name}"]`); return el ? String(el.value || "").trim() : ""; }
-function moneyFromText(txt) { const clean = String(txt || "").replace(/[^0-9.]/g, ""); const n = parseFloat(clean); return !isNaN(n) ? n.toFixed(2) : "0.00"; }
-function scheduleClean(txt) { return String(txt || "").replace(/\n+/g, " | ").trim(); }
+/* HELPERS */
+function safeText(id) { const el = document.getElementById(id); return el ? el.innerText.trim() : ""; }
+function moneyFromText(txt) { return parseFloat(txt.replace(/[^0-9.]/g, "")).toFixed(2); }
+function setAddonsInput(val) { document.getElementById('input-addons').value = val; }
 
-function deriveRideStyle(passTypeDisplay, scheduleDetails, qtyText) {
-  const uiRideStyle = safeText("summ-ride-style");
-  if (uiRideStyle && uiRideStyle !== "--") return uiRideStyle;
-  return passTypeDisplay.includes("One-Way") ? "One-Way" : "Round Trip";
+/* FIREWORKS */
+function startFireworks() {
+  const container = document.getElementById('fireworks-overlay');
+  if (!container || fireworksInstance) return;
+  fireworksInstance = new Fireworks.default(container, { intensity: 40, explosion: 6, gravity: 1.2, particles: 120, traceLength: 4, flickering: 60, hue: { min: 0, max: 360 } });
+  fireworksInstance.start();
+  setTimeout(() => { if(fireworksInstance) fireworksInstance.stop(true); fireworksInstance = null; }, 6000);
 }
 
-function deriveVehicle(passTypeDisplay) {
-  const vehRow = document.getElementById("summ-veh-row");
-  return (vehRow && vehRow.style.display !== "none") ? safeText("summ-vehicle") : "Shuttle";
-}
-
-/* =========================================================
-   UI UPDATES
-   ========================================================= */
+/* UI UPDATE */
 function updateCheckoutSummary(subtotal, days, passengerCount, glowKits, lineItems, rideStyleOverride, scheduleHtml, vehicleName) {
   const passType = document.getElementById('input-pass-type').value;
   document.getElementById('summ-pass-type').textContent = passType || '--';
   
-  if(rideStyleOverride) {
-      document.getElementById('summ-ride-style').textContent = rideStyleOverride;
-  }
-  
-  if(scheduleHtml) {
-      document.getElementById('summ-schedule-details').innerHTML = scheduleHtml;
+  if(scheduleHtml) document.getElementById('summ-schedule-details').innerHTML = scheduleHtml;
+  if(rideStyleOverride) document.getElementById('summ-ride-style').textContent = rideStyleOverride;
+
+  const dayLabel = days === 1 ? 'Day' : 'Days';
+  document.getElementById('summ-days').textContent = days > 0 ? `${days} ${dayLabel}` : '--';
+
+  const lineItemsContainer = document.getElementById('summ-line-items');
+  if (lineItems && lineItems.length > 0) {
+    let linesHtml = "";
+    lineItems.forEach(item => {
+        linesHtml += `<div class="lvl-line-item-row"><span>${item.name} (x${item.quantity})</span><strong>$${item.total.toLocaleString()}</strong></div>`;
+    });
+    lineItemsContainer.innerHTML = linesHtml;
+    lineItemsContainer.style.display = 'block';
+  } else {
+    lineItemsContainer.style.display = 'none';
   }
 
-  // Handle Private vs Standard Display
+  // PRIVATE LOGIC - SET ALL HIDDEN FIELDS
   if (passType === 'Private') {
     document.getElementById('summ-veh-row').style.display = 'flex';
-    if(vehicleName) {
-        document.getElementById('summ-vehicle').textContent = vehicleName;
-    }
-    document.getElementById('summ-pax-row').style.display = 'flex'; 
+    document.getElementById('summ-vehicle').textContent = vehicleName || 'Private Vehicle';
+    document.getElementById('summ-pax-row').style.display = 'flex';
     document.getElementById('summ-pax').textContent = passengerCount;
+    document.getElementById('private-location-group').style.display = 'block';
+    document.getElementById('private-pickup').required = true;
+    document.getElementById('private-dropoff').required = true;
+    
+    // SET ALL HIDDEN INPUTS
+    document.getElementById('input-vehicle-name').value = vehicleName;
+    document.getElementById('input-passengers').value = passengerCount;
+    document.getElementById('input-total-days').value = days;
   } else {
     document.getElementById('summ-veh-row').style.display = 'none';
     document.getElementById('summ-pax-row').style.display = 'none';
+    document.getElementById('private-location-group').style.display = 'none';
+    document.getElementById('private-pickup').required = false;
+    document.getElementById('private-dropoff').required = false;
+    
+    // Default values for non-private
+    document.getElementById('input-passengers').value = passengerCount;
+    document.getElementById('input-total-days').value = days;
   }
 
-  // Update Duration
-  const dayLabel = days === 1 ? 'Day' : 'Days';
-  document.getElementById('summ-days').textContent = `${days} ${dayLabel}`;
+  // PRICES
+  const tax = subtotal * 0.035;
+  const total = subtotal + tax;
   
-  const taxAmount = subtotal * TAX_RATE;
-  const total = subtotal + taxAmount;
-
   document.getElementById('summ-subtotal').textContent = '$' + subtotal.toFixed(2);
-  document.getElementById('summ-tax').textContent = '$' + taxAmount.toFixed(2);
+  document.getElementById('summ-subtotal-row').style.display = 'flex';
+  document.getElementById('summ-tax').textContent = '$' + tax.toFixed(2);
+  document.getElementById('summ-tax-row').style.display = 'flex';
   document.getElementById('summ-total').textContent = '$' + total.toFixed(2);
 
+  // SET ALL HIDDEN PRICE FIELDS
   document.getElementById('input-subtotal').value = subtotal.toFixed(2);
-  document.getElementById('input-tax').value = taxAmount.toFixed(2);
+  document.getElementById('input-tax').value = tax.toFixed(2);
   document.getElementById('input-total').value = total.toFixed(2);
-  document.getElementById('input-qty').value = passengerCount; 
-  document.getElementById('input-glow-kits').value = glowKits;
-
+  document.getElementById('input-qty').value = passengerCount;
+  document.getElementById('input-vehicle').value = vehicleName;
+  
+  // SHIRT SIZES & QUANTITY - FIXED
   const shirtSummary = document.getElementById('input-shirt-summary')?.value || '';
-  const shirtRow = document.getElementById('summ-shirt-row');
-  const shirtText = document.getElementById('summ-shirt-sizes');
-
-  if (shirtSummary && glowKits > 0) {
-    shirtText.textContent = `${glowKits} Shirt(s): ${shirtSummary}`;
-    shirtRow.style.display = 'flex';
-    shirtText.style.display = 'block'; 
+  if (shirtSummary) {
+    const shirtArray = shirtSummary.split(',').map(s => s.trim()).filter(s => s);
+    const shirtCount = shirtArray.length;
+    
+    document.getElementById('summ-shirt-row').style.display = 'flex';
+    document.getElementById('summ-shirt-sizes').textContent = shirtArray.join(', ');
+    
+    // SET HIDDEN FIELD FOR SHIRT QUANTITY
+    document.getElementById('input-shirt-qty').value = shirtCount;
+    
+    // Update Glow Kits count to match shirt count
+    document.getElementById('input-glow-kits').value = shirtCount;
+    
+    // Also update the summary display for glow kits
+    const glowKitsInput = document.querySelector('input[name="glow_kits"]');
+    if (glowKitsInput) glowKitsInput.value = shirtCount;
   } else {
-    shirtRow.style.display = 'none';
+    document.getElementById('summ-shirt-row').style.display = 'none';
+    document.getElementById('input-shirt-qty').value = '0';
+  }
+  
+  // BARTENDER INFO
+  const bartenderInfo = document.getElementById('input-bartender-info')?.value || '';
+  if(bartenderInfo && typeof setAddonsInput === 'function') {
+    setAddonsInput(bartenderInfo);
   }
 }
 
-/* =========================================================
-   CHANGE OPTIONS BUTTON LOGIC
-   ========================================================= */
-document.getElementById('lvl-change-options-btn').addEventListener('click', function() {
-  const passType = document.getElementById('input-pass-type').value;
-  let targetId = 'lvl-options'; 
-
-  if (passType === 'One-Way') targetId = 'card-oneway';
-  else if (passType === 'Round Trip') targetId = 'card-roundtrip';
-  else if (passType === 'Private') targetId = 'card-private';
-
-  const targetEl = document.getElementById(targetId);
-  if (targetEl) {
-    targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  } else {
-    const generalSection = document.getElementById('lvl-options');
-    if (generalSection) generalSection.scrollIntoView({ behavior: 'smooth' });
-  }
-});
-
-/* =========================================================
-   STRIPE LOGIC (Option B)
-   ========================================================= */
-function initStripeIfNeeded() {
-  if (stripeReady) return;
-  stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
-  elements = stripe.elements();
-  cardElement = elements.create("card", { hidePostalCode: true });
-  cardElement.mount("#stripe-card-element");
-  cardElement.on("change", (e) => {
-    document.getElementById("stripe-card-errors").textContent = e.error ? e.error.message : "";
-  });
-  stripeReady = true;
-  const payBtn = document.getElementById("stripe-pay-btn");
-  payBtn.disabled = false; payBtn.style.opacity = "1"; payBtn.style.cursor = "pointer";
+/* SHARING */
+async function shareSuccessToInstagram() {
+    try {
+        const response = await fetch(SHARE_IMAGE_URL);
+        const blob = await response.blob();
+        const file = new File([blob], "edc-ride.jpg", { type: "image/jpeg" });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            await navigator.share({ files: [file], title: "I'm Going to EDC!", text: "Booked my ride! See you at the speedway. ⚡" });
+        } else { downloadSuccessImage(); }
+    } catch (e) { downloadSuccessImage(); }
+}
+function shareSuccessToTwitter() { window.open(`https://twitter.com/intent/tweet?text=Booked my EDC 2026 Shuttle! ⚡ Secure your ride now:&url=https://edcshuttle.com`, '_blank'); }
+function shareSuccessToFacebook() { window.open(`https://www.facebook.com/sharer/sharer.php?u=https://edcshuttle.com`, '_blank'); }
+function downloadSuccessImage() {
+    const a = document.createElement('a'); a.href = SHARE_IMAGE_URL; a.download = "EDC-Ride-Confirmed.jpg"; a.target = "_blank"; a.click();
+}
+function shareLink() {
+    const text = "I just booked my ride to EDC 2026, you going?! ⚡🚌";
+    if(navigator.share) { navigator.share({title: "EDC Shuttle", text: text, url: "https://edcshuttle.com"}); }
+    else { navigator.clipboard.writeText(text + " https://edcshuttle.com"); alert("Link copied!"); }
+}
+  
+ function changeOptionsAndGoBack() {
+    // Hide checkout section
+    const chk = document.getElementById('lvl-checkout');
+    chk.classList.add('lvl-hidden-checkout');
+    chk.style.display = 'none';
+    
+    // Reset payment form
+    document.getElementById('lvl-custom-form').reset();
+    if(elements) { 
+        const card = elements.getElement('card'); 
+        if(card) card.clear(); 
+    }
+    document.getElementById('lvl-stripe-payment-card').style.display = 'none';
+    
+    // Reset payment button text
+    const payBtn = document.getElementById('stripe-pay-btn');
+    if(payBtn) {
+        payBtn.textContent = "Pay Securely";
+        payBtn.disabled = true;
+    }
+    
+    // Get the pass type from the summary - CLEAN the text
+    const passTypeElement = document.getElementById('summ-pass-type');
+    const passType = passTypeElement ? passTypeElement.textContent.trim().toLowerCase() : '';
+    
+    // DEBUG: Log what we're seeing
+    console.log("Pass type detected:", passType);
+    
+    // Better matching logic
+    let cardToFlip = null;
+    
+    if (passType.includes('one') && passType.includes('way')) {
+        cardToFlip = document.getElementById('card-oneway');
+        console.log("Matched: One-Way card");
+    } else if (passType.includes('round') || passType.includes('trip')) {
+        cardToFlip = document.getElementById('card-roundtrip');
+        console.log("Matched: Round Trip card");
+    } else if (passType.includes('private')) {
+        cardToFlip = document.getElementById('card-private');
+        console.log("Matched: Private card");
+    } else {
+        console.log("No match found for pass type:", passType);
+    }
+    
+    // Scroll to Block 3 (the pass selection cards)
+    const block3 = document.getElementById('lvl-options');
+    if(block3) {
+        block3.scrollIntoView({ behavior: 'smooth' });
+        
+        // If we found a specific card, flip it open after a short delay
+        if(cardToFlip) {
+            setTimeout(() => {
+                // First, make sure no other cards are flipped
+                document.querySelectorAll('.lvl-card-container').forEach(c => {
+                    c.classList.remove('lvl-flipped');
+                });
+                // Then flip the selected card
+                cardToFlip.classList.add('lvl-flipped');
+                console.log("Flipped card:", cardToFlip.id);
+            }, 300);
+        } else {
+            // If no match, at least reset all cards
+            if(window.resetAllCards) window.resetAllCards();
+        }
+    }
 }
 
+function closeSuccessAndReset() {
+    document.getElementById('lvl-success-modal').classList.remove('lvl-modal-open');
+    const chk = document.getElementById('lvl-checkout');
+    chk.classList.add('lvl-hidden-checkout');
+    chk.style.display = 'none'; // FORCE HIDE
+    
+    // Reset checkout form only (don't reset cards)
+    document.getElementById('lvl-custom-form').reset();
+    if(elements) { 
+        const card = elements.getElement('card'); 
+        if(card) card.clear(); 
+    }
+    document.getElementById('lvl-stripe-payment-card').style.display = 'none';
+    
+    // Reset payment button text
+    const payBtn = document.getElementById('stripe-pay-btn');
+    if(payBtn) {
+        payBtn.textContent = "Pay Securely";
+        payBtn.disabled = true;
+    }
+    
+    // Reset checkout summary (but keep cards as they were)
+    document.getElementById('summ-pass-type').textContent = '--';
+    document.getElementById('summ-ride-style').textContent = '--';
+    document.getElementById('summ-schedule-details').innerHTML = 'Select a pass to see details.';
+    document.getElementById('summ-total').textContent = '$0.00';
+    
+    // DON'T reset Block 3 cards - keep them as they were
+    // if(window.resetAllCards) window.resetAllCards();
+    
+    // Scroll to top (for success modal close)
+    window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* FORM SUBMIT */
 document.getElementById("lvl-custom-form").addEventListener("submit", function(e) {
   e.preventDefault();
-  let isValid = true;
-  this.querySelectorAll("[required]").forEach(f => {
-    if (!f.value.trim()) { isValid = false; f.style.borderColor = "red"; }
-    else { f.style.borderColor = ""; }
-  });
+  const btn = document.getElementById("lvl-save-proceed-btn");
+  btn.textContent = "Saving...";
+  btn.disabled = true;
 
-  if (!isValid) return alert("Please fill in all required fields.");
-
-  const saveBtn = document.getElementById("lvl-save-proceed-btn");
-  saveBtn.textContent = "Saving...";
-  saveBtn.disabled = true;
-
-  document.getElementById("lvl-stripe-payment-card").style.display = "block";
-  initStripeIfNeeded();
-  
-  const payCard = document.getElementById("lvl-stripe-payment-card");
-  payCard.style.display = "block";
-  payCard.scrollIntoView({ behavior: "smooth", block: "start" });
-  
-  setTimeout(() => { saveBtn.textContent = "Saved!"; }, 350);
-});
-
-document.getElementById("stripe-pay-btn").addEventListener("click", async function() {
-  
-  const termsCheckbox = document.getElementById("lvl-terms-check");
-  if (!termsCheckbox.checked) {
-    alert("Please agree to the Terms of Service and Refund Policy to continue.");
-    termsCheckbox.parentElement.style.color = "#c0392b"; 
-    return;
-  } else {
-    termsCheckbox.parentElement.style.color = "#555";
+  if (!stripe) {
+    stripe = Stripe(STRIPE_KEY);
+    elements = stripe.elements();
+    cardElement = elements.create("card", { hidePostalCode: true });
+    cardElement.mount("#stripe-card-element");
+    cardElement.on("change", (e) => { document.getElementById("stripe-card-errors").textContent = e.error ? e.error.message : ""; });
   }
 
-  const payBtn = this;
-  const formEl = document.getElementById("lvl-custom-form");
-  
-  // Build payload
-  const passTypeDisplay = safeText("summ-pass-type");
-  const qtyText = safeText("summ-qty"); 
-  const scheduleDetails = scheduleClean(safeText("summ-schedule-details"));
+  document.getElementById("lvl-stripe-payment-card").style.display = "block";
+  document.getElementById("lvl-stripe-payment-card").scrollIntoView({ behavior: "smooth" });
+  document.getElementById("stripe-pay-btn").disabled = false;
+  setTimeout(() => { btn.textContent = "Saved!"; }, 500);
+});
 
+/* PAY BUTTON */
+document.getElementById("stripe-pay-btn").addEventListener("click", async function() {
+  const terms = document.getElementById("lvl-terms-check");
+  if (!terms.checked) return alert("Please accept the terms.");
+
+  const payBtn = this;
+  const form = document.getElementById("lvl-custom-form");
+  const formData = new FormData(form);
+  
+  // Format Private Address Logic
+  let notes = "";
+  if(document.getElementById('private-location-group').style.display !== 'none') {
+      const pick = document.getElementById('private-pickup').value;
+      const drop = document.getElementById('private-dropoff').value;
+      notes = `Pick: ${pick} | Drop: ${drop}`;
+  }
+
+  // EXPLICIT PAYLOAD FOR SHEET
   const payload = {
-    passType: passTypeDisplay,
-    rideStyle: deriveRideStyle(passTypeDisplay, scheduleDetails, qtyText),
-    vehicle: deriveVehicle(passTypeDisplay),
-    passengers: document.getElementById("input-qty").value, 
-    datesTimes: scheduleDetails,
-    subtotal: document.getElementById("input-subtotal").value,
-    tax: document.getElementById("input-tax").value,
+    passType: safeText("summ-pass-type"),
+    rideStyle: safeText("summ-ride-style"), 
     total: moneyFromText(safeText("summ-total")),
     
-    glow_kits: document.getElementById("input-glow-kits").value || "0",
-    shirt_sizes_summary: document.getElementById("input-shirt-summary").value || "",
-
-    firstName: safeValueByName(formEl, "first_name"),
-    lastName: safeValueByName(formEl, "last_name"),
-    email: safeValueByName(formEl, "email"),
-    phone: safeValueByName(formEl, "phone"),
-    zip: safeValueByName(formEl, "zip"),
-    status: "Pending Payment"
+    // Data Capture Fix
+    vehicle: document.getElementById('input-vehicle').value,
+    passengers: document.getElementById('input-qty').value,
+    shirt_sizes_summary: document.getElementById('input-shirt-summary').value,
+    subtotal: document.getElementById('input-subtotal').value,
+    tax: document.getElementById('input-tax').value,
+    addons: document.getElementById('input-addons').value,
+    
+    firstName: formData.get("first_name"),
+    lastName: formData.get("last_name"),
+    email: formData.get("email"),
+    phone: formData.get("phone"),
+    zip: formData.get("zip"),
+    
+    // Address for Sheet records
+    address: `${formData.get('address1')}, ${formData.get('city')}, ${formData.get('state')} ${formData.get('zip')}, ${formData.get('country')}`,
+    
+    datesTimes: document.getElementById("summ-schedule-details").innerText,
+    status: "Pending Payment",
+    notes: notes
   };
 
   payBtn.disabled = true;
   payBtn.textContent = "Processing...";
 
   try {
-    const res = await fetch(GOOGLE_SHEETS_WEBAPP_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(payload).toString()
-    });
-
+    const res = await fetch(GOOGLE_URL, { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(payload).toString() });
     const json = await res.json();
-    
-    if (!json.success) {
-      throw new Error("Backend Error: " + (json.error || "Unknown server error"));
-    }
-    
-    if (!json.clientSecret) {
-      throw new Error("Stripe Error: No client secret returned. Check Stripe logs.");
-    }
+    if (!json.success) throw new Error(json.error || "Server Error");
 
     const result = await stripe.confirmCardPayment(json.clientSecret, {
-      payment_method: { 
-        card: cardElement, 
+      payment_method: {
+        card: cardElement,
         billing_details: { 
-          name: `${payload.firstName} ${payload.lastName}`,
-          email: payload.email,
-          phone: payload.phone,
-          address: {
-            postal_code: payload.zip,
-            country: document.getElementById('country-select').value
-          }
-        } 
+            name: `${payload.firstName} ${payload.lastName}`, 
+            email: payload.email, 
+            phone: payload.phone, 
+            address: { postal_code: formData.get('zip') } // ONLY SEND ZIP TO STRIPE
+        }
       }
     });
-
     if (result.error) throw new Error(result.error.message);
 
     if (result.paymentIntent.status === "succeeded") {
       payload.status = "PAID";
-      
-      await fetch(GOOGLE_SHEETS_WEBAPP_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(payload).toString()
-      });
+      payload.bookingId = json.bookingId;
+      fetch(GOOGLE_URL, { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(payload).toString(), keepalive: true });
 
-      payBtn.textContent = "Payment Successful ✔";
-      alert("Success! Check your email for confirmation.");
+      payBtn.textContent = "Success!";
+      startFireworks();
+      
+      // Show Modal
+      document.getElementById("lvl-success-modal").classList.add("lvl-modal-open");
+      
+      // Hide Payment UI
+      document.getElementById("lvl-stripe-payment-card").style.display = "none";
+      document.getElementById("lvl-save-proceed-btn").disabled = false;
+      document.getElementById("lvl-save-proceed-btn").textContent = "Save & Proceed";
     }
+
   } catch (err) {
-    alert("Payment Failed: " + err.message);
+    alert("Payment Error: " + err.message);
     payBtn.disabled = false;
     payBtn.textContent = "Pay Securely";
   }
 });
 </script>
 </section>
-
-<section id="lvl-faq" class="lvl-section-wrapper" aria-label="Frequently Asked Questions">
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the optimized route from the Strip to EDC 2026?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The official EDC shuttle route utilizes I-15 North with dedicated access lanes, bypassing general traffic congestion. This professionally optimized route reduces travel time by approximately 60% during peak festival hours (5:30 PM - 8:30 PM) compared to standard rideshare navigation."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How does EDC shuttle pricing compare to Uber or Lyft?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "EDC shuttle passes offer fixed pricing (starting at $105 for one-way). During peak festival hours, rideshare services like Uber and Lyft often experience 3x-5x surge pricing, leading to costs of $150-$250+ per ride. Shuttles are significantly more cost-effective for round-trip transportation."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Where is the Planet Hollywood shuttle pickup location?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The Planet Hollywood shuttle pickup is located on the lower level designated bus zone. It is an official, staff-assisted loading zone distinct from the general public rideshare pickup area."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What are the EDC shuttle operation hours?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Departure shuttles operate from 4:30 PM to 7:00 PM. Return service from the Speedway begins at 3:00 AM and continues through 5:30 AM. This schedule is optimized for the opening and closing ceremonies of the festival."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How much are 2026 EDC shuttle passes?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "For 2026, One-Way passes start at $105, Round-Trip passes start at $150, and Private Charter options start at $600 per trip. Pricing depends on the duration (1-3 days) and service level selected."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do EDC shuttle passes sell out?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. EDC Shuttle Passes are high-demand items that sell out annually, often months before the festival. Strip routes (like Planet Hollywood) are typically the first to sell out due to their central location."
-          }
-        }
-      ]
-    }
-    </script>
-
-    <style>
-        /* BLOCK 7 STYLES */
-        #lvl-faq {
-            --lvl-gold: #D4AF37;
-            --lvl-black: #050505;
-            background-color: var(--lvl-black);
-            padding: 100px 20px;
-            color: #fff;
-            border-top: 1px solid #222;
-        }
-        #lvl-faq .lvl-container { max-width: 800px; margin: 0 auto; }
-        #lvl-faq .lvl-title { 
-            font-family: 'Oswald', sans-serif; font-size: 48px; color: var(--lvl-gold); 
-            text-align: center; margin-bottom: 60px; text-transform: uppercase; 
-        }
-        
-        /* ACCORDION ITEM */
-        .lvl-accordion-item { border-bottom: 1px solid #333; margin-bottom: 10px; }
-        
-        /* BUTTON */
-        .lvl-accordion-btn {
-            width: 100%; text-align: left; background: transparent; border: none;
-            padding: 20px 0; color: #fff; font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600;
-            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
-            transition: color 0.3s;
-        }
-        .lvl-accordion-btn:hover { color: var(--lvl-gold); }
-        .lvl-accordion-btn span { color: var(--lvl-gold); font-size: 24px; transition: transform 0.3s; }
-        
-        /* CONTENT */
-        .lvl-accordion-content {
-            max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out;
-            color: #ccc; font-family: 'Inter', sans-serif; line-height: 1.6; font-size: 15px;
-            visibility: hidden; /* Added for accessibility hiding */
-        }
-        .lvl-accordion-content p { padding-bottom: 15px; margin: 0; }
-        
-        /* LISTS INSIDE FAQ */
-        .lvl-accordion-content ul { padding-left: 20px; margin-bottom: 20px; list-style-type: disc; }
-        .lvl-accordion-content li { margin-bottom: 5px; color: #bbb; }
-
-        /* ACTIVE STATE */
-        .lvl-active .lvl-accordion-btn span { transform: rotate(45deg); }
-        .lvl-active .lvl-accordion-content { 
-            max-height: 1000px; 
-            visibility: visible;
-        }
-
-        /* FINAL TAKEAWAY */
-        .lvl-faq-footer {
-            margin-top: 60px; padding: 40px; background: #111; border: 1px solid var(--lvl-gold);
-            text-align: center; border-radius: 8px;
-        }
-        .lvl-faq-footer h3 { font-family: 'Oswald', sans-serif; color: var(--lvl-gold); text-transform: uppercase; margin-bottom: 15px; font-size: 24px; }
-        .lvl-faq-footer p { font-family: 'Inter', sans-serif; color: #ccc; line-height: 1.6; margin-bottom: 20px; }
-    </style>
-
-    <div class="lvl-container">
-        <h2 class="lvl-title">Frequently Asked Questions</h2>
-
-        <div class="lvl-accordion-item">
-            <button class="lvl-accordion-btn" aria-expanded="false" aria-controls="faq-content-1" onclick="toggleFaq(this)">
-                What is the optimized route from the Strip to EDC 2026? <span>+</span>
-            </button>
-            <div id="faq-content-1" class="lvl-accordion-content">
-                <p>The official EDC shuttle route utilizes <strong>I-15 North</strong> with dedicated access lanes, bypassing general traffic congestion. This professionally optimized route reduces travel time by 60% during peak festival hours compared to standard navigation routes.</p>
-            </div>
-        </div>
-
-        <div class="lvl-accordion-item">
-            <button class="lvl-accordion-btn" aria-expanded="false" aria-controls="faq-content-2" onclick="toggleFaq(this)">
-                How does EDC shuttle pricing compare to rideshares? <span>+</span>
-            </button>
-            <div id="faq-content-2" class="lvl-accordion-content">
-                <p>EDC shuttle passes provide fixed pricing (starting at $105) with <strong>no surge charges</strong>. During peak festival hours, rideshare services typically experience 300-500% price surges, making shuttles significantly more cost-effective for round-trip transportation.</p>
-            </div>
-        </div>
-
-        <div class="lvl-accordion-item">
-            <button class="lvl-accordion-btn" aria-expanded="false" aria-controls="faq-content-3" onclick="toggleFaq(this)">
-                Are there multiple shuttle pickup locations? <span>+</span>
-            </button>
-            <div id="faq-content-3" class="lvl-accordion-content">
-                <p><strong>Planet Hollywood</strong> is one of several official EDC shuttle locations along the Las Vegas Strip. Additional professional pickup points include major resorts and designated transportation hubs, all with clearly marked zones and staff assistance.</p>
-            </div>
-        </div>
-
-        <div class="lvl-accordion-item">
-            <button class="lvl-accordion-btn" aria-expanded="false" aria-controls="faq-content-4" onclick="toggleFaq(this)">
-                What are the shuttle operation hours? <span>+</span>
-            </button>
-            <div id="faq-content-4" class="lvl-accordion-content">
-                <p>Shuttles operate from <strong>4:30 PM</strong> with multiple departures until 7:00 PM. Return service from the Speedway begins at 3:00 AM and continues through 5:30 AM. This schedule is optimized for festival entry and exit patterns.</p>
-            </div>
-        </div>
-
-        <div class="lvl-accordion-item">
-            <button class="lvl-accordion-btn" aria-expanded="false" aria-controls="faq-content-5" onclick="toggleFaq(this)">
-                What is EDC Las Vegas? <span>+</span>
-            </button>
-            <div id="faq-content-5" class="lvl-accordion-content">
-                <p>Electric Daisy Carnival Las Vegas (EDC) is the world’s largest electronic dance music festival, held annually at the <strong>Las Vegas Motor Speedway</strong>. EDC Vegas 2026 will feature hundreds of artists across multiple immersive stages, massive art installations, carnival rides, and all-night performances.</p>
-            </div>
-        </div>
-
-        <div class="lvl-accordion-item">
-            <button class="lvl-accordion-btn" aria-expanded="false" aria-controls="faq-content-6" onclick="toggleFaq(this)">
-                How much are EDC shuttle passes? <span>+</span>
-            </button>
-            <div id="faq-content-6" class="lvl-accordion-content">
-                <p>EDC Shuttle Pass prices vary by tier:</p>
-                <ul>
-                    <li><strong>One-Way:</strong> Starting at $105</li>
-                    <li><strong>Round-Trip:</strong> Starting at $150</li>
-                    <li><strong>Private Charter:</strong> Starting at $600 per trip</li>
-                </ul>
-                <p>Locking in your pass early usually guarantees the best price before tiers sell out.</p>
-            </div>
-        </div>
-
-        <div class="lvl-accordion-item">
-            <button class="lvl-accordion-btn" aria-expanded="false" aria-controls="faq-content-7" onclick="toggleFaq(this)">
-                When do EDC shuttle passes go on sale 2026? <span>+</span>
-            </button>
-            <div id="faq-content-7" class="lvl-accordion-content">
-                <p>For EDC 2026, shuttle passes are expected to go on sale late 2025 or early 2026. Demand is high every year, and early access is critical for securing preferred time slots.</p>
-            </div>
-        </div>
-
-        <div class="lvl-accordion-item">
-            <button class="lvl-accordion-btn" aria-expanded="false" aria-controls="faq-content-8" onclick="toggleFaq(this)">
-                Do EDC shuttle passes sell out? <span>+</span>
-            </button>
-            <div id="faq-content-8" class="lvl-accordion-content">
-                <p>Yes. EDC Shuttle Passes sell out every year, often weeks or months before the festival. Strip locations like Planet Hollywood often sell out first due to high density.</p>
-            </div>
-        </div>
-
-        <div class="lvl-accordion-item">
-            <button class="lvl-accordion-btn" aria-expanded="false" aria-controls="faq-content-9" onclick="toggleFaq(this)">
-                Is the EDC shuttle worth it? <span>+</span>
-            </button>
-            <div id="faq-content-9" class="lvl-accordion-content">
-                <p>Absolutely. If you value time, safety, predictability, and avoiding <strong>2–4 hour traffic delays</strong>, EDC Shuttle Passes are mission-critical. For most attendees, it’s the difference between arriving energized or exhausted.</p>
-            </div>
-        </div>
-
-        <div class="lvl-faq-footer">
-            <h3>Final Takeaway</h3>
-            <p>If you’re attending EDC Las Vegas 2026, transportation is not optional planning, it’s mission-critical.</p>
-            <p><strong>EDC Shuttle Passes 2026 remain the most reliable, least stressful, and most time-efficient way to get to and from the Speedway.</strong></p>
-            <p>Once they sell out, options shrink fast. If you’re going to EDC… secure your shuttle early and enjoy the ride.</p>
-        </div>
-
-    </div>
-
-    <script>
-        function toggleFaq(btn) {
-            const item = btn.parentNode;
-            const content = item.querySelector('.lvl-accordion-content');
-            
-            // Toggle Active Class
-            item.classList.toggle('lvl-active');
-            
-            // Accessibility: Update aria-expanded
-            const isExpanded = item.classList.contains('lvl-active');
-            btn.setAttribute('aria-expanded', isExpanded);
-        }
-    </script>
-</section>
-
-<section id="lvl-reviews" class="lvl-section-wrapper">
+  
+END OF BLOCK 6 - CHECKOUT
+  
+START OF BLOCK 7 - TRUST
+  
+  <section id="lvl-reviews" class="lvl-section-wrapper">
     
     <script type="application/ld+json">
     {
@@ -4329,8 +4305,242 @@ document.getElementById("stripe-pay-btn").addEventListener("click", async functi
         </div>
     </div>
 </section>
+  
+  <section id="lvl-faq" class="lvl-section-wrapper" aria-label="Frequently Asked Questions">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the optimized route from the Strip to EDC 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The official EDC shuttle route utilizes I-15 North with dedicated access lanes, bypassing general traffic congestion. This professionally optimized route reduces travel time by approximately 60% during peak festival hours (5:30 PM - 8:30 PM) compared to standard rideshare navigation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does EDC shuttle pricing compare to Uber or Lyft?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "EDC shuttle passes offer fixed pricing (starting at $105 for one-way). During peak festival hours, rideshare services like Uber and Lyft often experience 3x-5x surge pricing, leading to costs of $150-$250+ per ride. Shuttles are significantly more cost-effective for round-trip transportation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is the Planet Hollywood shuttle pickup location?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Planet Hollywood shuttle pickup is located on the lower level designated bus zone. It is an official, staff-assisted loading zone distinct from the general public rideshare pickup area."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the EDC shuttle operation hours?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Departure shuttles operate from 4:30 PM to 7:00 PM. Return service from the Speedway begins at 3:00 AM and continues through 5:30 AM. This schedule is optimized for the opening and closing ceremonies of the festival."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much are 2026 EDC shuttle passes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For 2026, One-Way passes start at $105, Round-Trip passes start at $150, and Private Charter options start at $600 per trip. Pricing depends on the duration (1-3 days) and service level selected."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do EDC shuttle passes sell out?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. EDC Shuttle Passes are high-demand items that sell out annually, often months before the festival. Strip routes (like Planet Hollywood) are typically the first to sell out due to their central location."
+          }
+        }
+      ]
+    }
+    </script>
 
-<div id="lvl-footer-wrapper">
+    <style>
+        /* BLOCK 7 STYLES */
+        #lvl-faq {
+            --lvl-gold: #D4AF37;
+            --lvl-black: #050505;
+            background-color: var(--lvl-black);
+            padding: 100px 20px;
+            color: #fff;
+            border-top: 1px solid #222;
+        }
+        #lvl-faq .lvl-container { max-width: 800px; margin: 0 auto; }
+        #lvl-faq .lvl-title { 
+            font-family: 'Oswald', sans-serif; font-size: 48px; color: var(--lvl-gold); 
+            text-align: center; margin-bottom: 60px; text-transform: uppercase; 
+        }
+        
+        /* ACCORDION ITEM */
+        .lvl-accordion-item { border-bottom: 1px solid #333; margin-bottom: 10px; }
+        
+        /* BUTTON */
+        .lvl-accordion-btn {
+            width: 100%; text-align: left; background: transparent; border: none;
+            padding: 20px 0; color: #fff; font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600;
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            transition: color 0.3s;
+        }
+        .lvl-accordion-btn:hover { color: var(--lvl-gold); }
+        .lvl-accordion-btn span { color: var(--lvl-gold); font-size: 24px; transition: transform 0.3s; }
+        
+        /* CONTENT */
+        .lvl-accordion-content {
+            max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out;
+            color: #ccc; font-family: 'Inter', sans-serif; line-height: 1.6; font-size: 15px;
+            visibility: hidden; /* Added for accessibility hiding */
+        }
+        .lvl-accordion-content p { padding-bottom: 15px; margin: 0; }
+        
+        /* LISTS INSIDE FAQ */
+        .lvl-accordion-content ul { padding-left: 20px; margin-bottom: 20px; list-style-type: disc; }
+        .lvl-accordion-content li { margin-bottom: 5px; color: #bbb; }
+
+        /* ACTIVE STATE */
+        .lvl-active .lvl-accordion-btn span { transform: rotate(45deg); }
+        .lvl-active .lvl-accordion-content { 
+            max-height: 1000px; 
+            visibility: visible;
+        }
+
+        /* FINAL TAKEAWAY */
+        .lvl-faq-footer {
+            margin-top: 60px; padding: 40px; background: #111; border: 1px solid var(--lvl-gold);
+            text-align: center; border-radius: 8px;
+        }
+        .lvl-faq-footer h3 { font-family: 'Oswald', sans-serif; color: var(--lvl-gold); text-transform: uppercase; margin-bottom: 15px; font-size: 24px; }
+        .lvl-faq-footer p { font-family: 'Inter', sans-serif; color: #ccc; line-height: 1.6; margin-bottom: 20px; }
+    </style>
+
+    <div class="lvl-container">
+        <h2 class="lvl-title">Frequently Asked Questions</h2>
+
+        <div class="lvl-accordion-item">
+            <button class="lvl-accordion-btn" aria-expanded="false" aria-controls="faq-content-1" onclick="toggleFaq(this)">
+                What is the optimized route from the Strip to EDC 2026? <span>+</span>
+            </button>
+            <div id="faq-content-1" class="lvl-accordion-content">
+                <p>The official EDC shuttle route utilizes <strong>I-15 North</strong> with dedicated access lanes, bypassing general traffic congestion. This professionally optimized route reduces travel time by 60% during peak festival hours compared to standard navigation routes.</p>
+            </div>
+        </div>
+
+        <div class="lvl-accordion-item">
+            <button class="lvl-accordion-btn" aria-expanded="false" aria-controls="faq-content-2" onclick="toggleFaq(this)">
+                How does EDC shuttle pricing compare to rideshares? <span>+</span>
+            </button>
+            <div id="faq-content-2" class="lvl-accordion-content">
+                <p>EDC shuttle passes provide fixed pricing (starting at $105) with <strong>no surge charges</strong>. During peak festival hours, rideshare services typically experience 300-500% price surges, making shuttles significantly more cost-effective for round-trip transportation.</p>
+            </div>
+        </div>
+
+        <div class="lvl-accordion-item">
+            <button class="lvl-accordion-btn" aria-expanded="false" aria-controls="faq-content-3" onclick="toggleFaq(this)">
+                Are there multiple shuttle pickup locations? <span>+</span>
+            </button>
+            <div id="faq-content-3" class="lvl-accordion-content">
+                <p><strong>Planet Hollywood</strong> is one of several official EDC shuttle locations along the Las Vegas Strip. Additional professional pickup points include major resorts and designated transportation hubs, all with clearly marked zones and staff assistance.</p>
+            </div>
+        </div>
+
+        <div class="lvl-accordion-item">
+            <button class="lvl-accordion-btn" aria-expanded="false" aria-controls="faq-content-4" onclick="toggleFaq(this)">
+                What are the shuttle operation hours? <span>+</span>
+            </button>
+            <div id="faq-content-4" class="lvl-accordion-content">
+                <p>Shuttles operate from <strong>4:30 PM</strong> with multiple departures until 7:00 PM. Return service from the Speedway begins at 3:00 AM and continues through 5:30 AM. This schedule is optimized for festival entry and exit patterns.</p>
+            </div>
+        </div>
+
+        <div class="lvl-accordion-item">
+            <button class="lvl-accordion-btn" aria-expanded="false" aria-controls="faq-content-5" onclick="toggleFaq(this)">
+                What is EDC Las Vegas? <span>+</span>
+            </button>
+            <div id="faq-content-5" class="lvl-accordion-content">
+                <p>Electric Daisy Carnival Las Vegas (EDC) is the world’s largest electronic dance music festival, held annually at the <strong>Las Vegas Motor Speedway</strong>. EDC Vegas 2026 will feature hundreds of artists across multiple immersive stages, massive art installations, carnival rides, and all-night performances.</p>
+            </div>
+        </div>
+
+        <div class="lvl-accordion-item">
+            <button class="lvl-accordion-btn" aria-expanded="false" aria-controls="faq-content-6" onclick="toggleFaq(this)">
+                How much are EDC shuttle passes? <span>+</span>
+            </button>
+            <div id="faq-content-6" class="lvl-accordion-content">
+                <p>EDC Shuttle Pass prices vary by tier:</p>
+                <ul>
+                    <li><strong>One-Way:</strong> Starting at $105</li>
+                    <li><strong>Round-Trip:</strong> Starting at $150</li>
+                    <li><strong>Private Charter:</strong> Starting at $600 per trip</li>
+                </ul>
+                <p>Locking in your pass early usually guarantees the best price before tiers sell out.</p>
+            </div>
+        </div>
+
+        <div class="lvl-accordion-item">
+            <button class="lvl-accordion-btn" aria-expanded="false" aria-controls="faq-content-7" onclick="toggleFaq(this)">
+                When do EDC shuttle passes go on sale 2026? <span>+</span>
+            </button>
+            <div id="faq-content-7" class="lvl-accordion-content">
+                <p>For EDC 2026, shuttle passes are expected to go on sale late 2025 or early 2026. Demand is high every year, and early access is critical for securing preferred time slots.</p>
+            </div>
+        </div>
+
+        <div class="lvl-accordion-item">
+            <button class="lvl-accordion-btn" aria-expanded="false" aria-controls="faq-content-8" onclick="toggleFaq(this)">
+                Do EDC shuttle passes sell out? <span>+</span>
+            </button>
+            <div id="faq-content-8" class="lvl-accordion-content">
+                <p>Yes. EDC Shuttle Passes sell out every year, often weeks or months before the festival. Strip locations like Planet Hollywood often sell out first due to high density.</p>
+            </div>
+        </div>
+
+        <div class="lvl-accordion-item">
+            <button class="lvl-accordion-btn" aria-expanded="false" aria-controls="faq-content-9" onclick="toggleFaq(this)">
+                Is the EDC shuttle worth it? <span>+</span>
+            </button>
+            <div id="faq-content-9" class="lvl-accordion-content">
+                <p>Absolutely. If you value time, safety, predictability, and avoiding <strong>2–4 hour traffic delays</strong>, EDC Shuttle Passes are mission-critical. For most attendees, it’s the difference between arriving energized or exhausted.</p>
+            </div>
+        </div>
+
+        <div class="lvl-faq-footer">
+            <h3>Final Takeaway</h3>
+            <p>If you’re attending EDC Las Vegas 2026, transportation is not optional planning, it’s mission-critical.</p>
+            <p><strong>EDC Shuttle Passes 2026 remain the most reliable, least stressful, and most time-efficient way to get to and from the Speedway.</strong></p>
+            <p>Once they sell out, options shrink fast. If you’re going to EDC… secure your shuttle early and enjoy the ride.</p>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleFaq(btn) {
+            const item = btn.parentNode;
+            const content = item.querySelector('.lvl-accordion-content');
+            
+            // Toggle Active Class
+            item.classList.toggle('lvl-active');
+            
+            // Accessibility: Update aria-expanded
+            const isExpanded = item.classList.contains('lvl-active');
+            btn.setAttribute('aria-expanded', isExpanded);
+        }
+    </script>
+</section>
+
+END OF BLOCK 7 - TRUST
+  
+START OF BLOCK 8 - FOOTERT
+  
+  <div id="lvl-footer-wrapper">
 
     <script type="application/ld+json">
     {
@@ -4357,8 +4567,12 @@ document.getElementById("stripe-pay-btn").addEventListener("click", async functi
         { "@type": "Place", "name": "Las Vegas Motor Speedway" }
       ],
       "sameAs": [
-        "https://www.facebook.com/LasVegasPartyBus",
-        "https://www.instagram.com/lasvegaspartybus"
+        "https://www.tiktok.com/@edcshuttle",
+        "https://www.youtube.com/@EDCShuttle",
+        "https://www.linkedin.com/company/edcshuttle/",
+        "https://x.com/EDCShuttle",
+        "https://www.instagram.com/edcshuttle?igsh=MXY3ZjVyY2lvaXdweQ%3D%3D",
+        "https://www.facebook.com/EDCShuttleLasVegas?mibextid=ZbWKwL"
       ]
     }
     </script>
@@ -4537,7 +4751,7 @@ document.getElementById("stripe-pay-btn").addEventListener("click", async functi
             gap: 1.5rem;
         }
         .copyright { color: var(--text-muted); font-size: 0.85rem; text-align: center; }
-        .social-links { display: flex; gap: 1rem; }
+        .social-links { display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
         .social-link {
             width: 40px; height: 40px; border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.05); display: flex;
@@ -4647,10 +4861,14 @@ document.getElementById("stripe-pay-btn").addEventListener("click", async functi
                 <div class="copyright">
                     &copy; <span id="currentYear"></span> EDC Shuttle (Sub. Las Vegas Party Bus). All rights reserved.
                 </div>
+                
                 <div class="social-links">
-                    <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@edcshuttle" class="social-link" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.youtube.com/@EDCShuttle" class="social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/edcshuttle?igsh=MXY3ZjVyY2lvaXdweQ%3D%3D" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/EDCShuttleLasVegas?mibextid=ZbWKwL" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/EDCShuttle" class="social-link" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer"><i class="fab fa-x"></i></a>
+                    <a href="https://www.linkedin.com/company/edcshuttle/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
         </div>
@@ -4751,16 +4969,7 @@ document.getElementById("stripe-pay-btn").addEventListener("click", async functi
                     caption: "Parent Company: The premier provider of luxury party bus and Sprinter van transportation."
                 },
                 { 
-                    img: "https://lasvegaspartybuses.com/wp-content/uploads/2022/08/Epic-Models-Talent-Logo.png", 
-                    alt: "EPIC Models and Talent Agency",
-                    caption: "Partner: Staffing professional brand ambassadors for major Las Vegas events."
-                },
-                { 
-                    img: "https://lasvegaspartybuses.com/wp-content/uploads/2022/08/Las-Vegas-Poker-Training-Logo.png", 
-                    alt: "Las Vegas Poker Training",
-                    caption: "Partner: Expert-led poker coaching and corporate team-building events."
-                },
-                { 
+                    
                     img: "https://lasvegaspartybuses.com/wp-content/uploads/2022/08/City-VIP-Concierge-Logo.png", 
                     alt: "City VIP Concierge Las Vegas",
                     caption: "Partner: Exclusive concierge services for VIP nightlife access."
@@ -4825,5 +5034,3 @@ document.getElementById("stripe-pay-btn").addEventListener("click", async functi
         });
     </script>
 </div>
-
-
