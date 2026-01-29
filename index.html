@@ -335,7 +335,7 @@
         #lvl-features .option-icon {
             width: 192px; 
             height: 192px;
-            background: linear-gradient(135deg, rgba(255, 103, 0, 0.1), rgba(255, 103, 0, 0.05));
+            background: linear-gradient(135deg, rgba(10, 255, 10, 0.4), rgba(10, 255, 10, 0.02));
             border-radius: 24px; /* Increased radius slightly for larger size */
             display: flex; align-items: center; justify-content: center;
             margin-bottom: 24px; border: 1px solid rgba(255, 103, 0, 0.2);
@@ -366,7 +366,7 @@
             
             <a href="#standard-shuttles" class="transportation-option">
                 <div class="option-icon">
-                    <img src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/69759024a87beb7fefbcbb23.png" alt="Standard Shuttle Bus" loading="lazy">
+                    <img src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/69783722a87beb03382d1abc.png" alt="Standard Shuttle Bus" loading="lazy">
                 </div>
                 <h3>Standard Shuttles</h3>
                 <p>Official <strong>Party Bus</strong> transportation. Departures are from Planet Hollywood Resort and Casino on The Strip. 60-90 minute avg. travel time.</p>
@@ -374,7 +374,7 @@
             
             <a href="#premium-service" class="transportation-option">
                 <div class="option-icon">
-                    <img src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/69759024eb392b11af3c76ca.png" alt="Premium VIP Service" loading="lazy">
+                    <img src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/6978372229dcf53d12a9839b.png" loading="lazy">
                 </div>
                 <h3>Premium Service</h3>
                 <p>Voted Best Party Buses in Las Vegas with on-board <strong>state of the art sound system</strong>, AC, and alcohol allowed. Skip the standard lines & grab a free T-Shirt.</p>
@@ -382,7 +382,7 @@
             
             <a href="#group-transport" class="transportation-option">
                 <div class="option-icon">
-                    <img src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/69759024eb392b62b53c76c9.png" alt="Group Transport" loading="lazy">
+                    <img src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/69783722a87bebaac12d1abd.png" loading="lazy">
                 </div>
                 <h3>Group Transport</h3>
                 <p>Dedicated vehicles for groups and organizations attending EDC 2026. Custom pickup locations available.</p>
@@ -400,8 +400,35 @@
         })();
     </script>
 </section>
+  
+  END OF BLOCK 1 - HERO & FEATURES
 
-  <section id="lvl-uv-promo" class="lvl-section-wrapper" aria-label="Exclusive Free Gift Promotion">
+  START OF BLOCK 2 - GLOW SHIRT GIVEAWAY
+  
+ <section id="lvl-uv-promo" class="lvl-section-wrapper" aria-label="Exclusive Free Gift Promotion">
+    
+    <!-- SCROLL MESSAGE OVERLAY -->
+    <div class="lvl-scroll-message-overlay">
+      <div class="lvl-scroll-message">
+        <div class="lvl-message-container">
+          <div class="lvl-promo-message">
+            <div class="lvl-line" data-word="1">FREE</div>
+            <div class="lvl-line" data-word="2">GLOW</div>
+            <div class="lvl-line" data-word="3">SHIRT</div>
+            <div class="lvl-line" data-word="4">WITH</div>
+            <div class="lvl-line" data-word="5">EVERY</div>
+            <div class="lvl-line" data-word="6">PURCHASE!</div>
+          </div>
+          <div class="lvl-scroll-hint">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 5v14M12 19l4-4M12 19l-4-4"/>
+            </svg>
+            <span>Scroll to reveal</span>
+          </div>
+        </div>
+      </div>
+      <button class="lvl-close-message" aria-label="Close message">×</button>
+    </div>
     
     <script type="application/ld+json">
     {
@@ -555,7 +582,233 @@
             box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
         }
 
-        /* RESPONSIVE LOGIC */
+        /* SCROLL MESSAGE ANIMATION STYLES */
+        .lvl-scroll-message-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 5, 0.97);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .lvl-scroll-message-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+
+        .lvl-scroll-message {
+            max-width: 800px;
+            width: 90%;
+            text-align: center;
+            padding: 40px;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+        }
+
+        .lvl-scroll-message-overlay.active .lvl-scroll-message {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .lvl-message-container {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(57, 255, 20, 0.05) 100%);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 60px 30px;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.8),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .lvl-promo-message {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 40px;
+            min-height: 450px;
+            justify-content: center;
+        }
+
+        .lvl-line {
+            font-family: var(--lvl-font-heading);
+            font-size: 72px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: rgba(212, 175, 55, 0.1);
+            line-height: 1;
+            text-shadow: 
+                0 0 5px rgba(212, 175, 55, 0.1),
+                0 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 3px;
+            position: relative;
+            opacity: 0.3;
+            transform: translateX(-20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: blur(2px);
+        }
+
+        .lvl-line.active {
+            color: #D4AF37;
+            opacity: 1;
+            transform: translateX(0);
+            filter: blur(0);
+            text-shadow: 
+                0 0 20px rgba(212, 175, 55, 0.5),
+                0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .lvl-line.active:nth-child(6) {
+            color: #ff0033;
+            text-shadow: 
+                0 0 30px rgba(255, 0, 51, 0.7),
+                0 0 60px rgba(255, 0, 51, 0.4);
+        }
+
+        .lvl-line.active:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #39ff14, transparent);
+            animation: lvl-lineGlow 2s infinite;
+        }
+
+        @keyframes lvl-lineGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .lvl-scroll-hint {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: rgba(212, 175, 55, 0.6);
+            font-family: var(--lvl-font-body);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: lvl-hintPulse 2s infinite;
+        }
+
+        .lvl-scroll-hint svg {
+            animation: lvl-arrowBounce 1.5s infinite;
+        }
+
+        @keyframes lvl-hintPulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes lvl-arrowBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(5px); }
+        }
+
+        /* Close button */
+        .lvl-close-message {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: transparent;
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            color: #D4AF37;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10001;
+            font-weight: 300;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .lvl-scroll-message-overlay.active .lvl-close-message {
+            opacity: 1;
+            pointer-events: all;
+            transition-delay: 1s;
+        }
+
+        .lvl-close-message:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: #D4AF37;
+            transform: rotate(90deg);
+        }
+
+        /* Body scroll lock */
+        body.scroll-locked {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Responsive adjustments for scroll message */
+        @media (max-width: 900px) {
+            .lvl-line {
+                font-size: 56px;
+            }
+            
+            .lvl-message-container {
+                padding: 40px 20px;
+            }
+            
+            .lvl-promo-message {
+                min-height: 380px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .lvl-line {
+                font-size: 42px;
+                letter-spacing: 2px;
+            }
+            
+            .lvl-promo-message {
+                gap: 8px;
+                min-height: 320px;
+            }
+            
+            .lvl-close-message {
+                top: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .lvl-line {
+                font-size: 36px;
+            }
+            
+            .lvl-promo-message {
+                min-height: 280px;
+            }
+        }
+
+        /* RESPONSIVE LOGIC for main block */
         @media (min-width: 701px) and (max-width: 900px) {
             #lvl-uv-promo .lvl-container { grid-template-columns: 1fr; gap: 60px; }
             #lvl-uv-promo .lvl-content-col { order: 2; }
@@ -642,9 +895,196 @@
                 scrollTrigger: { trigger: "#lvl-uv-promo", start: "top 70%" },
                 x: 50, opacity: 0, duration: 1, delay: 0.2, ease: "power3.out"
             });
+
+            /* SCROLL MESSAGE ANIMATION LOGIC */
+            const overlay = document.querySelector('.lvl-scroll-message-overlay');
+            const promoSection = document.querySelector('#lvl-uv-promo');
+            const closeBtn = document.querySelector('.lvl-close-message');
+            const words = document.querySelectorAll('.lvl-line');
+            const body = document.body;
+            
+            let messageShown = false;
+            let currentWord = 0;
+            let scrollLocked = false;
+            let block2Position = 0;
+            
+            // Function to lock scroll on Block 2
+            function lockScroll() {
+                if (!scrollLocked) {
+                    block2Position = promoSection.getBoundingClientRect().top + window.pageYOffset;
+                    body.style.top = `-${window.pageYOffset}px`;
+                    body.classList.add('scroll-locked');
+                    scrollLocked = true;
+                }
+            }
+            
+            // Function to unlock scroll
+            function unlockScroll() {
+                if (scrollLocked) {
+                    body.classList.remove('scroll-locked');
+                    body.style.top = '';
+                    window.scrollTo(0, block2Position);
+                    scrollLocked = false;
+                }
+            }
+            
+            // Function to reveal next word
+            function revealNextWord() {
+                if (currentWord < words.length) {
+                    // Activate current word
+                    words[currentWord].classList.add('active');
+                    
+                    // Add slight delay before next word can be revealed
+                    currentWord++;
+                    
+                    // If all words revealed, make close button more visible
+                    if (currentWord === words.length) {
+                        setTimeout(() => {
+                            closeBtn.style.opacity = '1';
+                            closeBtn.style.transform = 'scale(1.1)';
+                            setTimeout(() => {
+                                closeBtn.style.transform = 'scale(1)';
+                            }, 300);
+                        }, 300);
+                    }
+                    return true;
+                }
+                return false;
+            }
+            
+            // Function to close overlay
+            function closeOverlay() {
+                overlay.classList.remove('active');
+                unlockScroll();
+                messageShown = true;
+                
+                // Reset words for potential reuse
+                words.forEach(word => word.classList.remove('active'));
+                currentWord = 0;
+                closeBtn.style.opacity = '';
+                closeBtn.style.transform = '';
+            }
+            
+            // Close button functionality
+            closeBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                closeOverlay();
+            });
+            
+            // Escape key to close
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && overlay.classList.contains('active')) {
+                    closeOverlay();
+                }
+            });
+            
+            // Scroll detection for showing overlay
+            function checkForOverlay() {
+                if (messageShown) return;
+                
+                const sectionRect = promoSection.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                
+                // Show overlay when block 2 is centered in viewport
+                if (
+                    sectionRect.top < windowHeight * 0.6 && 
+                    sectionRect.bottom > windowHeight * 0.4
+                ) {
+                    showOverlay();
+                }
+            }
+            
+            // Function to show overlay
+            function showOverlay() {
+                if (messageShown) return;
+                
+                overlay.classList.add('active');
+                lockScroll();
+                
+                // Show first word immediately
+                setTimeout(() => {
+                    revealNextWord();
+                }, 800);
+                
+                // Add scroll listener for revealing words
+                function handleScroll(e) {
+                    e.preventDefault();
+                    revealNextWord();
+                }
+                
+                // Use wheel event for desktop, touch events for mobile
+                window.addEventListener('wheel', handleScroll, { passive: false });
+                window.addEventListener('touchmove', handleScroll, { passive: false });
+                
+                // Store reference to remove later
+                overlay._scrollHandler = handleScroll;
+            }
+            
+            // Remove scroll listeners when overlay closes
+            overlay.addEventListener('transitionend', function(e) {
+                if (e.target === overlay && !overlay.classList.contains('active')) {
+                    if (overlay._scrollHandler) {
+                        window.removeEventListener('wheel', overlay._scrollHandler);
+                        window.removeEventListener('touchmove', overlay._scrollHandler);
+                    }
+                }
+            });
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkForOverlay);
+            
+            // Also check on page load
+            window.addEventListener('load', function() {
+                // Delay to ensure page is stable
+                setTimeout(checkForOverlay, 500);
+            });
+            
+            // Fallback: Auto-reveal words if user doesn't scroll
+            overlay.addEventListener('transitionend', function(e) {
+                if (e.target === document.querySelector('.lvl-scroll-message') && 
+                    overlay.classList.contains('active')) {
+                    
+                    // Start auto-reveal after 3 seconds of inactivity
+                    let autoReveal = setTimeout(() => {
+                        let interval = setInterval(() => {
+                            if (!revealNextWord()) {
+                                clearInterval(interval);
+                                // Auto-close after all words revealed
+                                setTimeout(() => {
+                                    if (overlay.classList.contains('active')) {
+                                        closeOverlay();
+                                    }
+                                }, 2000);
+                            }
+                        }, 800);
+                    }, 3000);
+                    
+                    // Store reference to clear if user interacts
+                    overlay._autoReveal = autoReveal;
+                }
+            });
+            
+            // Clear auto-reveal on any interaction
+            overlay.addEventListener('wheel', () => {
+                if (overlay._autoReveal) {
+                    clearTimeout(overlay._autoReveal);
+                    overlay._autoReveal = null;
+                }
+            });
+            
+            overlay.addEventListener('touchmove', () => {
+                if (overlay._autoReveal) {
+                    clearTimeout(overlay._autoReveal);
+                    overlay._autoReveal = null;
+                }
+            });
         })();
     </script>
 </section>
+
+END OF BLOCK 2 - FREE GLOW SHIRT GIVEAWAY
+  
+START OF BLOCK 3 - PURCHASE CARDS
   
 <section id="lvl-options" class="lvl-section-wrapper" aria-label="Shuttle Pass Booking Configuration">
     
@@ -1815,6 +2255,10 @@ const PRIVATE_TIMES_RETURN = [
    </script>
 </section>
   
+  END OF BLOCK 3 - PURCHASE CARDS
+  
+  START OF BLOCK 4 - MY EDC LINEUP
+  
   <section id="lvl-schedule" class="lvl-section-wrapper" aria-label="EDC Las Vegas 2026 Set Times">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -2847,6 +3291,10 @@ const PRIVATE_TIMES_RETURN = [
     }, 800);
 </script>
 </section>
+  
+  END OF BLOCK 4 - MY EDC LINEUP
+  
+  START OF BLOCK 5 - MAP
 
 <section id="lvl-route" class="lvl-section-wrapper" aria-label="Official Shuttle Route & Traffic Info">
     
@@ -3390,6 +3838,10 @@ const PRIVATE_TIMES_RETURN = [
         });
     </script>
 </section>
+
+END OF BLOCK 5 - MAP
+  
+START OF BLOCK 6 - CHECKOUT
   
   <section id="lvl-checkout" class="lvl-section-wrapper lvl-hidden-checkout" aria-label="Secure Payment Terminal">
   <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
@@ -4070,6 +4522,10 @@ document.getElementById("stripe-pay-btn").addEventListener("click", async functi
 </script>
 </section>
   
+END OF BLOCK 6 - CHECKOUT
+  
+START OF BLOCK 7 - TRUST
+  
   <section id="lvl-reviews" class="lvl-section-wrapper">
     
     <script type="application/ld+json">
@@ -4302,6 +4758,10 @@ document.getElementById("stripe-pay-btn").addEventListener("click", async functi
     </div>
 </section>
   
+END OF BLOCK 7 - TRUST
+  
+START OF BLOCK 8 - 
+  
   <section id="lvl-faq" class="lvl-section-wrapper" aria-label="Frequently Asked Questions">
     
     <script type="application/ld+json">
@@ -4531,6 +4991,10 @@ document.getElementById("stripe-pay-btn").addEventListener("click", async functi
         }
     </script>
 </section>
+
+END OF BLOCK 7 - TRUST
+  
+START OF BLOCK 8 - FOOTERT
   
   <div id="lvl-footer-wrapper">
 
@@ -5026,3 +5490,5 @@ document.getElementById("stripe-pay-btn").addEventListener("click", async functi
         });
     </script>
 </div>
+
+End of Block 8 - FOOTER
