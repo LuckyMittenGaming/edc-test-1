@@ -400,35 +400,8 @@
         })();
     </script>
 </section>
-  
-  END OF BLOCK 1 - HERO & FEATURES
 
-  START OF BLOCK 2 - GLOW SHIRT GIVEAWAY
-  
- <section id="lvl-uv-promo" class="lvl-section-wrapper" aria-label="Exclusive Free Gift Promotion">
-    
-    <!-- SCROLL MESSAGE OVERLAY -->
-    <div class="lvl-scroll-message-overlay">
-      <div class="lvl-scroll-message">
-        <div class="lvl-message-container">
-          <div class="lvl-promo-message">
-            <div class="lvl-line" data-word="1">FREE</div>
-            <div class="lvl-line" data-word="2">GLOW</div>
-            <div class="lvl-line" data-word="3">SHIRT</div>
-            <div class="lvl-line" data-word="4">WITH</div>
-            <div class="lvl-line" data-word="5">EVERY</div>
-            <div class="lvl-line" data-word="6">PURCHASE!</div>
-          </div>
-          <div class="lvl-scroll-hint">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 5v14M12 19l4-4M12 19l-4-4"/>
-            </svg>
-            <span>Scroll to reveal</span>
-          </div>
-        </div>
-      </div>
-      <button class="lvl-close-message" aria-label="Close message">×</button>
-    </div>
+  <section id="lvl-uv-promo" class="lvl-section-wrapper" aria-label="Exclusive Free Gift Promotion">
     
     <script type="application/ld+json">
     {
@@ -451,6 +424,23 @@
       }
     }
     </script>
+
+    <!-- SAFE GLOW OVERLAY -->
+    <div id="lvl-glow-overlay">
+      <div class="lvl-glow-box">
+        <button class="lvl-glow-close">×</button>
+        <div class="lvl-glow-eyebrow">Your Exclusive 2026 EDC Upgrade</div>
+        <h2 class="lvl-glow-title">1 FREE GLOW KIT</h2>
+        <p class="lvl-glow-copy">Complete your shuttle pass or private booking and instantly unlock:</p>
+        <ul class="lvl-glow-list">
+          <li>UV Glow Shirt</li>
+          <li>UV Keychain</li>
+          <li>UV Pen</li>
+        </ul>
+        <a href="#lvl-options" class="lvl-glow-cta">Claim My Free Kit</a>
+        <div class="lvl-glow-footnote">Free kit guaranteed for the first 200 purchases</div>
+      </div>
+    </div>
 
     <style>
         /* BLOCK 2 STYLES */
@@ -582,233 +572,68 @@
             box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
         }
 
-        /* SCROLL MESSAGE ANIMATION STYLES */
-        .lvl-scroll-message-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(5, 5, 5, 0.97);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            pointer-events: none;
+        /* OVERLAY STYLES */
+        #lvl-glow-overlay{
+            position:fixed; inset:0;
+            background:rgba(0,0,0,0.8);
+            backdrop-filter:blur(10px);
+            display:flex; align-items:center; justify-content:center;
+            z-index:9999;
+            opacity:0; pointer-events:none;
+            transition:.5s ease;
+        }
+        #lvl-glow-overlay.active{opacity:1; pointer-events:auto;}
+        .lvl-glow-box{
+            background:#050505; border:2px solid #D4AF37;
+            padding:50px; border-radius:16px;
+            max-width:520px; width:90%;
+            text-align:center; color:#fff;
+            box-shadow:0 0 80px rgba(212,175,55,.4);
+            position:relative;
+        }
+        .lvl-glow-close{
+            position:absolute;top:15px;right:20px;background:none;border:none;
+            color:#D4AF37;font-size:28px;cursor:pointer;line-height:1;padding:0;
+            width:30px;height:30px;display:flex;align-items:center;justify-content:center;
+        }
+        .lvl-glow-eyebrow{
+            color:#39ff14;font-family:'Oswald', sans-serif;text-transform:uppercase;
+            letter-spacing:3px;margin-bottom:10px;font-size:14px;
+        }
+        .lvl-glow-title{
+            font-family:'Oswald', sans-serif;font-size:42px;color:#D4AF37;
+            margin-bottom:15px;line-height:1.1;
+        }
+        .lvl-glow-copy{
+            color:#ccc;margin-bottom:15px;font-family:'Inter', sans-serif;
+            font-size:16px;line-height:1.5;
+        }
+        .lvl-glow-list{
+            list-style:none;padding:0;margin:0 0 25px;
+            font-family:'Inter', sans-serif;font-size:18px;
+        }
+        .lvl-glow-list li{
+            margin:8px 0;color:#fff;padding:8px 0;
+            border-bottom:1px solid rgba(255,255,255,0.1);
+        }
+        .lvl-glow-list li:last-child{border-bottom:none;}
+        .lvl-glow-cta{
+            display:inline-block;padding:16px 36px;background:#D4AF37;
+            color:#000;border-radius:30px;font-family:'Oswald', sans-serif;
+            text-decoration:none;text-transform:uppercase;letter-spacing:2px;
+            font-weight:700;font-size:18px;transition:all 0.3s ease;
+        }
+        .lvl-glow-cta:hover{
+            background:#e6c158;box-shadow:0 0 30px rgba(212,175,55,0.6);
+            transform:translateY(-2px);
+        }
+        .lvl-glow-footnote{
+            margin-top:15px;color:#ff4444;font-size:12px;
+            text-transform:uppercase;font-family:'Inter', sans-serif;
+            letter-spacing:1px;
         }
 
-        .lvl-scroll-message-overlay.active {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: all;
-        }
-
-        .lvl-scroll-message {
-            max-width: 800px;
-            width: 90%;
-            text-align: center;
-            padding: 40px;
-            transform: translateY(50px);
-            opacity: 0;
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
-        }
-
-        .lvl-scroll-message-overlay.active .lvl-scroll-message {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .lvl-message-container {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(57, 255, 20, 0.05) 100%);
-            border: 2px solid rgba(212, 175, 55, 0.3);
-            border-radius: 20px;
-            padding: 60px 30px;
-            box-shadow: 
-                0 20px 60px rgba(0, 0, 0, 0.8),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .lvl-promo-message {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: center;
-            margin-bottom: 40px;
-            min-height: 450px;
-            justify-content: center;
-        }
-
-        .lvl-line {
-            font-family: var(--lvl-font-heading);
-            font-size: 72px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: rgba(212, 175, 55, 0.1);
-            line-height: 1;
-            text-shadow: 
-                0 0 5px rgba(212, 175, 55, 0.1),
-                0 2px 4px rgba(0, 0, 0, 0.5);
-            letter-spacing: 3px;
-            position: relative;
-            opacity: 0.3;
-            transform: translateX(-20px);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            filter: blur(2px);
-        }
-
-        .lvl-line.active {
-            color: #D4AF37;
-            opacity: 1;
-            transform: translateX(0);
-            filter: blur(0);
-            text-shadow: 
-                0 0 20px rgba(212, 175, 55, 0.5),
-                0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .lvl-line.active:nth-child(6) {
-            color: #ff0033;
-            text-shadow: 
-                0 0 30px rgba(255, 0, 51, 0.7),
-                0 0 60px rgba(255, 0, 51, 0.4);
-        }
-
-        .lvl-line.active:after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #39ff14, transparent);
-            animation: lvl-lineGlow 2s infinite;
-        }
-
-        @keyframes lvl-lineGlow {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-
-        .lvl-scroll-hint {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            color: rgba(212, 175, 55, 0.6);
-            font-family: var(--lvl-font-body);
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            animation: lvl-hintPulse 2s infinite;
-        }
-
-        .lvl-scroll-hint svg {
-            animation: lvl-arrowBounce 1.5s infinite;
-        }
-
-        @keyframes lvl-hintPulse {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
-        }
-
-        @keyframes lvl-arrowBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(5px); }
-        }
-
-        /* Close button */
-        .lvl-close-message {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            background: transparent;
-            border: 2px solid rgba(212, 175, 55, 0.5);
-            color: #D4AF37;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 24px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 10001;
-            font-weight: 300;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .lvl-scroll-message-overlay.active .lvl-close-message {
-            opacity: 1;
-            pointer-events: all;
-            transition-delay: 1s;
-        }
-
-        .lvl-close-message:hover {
-            background: rgba(212, 175, 55, 0.1);
-            border-color: #D4AF37;
-            transform: rotate(90deg);
-        }
-
-        /* Body scroll lock */
-        body.scroll-locked {
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Responsive adjustments for scroll message */
-        @media (max-width: 900px) {
-            .lvl-line {
-                font-size: 56px;
-            }
-            
-            .lvl-message-container {
-                padding: 40px 20px;
-            }
-            
-            .lvl-promo-message {
-                min-height: 380px;
-            }
-        }
-
-        @media (max-width: 700px) {
-            .lvl-line {
-                font-size: 42px;
-                letter-spacing: 2px;
-            }
-            
-            .lvl-promo-message {
-                gap: 8px;
-                min-height: 320px;
-            }
-            
-            .lvl-close-message {
-                top: 20px;
-                right: 20px;
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .lvl-line {
-                font-size: 36px;
-            }
-            
-            .lvl-promo-message {
-                min-height: 280px;
-            }
-        }
-
-        /* RESPONSIVE LOGIC for main block */
+        /* RESPONSIVE LOGIC */
         @media (min-width: 701px) and (max-width: 900px) {
             #lvl-uv-promo .lvl-container { grid-template-columns: 1fr; gap: 60px; }
             #lvl-uv-promo .lvl-content-col { order: 2; }
@@ -821,6 +646,9 @@
             #lvl-uv-promo .lvl-container { grid-template-columns: 1fr; gap: 40px; }
             #lvl-uv-promo .lvl-product-float { width: 90%; max-width: 280px; }
             #lvl-uv-promo .lvl-heading { font-size: 36px; }
+            .lvl-glow-box{padding:30px 20px;}
+            .lvl-glow-title{font-size:32px;}
+            .lvl-glow-cta{padding:14px 24px;font-size:16px;}
         }
     </style>
 
@@ -883,208 +711,71 @@
     <script>
         /* BLOCK 2 ANIMATION LOGIC */
         (function() {
-            gsap.from("#lvl-uv-promo .lvl-video-frame", {
-                scrollTrigger: { trigger: "#lvl-uv-promo", start: "top 70%" },
-                x: -50, opacity: 0, duration: 1, ease: "power3.out"
-            });
-            gsap.from("#lvl-uv-promo .lvl-product-float", {
-                scrollTrigger: { trigger: "#lvl-uv-promo", start: "top 70%" },
-                y: 50, opacity: 0, duration: 1, delay: 0.3, ease: "back.out(1.5)"
-            });
-            gsap.from("#lvl-uv-promo .lvl-content-col", {
-                scrollTrigger: { trigger: "#lvl-uv-promo", start: "top 70%" },
-                x: 50, opacity: 0, duration: 1, delay: 0.2, ease: "power3.out"
+            if (typeof gsap !== 'undefined') {
+                gsap.from("#lvl-uv-promo .lvl-video-frame", {
+                    scrollTrigger: { trigger: "#lvl-uv-promo", start: "top 70%" },
+                    x: -50, opacity: 0, duration: 1, ease: "power3.out"
+                });
+                gsap.from("#lvl-uv-promo .lvl-product-float", {
+                    scrollTrigger: { trigger: "#lvl-uv-promo", start: "top 70%" },
+                    y: 50, opacity: 0, duration: 1, delay: 0.3, ease: "back.out(1.5)"
+                });
+                gsap.from("#lvl-uv-promo .lvl-content-col", {
+                    scrollTrigger: { trigger: "#lvl-uv-promo", start: "top 70%" },
+                    x: 50, opacity: 0, duration: 1, delay: 0.2, ease: "power3.out"
+                });
+            }
+        })();
+        
+        /* OVERLAY FUNCTIONALITY */
+        (function() {
+            const overlay = document.getElementById("lvl-glow-overlay");
+            const closeBtn = overlay.querySelector(".lvl-glow-close");
+            const trigger = document.getElementById("lvl-uv-promo");
+            let shown = false;
+
+            // Close overlay when X is clicked
+            closeBtn.addEventListener("click", function(e) {
+                e.preventDefault();
+                overlay.classList.remove("active");
             });
 
-            /* SCROLL MESSAGE ANIMATION LOGIC */
-            const overlay = document.querySelector('.lvl-scroll-message-overlay');
-            const promoSection = document.querySelector('#lvl-uv-promo');
-            const closeBtn = document.querySelector('.lvl-close-message');
-            const words = document.querySelectorAll('.lvl-line');
-            const body = document.body;
-            
-            let messageShown = false;
-            let currentWord = 0;
-            let scrollLocked = false;
-            let block2Position = 0;
-            
-            // Function to lock scroll on Block 2
-            function lockScroll() {
-                if (!scrollLocked) {
-                    block2Position = promoSection.getBoundingClientRect().top + window.pageYOffset;
-                    body.style.top = `-${window.pageYOffset}px`;
-                    body.classList.add('scroll-locked');
-                    scrollLocked = true;
+            // Close overlay when clicking outside content
+            overlay.addEventListener("click", function(e) {
+                if (e.target === overlay) {
+                    overlay.classList.remove("active");
                 }
-            }
-            
-            // Function to unlock scroll
-            function unlockScroll() {
-                if (scrollLocked) {
-                    body.classList.remove('scroll-locked');
-                    body.style.top = '';
-                    window.scrollTo(0, block2Position);
-                    scrollLocked = false;
-                }
-            }
-            
-            // Function to reveal next word
-            function revealNextWord() {
-                if (currentWord < words.length) {
-                    // Activate current word
-                    words[currentWord].classList.add('active');
-                    
-                    // Add slight delay before next word can be revealed
-                    currentWord++;
-                    
-                    // If all words revealed, make close button more visible
-                    if (currentWord === words.length) {
+            });
+
+            // Show overlay when section comes into view
+            if (trigger && overlay) {
+                const observer = new IntersectionObserver(entries => {
+                    if (entries[0].isIntersecting && !shown) {
+                        // Small delay for better UX
                         setTimeout(() => {
-                            closeBtn.style.opacity = '1';
-                            closeBtn.style.transform = 'scale(1.1)';
-                            setTimeout(() => {
-                                closeBtn.style.transform = 'scale(1)';
-                            }, 300);
+                            overlay.classList.add("active");
+                            shown = true;
                         }, 300);
+                        
+                        // Unobserve after showing once
+                        observer.unobserve(trigger);
                     }
-                    return true;
-                }
-                return false;
+                }, { threshold: 0.4 });
+                
+                observer.observe(trigger);
             }
-            
-            // Function to close overlay
-            function closeOverlay() {
-                overlay.classList.remove('active');
-                unlockScroll();
-                messageShown = true;
-                
-                // Reset words for potential reuse
-                words.forEach(word => word.classList.remove('active'));
-                currentWord = 0;
-                closeBtn.style.opacity = '';
-                closeBtn.style.transform = '';
+
+            // Make overlay CTA clickable
+            const overlayCta = overlay.querySelector(".lvl-glow-cta");
+            if (overlayCta) {
+                overlayCta.addEventListener("click", function() {
+                    overlay.classList.remove("active");
+                    // The href="#lvl-options" will handle navigation
+                });
             }
-            
-            // Close button functionality
-            closeBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                closeOverlay();
-            });
-            
-            // Escape key to close
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && overlay.classList.contains('active')) {
-                    closeOverlay();
-                }
-            });
-            
-            // Scroll detection for showing overlay
-            function checkForOverlay() {
-                if (messageShown) return;
-                
-                const sectionRect = promoSection.getBoundingClientRect();
-                const windowHeight = window.innerHeight;
-                
-                // Show overlay when block 2 is centered in viewport
-                if (
-                    sectionRect.top < windowHeight * 0.6 && 
-                    sectionRect.bottom > windowHeight * 0.4
-                ) {
-                    showOverlay();
-                }
-            }
-            
-            // Function to show overlay
-            function showOverlay() {
-                if (messageShown) return;
-                
-                overlay.classList.add('active');
-                lockScroll();
-                
-                // Show first word immediately
-                setTimeout(() => {
-                    revealNextWord();
-                }, 800);
-                
-                // Add scroll listener for revealing words
-                function handleScroll(e) {
-                    e.preventDefault();
-                    revealNextWord();
-                }
-                
-                // Use wheel event for desktop, touch events for mobile
-                window.addEventListener('wheel', handleScroll, { passive: false });
-                window.addEventListener('touchmove', handleScroll, { passive: false });
-                
-                // Store reference to remove later
-                overlay._scrollHandler = handleScroll;
-            }
-            
-            // Remove scroll listeners when overlay closes
-            overlay.addEventListener('transitionend', function(e) {
-                if (e.target === overlay && !overlay.classList.contains('active')) {
-                    if (overlay._scrollHandler) {
-                        window.removeEventListener('wheel', overlay._scrollHandler);
-                        window.removeEventListener('touchmove', overlay._scrollHandler);
-                    }
-                }
-            });
-            
-            // Check on scroll
-            window.addEventListener('scroll', checkForOverlay);
-            
-            // Also check on page load
-            window.addEventListener('load', function() {
-                // Delay to ensure page is stable
-                setTimeout(checkForOverlay, 500);
-            });
-            
-            // Fallback: Auto-reveal words if user doesn't scroll
-            overlay.addEventListener('transitionend', function(e) {
-                if (e.target === document.querySelector('.lvl-scroll-message') && 
-                    overlay.classList.contains('active')) {
-                    
-                    // Start auto-reveal after 3 seconds of inactivity
-                    let autoReveal = setTimeout(() => {
-                        let interval = setInterval(() => {
-                            if (!revealNextWord()) {
-                                clearInterval(interval);
-                                // Auto-close after all words revealed
-                                setTimeout(() => {
-                                    if (overlay.classList.contains('active')) {
-                                        closeOverlay();
-                                    }
-                                }, 2000);
-                            }
-                        }, 800);
-                    }, 3000);
-                    
-                    // Store reference to clear if user interacts
-                    overlay._autoReveal = autoReveal;
-                }
-            });
-            
-            // Clear auto-reveal on any interaction
-            overlay.addEventListener('wheel', () => {
-                if (overlay._autoReveal) {
-                    clearTimeout(overlay._autoReveal);
-                    overlay._autoReveal = null;
-                }
-            });
-            
-            overlay.addEventListener('touchmove', () => {
-                if (overlay._autoReveal) {
-                    clearTimeout(overlay._autoReveal);
-                    overlay._autoReveal = null;
-                }
-            });
         })();
     </script>
 </section>
-
-END OF BLOCK 2 - FREE GLOW SHIRT GIVEAWAY
-  
-START OF BLOCK 3 - PURCHASE CARDS
   
 <section id="lvl-options" class="lvl-section-wrapper" aria-label="Shuttle Pass Booking Configuration">
     
@@ -1320,10 +1011,204 @@ START OF BLOCK 3 - PURCHASE CARDS
         #lvl-options .lvl-close-btn:hover::before { opacity: 0; transform: translateY(-10px); }
         #lvl-options .lvl-close-btn:hover::after { opacity: 1; transform: translateY(0); }
 
-        #lvl-options .lvl-layer.lvl-van, #lvl-options .lvl-layer.lvl-text-front { opacity: 1; visibility: visible; transition: opacity 0.4s, visibility 0.4s; }
-        #lvl-options .lvl-layer.lvl-text-back { opacity: 0; visibility: hidden; transition: opacity 0.4s, visibility 0.4s; }
-        #lvl-options .lvl-card-container.lvl-flipped .lvl-layer.lvl-van, #lvl-options .lvl-card-container.lvl-flipped .lvl-layer.lvl-text-front { opacity: 0; visibility: hidden; pointer-events: none; }
-        #lvl-options .lvl-card-container.lvl-flipped .lvl-layer.lvl-text-back { opacity: 1; visibility: visible; pointer-events: auto; }
+        /* Multi-Pass Section Styles */
+        #lvl-options .lvl-multi-pass-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        #lvl-options .lvl-multi-pass-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        #lvl-options .lvl-multi-pass-title {
+            font-size: 14px;
+            color: var(--lvl-gold);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        #lvl-options .lvl-multi-pass-note {
+            font-size: 11px;
+            color: #aaa;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        #lvl-options .lvl-pass-quantity-control {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 15px 0;
+        }
+        
+        #lvl-options .lvl-pass-qty-btn {
+            background: #333;
+            border: 1px solid #555;
+            color: #fff;
+            width: 35px;
+            height: 35px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        #lvl-options .lvl-pass-qty-btn:hover {
+            background: #444;
+            border-color: var(--lvl-gold);
+        }
+        
+        #lvl-options .lvl-pass-qty-input {
+            width: 60px;
+            text-align: center;
+            margin: 0 15px;
+            background: #111;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 8px;
+            font-size: 16px;
+            -moz-appearance: textfield;
+        }
+        
+        #lvl-options .lvl-pass-qty-input::-webkit-inner-spin-button,
+        #lvl-options .lvl-pass-qty-input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        #lvl-options .lvl-multi-pass-total {
+            font-size: 12px;
+            color: #bbb;
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        #lvl-options .lvl-multi-pass-total span {
+            color: var(--lvl-gold);
+            font-weight: 700;
+        }
+        
+        /* Additional Riders Section */
+        #lvl-options .lvl-additional-riders-container {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: none;
+        }
+        
+        #lvl-options .lvl-additional-riders-title {
+            font-size: 12px;
+            color: var(--lvl-gold);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        #lvl-options .lvl-rider-form {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        #lvl-options .lvl-rider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        #lvl-options .lvl-rider-label {
+            font-size: 11px;
+            color: var(--lvl-gold);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        
+        #lvl-options .lvl-rider-required {
+            font-size: 10px;
+            color: #ff4444;
+        }
+        
+        #lvl-options .lvl-rider-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        @media (max-width: 480px) {
+            #lvl-options .lvl-rider-fields {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        #lvl-options .lvl-rider-field-group {
+            margin-bottom: 10px;
+        }
+        
+        #lvl-options .lvl-rider-field-group label {
+            display: block;
+            color: #ccc;
+            font-family: var(--lvl-font-body);
+            font-size: 10px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        
+        #lvl-options .lvl-rider-field-group input {
+            width: 100%;
+            background: #111;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 8px 10px;
+            font-family: var(--lvl-font-body);
+            font-size: 12px;
+            border-radius: 4px;
+            outline: none;
+        }
+        
+        #lvl-options .lvl-rider-field-group input:focus {
+            border-color: var(--lvl-gold);
+        }
+        
+        #lvl-options .lvl-rider-validation {
+            color: var(--lvl-error);
+            font-size: 10px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* Fix for blank cards after reset */
+        #lvl-options .lvl-card-container:not(.lvl-flipped) .lvl-text-front,
+        #lvl-options .lvl-card-container:not(.lvl-flipped) .lvl-van {
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+            transform: translateZ(50px) !important;
+        }
+        
+        #lvl-options .lvl-card-container:not(.lvl-flipped) .lvl-text-back {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+            transform: rotateY(180deg) translateZ(50px) !important;
+        }
 
         /* FIX #1: CENTER ON SMALL SCREENS */
         @media (max-width: 330px) {
@@ -1379,11 +1264,11 @@ START OF BLOCK 3 - PURCHASE CARDS
                         <label>Direction (Required)</label>
                         <div class="lvl-radio-group">
                             <label class="lvl-radio-option">
-                                <input type="radio" name="dir-oneway" value="TO" checked onchange="validateOneWay()">
+                                <input type="radio" name="dir-oneway" value="TO" checked onchange="updateOneWayLogic()">
                                 <span>To Event (Speedway)</span>
                             </label>
                             <label class="lvl-radio-option">
-                                <input type="radio" name="dir-oneway" value="FROM" onchange="validateOneWay()">
+                                <input type="radio" name="dir-oneway" value="FROM" onchange="updateOneWayLogic()">
                                 <span>From Event<br>(Strip)</span>
                             </label>
                         </div>
@@ -1401,13 +1286,41 @@ START OF BLOCK 3 - PURCHASE CARDS
 
                     <div id="schedule-oneway" class="lvl-schedule-container"></div>
                     
+                    <!-- NEW: Multi-Pass Section -->
+                    <div class="lvl-multi-pass-section" id="multi-pass-section-oneway">
+                        <div class="lvl-multi-pass-header">
+                            <div class="lvl-multi-pass-title">Number of Passes</div>
+                            <div class="lvl-multi-pass-note">Each pass = 1 rider</div>
+                        </div>
+                        
+                        <div class="lvl-pass-quantity-control">
+                            <button type="button" class="lvl-pass-qty-btn" onclick="adjustPassQuantity('oneway', -1)">-</button>
+                            <input type="number" id="pass-quantity-oneway" name="pass_quantity" value="1" min="1" max="10" class="lvl-pass-qty-input" 
+                                   onchange="updatePassQuantity('oneway');">
+                            <button type="button" class="lvl-pass-qty-btn" onclick="adjustPassQuantity('oneway', 1)">+</button>
+                        </div>
+                        
+                        <div class="lvl-multi-pass-total">
+                            Total Passes: <span id="pass-total-oneway">1</span>
+                            <span id="pass-price-oneway" style="margin-left: 10px;">($105 × <span id="pass-count-oneway">1</span> = $105)</span>
+                        </div>
+                    </div>
+                    
+                    <!-- NEW: Additional Riders Container -->
+                    <div id="additional-riders-oneway" class="lvl-additional-riders-container">
+                        <div class="lvl-additional-riders-title">
+                            Additional Rider Information <span class="lvl-rider-required">*Required for each rider</span>
+                        </div>
+                        <div class="lvl-rider-forms"></div>
+                    </div>
+                    
                     <div class="lvl-glow-kit-section" id="glow-kit-section-oneway">
                         <div class="lvl-glow-kit-header">
                             <strong>Free Glow Kit:</strong> Each booking includes 1 free UV-reactive shirt, keychain & pen. Add more sets for $30 each.
                         </div>
                         <div class="lvl-quantity-control">
                             <button type="button" class="lvl-qty-btn" onclick="adjustGlowKit('oneway', -1)">-</button>
-                            <input type="number" id="glow-kits-oneway" name="glow_kits" value="1" min="1" max="20" class="lvl-qty-input" onchange="updateGlowKitTotal('oneway'); updateShirtSizes('oneway');">
+                            <input type="number" id="glow-kits-oneway" name="glow_kits" value="1" min="1" max="20" class="lvl-qty-input" onchange="updateGlowKitTotal('oneway'); updateShirtSizes('oneway'); updateBookButtonState('oneway');">
                             <button type="button" class="lvl-qty-btn" onclick="adjustGlowKit('oneway', 1)">+</button>
                         </div>
                         <div class="lvl-glow-kit-total">
@@ -1425,6 +1338,7 @@ START OF BLOCK 3 - PURCHASE CARDS
                     <div class="lvl-validation-msg" id="error-oneway-required">⚠️ Please select direction, number of days, and date/time for each day.</div>
                     <div class="lvl-validation-msg" id="error-oneway-dates">⚠️ Please select different dates for each day.</div>
                     <div class="lvl-validation-msg" id="error-oneway-shirts">⚠️ Please select a size for every Glow Kit.</div>
+                    <div class="lvl-validation-msg" id="error-oneway-riders">⚠️ Please complete all rider information for additional passes.</div>
                     
                     <button class="lvl-book-btn" onclick="submitPass('One-Way')">Review & Book</button>
                 </div>
@@ -1463,13 +1377,41 @@ START OF BLOCK 3 - PURCHASE CARDS
 
                     <div id="schedule-roundtrip" class="lvl-schedule-container"></div>
                     
+                    <!-- NEW: Multi-Pass Section -->
+                    <div class="lvl-multi-pass-section" id="multi-pass-section-roundtrip">
+                        <div class="lvl-multi-pass-header">
+                            <div class="lvl-multi-pass-title">Number of Passes</div>
+                            <div class="lvl-multi-pass-note">Each pass = 1 rider</div>
+                        </div>
+                        
+                        <div class="lvl-pass-quantity-control">
+                            <button type="button" class="lvl-pass-qty-btn" onclick="adjustPassQuantity('roundtrip', -1)">-</button>
+                            <input type="number" id="pass-quantity-roundtrip" name="pass_quantity" value="1" min="1" max="10" class="lvl-pass-qty-input" 
+                                   onchange="updatePassQuantity('roundtrip');">
+                            <button type="button" class="lvl-pass-qty-btn" onclick="adjustPassQuantity('roundtrip', 1)">+</button>
+                        </div>
+                        
+                        <div class="lvl-multi-pass-total">
+                            Total Passes: <span id="pass-total-roundtrip">1</span>
+                            <span id="pass-price-roundtrip" style="margin-left: 10px;"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- NEW: Additional Riders Container -->
+                    <div id="additional-riders-roundtrip" class="lvl-additional-riders-container">
+                        <div class="lvl-additional-riders-title">
+                            Additional Rider Information <span class="lvl-rider-required">*Required for each rider</span>
+                        </div>
+                        <div class="lvl-rider-forms"></div>
+                    </div>
+                    
                     <div class="lvl-glow-kit-section" id="glow-kit-section-roundtrip">
                         <div class="lvl-glow-kit-header">
                             <strong>Free Glow Kit:</strong> Each booking includes 1 free UV-reactive shirt, keychain & pen. Add more sets for $30 each.
                         </div>
                         <div class="lvl-quantity-control">
                             <button type="button" class="lvl-qty-btn" onclick="adjustGlowKit('roundtrip', -1)">-</button>
-                            <input type="number" id="glow-kits-roundtrip" name="glow_kits" value="1" min="1" max="20" class="lvl-qty-input" onchange="updateGlowKitTotal('roundtrip'); updateShirtSizes('roundtrip');">
+                            <input type="number" id="glow-kits-roundtrip" name="glow_kits" value="1" min="1" max="20" class="lvl-qty-input" onchange="updateGlowKitTotal('roundtrip'); updateShirtSizes('roundtrip'); updateBookButtonState('roundtrip');">
                             <button type="button" class="lvl-qty-btn" onclick="adjustGlowKit('roundtrip', 1)">+</button>
                         </div>
                         <div class="lvl-glow-kit-total">
@@ -1488,6 +1430,7 @@ START OF BLOCK 3 - PURCHASE CARDS
                     <div class="lvl-validation-msg" id="error-roundtrip-dates">⚠️ Please select different dates for each day.</div>
                     <div class="lvl-validation-msg" id="error-roundtrip-times">⚠️ Please select both departs and returns for each day.</div>
                     <div class="lvl-validation-msg" id="error-roundtrip-shirts">⚠️ Please select a size for every Glow Kit.</div>
+                    <div class="lvl-validation-msg" id="error-roundtrip-riders">⚠️ Please complete all rider information for additional passes.</div>
 
                     <button class="lvl-book-btn" onclick="submitPass('Round Trip')">Review & Book</button>
                 </div>
@@ -1602,7 +1545,7 @@ START OF BLOCK 3 - PURCHASE CARDS
                         </div>
                         <div class="lvl-quantity-control">
                             <button type="button" class="lvl-qty-btn" onclick="adjustGlowKit('private', -1)">-</button>
-                            <input type="number" id="glow-kits-private" name="glow_kits" value="1" min="1" max="20" class="lvl-qty-input" onchange="updateGlowKitTotal('private'); updateShirtSizes('private');">
+                            <input type="number" id="glow-kits-private" name="glow_kits" value="1" min="1" max="20" class="lvl-qty-input" onchange="updateGlowKitTotal('private'); updateShirtSizes('private'); updateBookButtonState('private');">
                             <button type="button" class="lvl-qty-btn" onclick="adjustGlowKit('private', 1)">+</button>
                         </div>
                         <div class="lvl-glow-kit-total">
@@ -1640,17 +1583,17 @@ START OF BLOCK 3 - PURCHASE CARDS
     const TIMES_TO = ["4:30 PM", "6:00 PM", "7:00 PM"];
     const TIMES_FROM = ["3:00 AM", "4:00 AM", "5:30 AM"];
      
-     const PRIVATE_TIMES_DEPART = [
-    "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM",
-    "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM",
-    "9:00 PM", "9:30 PM", "10:00 PM", "10:30 PM", "11:00 PM"
-];
+    const PRIVATE_TIMES_DEPART = [
+        "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM",
+        "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM",
+        "9:00 PM", "9:30 PM", "10:00 PM", "10:30 PM", "11:00 PM"
+    ];
 
-const PRIVATE_TIMES_RETURN = [
-    "12:00 AM", "12:30 AM", "1:00 AM", "1:30 AM", "2:00 AM", "2:30 AM",
-    "3:00 AM", "3:30 AM", "4:00 AM", "4:30 AM", "5:00 AM", "5:30 AM",
-    "6:00 AM", "6:30 AM", "7:00 AM", "7:30 AM", "8:00 AM"
-];
+    const PRIVATE_TIMES_RETURN = [
+        "12:00 AM", "12:30 AM", "1:00 AM", "1:30 AM", "2:00 AM", "2:30 AM",
+        "3:00 AM", "3:30 AM", "4:00 AM", "4:30 AM", "5:00 AM", "5:30 AM",
+        "6:00 AM", "6:30 AM", "7:00 AM", "7:30 AM", "8:00 AM"
+    ];
     
     const PRIVATE_PRICES = {
         'SUV': { flatRate: 1400, maxPax: 7, displayName: 'Luxury SUV (1-7)' },
@@ -1666,33 +1609,323 @@ const PRIVATE_TIMES_RETURN = [
     };
     const BARTENDER_ALLOWED_VEHICLES = ['PartyBus30', 'PartyBus40', 'PartyBus45'];
     
+    // --- CARD FLIP FUNCTION ---
     function toggleCard(el) { 
+        if (!el.classList.contains('lvl-flipped')) {
+            // If flipping to back, ensure content is initialized
+            if (el.id === 'card-oneway') {
+                updateOneWayLogic();
+            } else if (el.id === 'card-roundtrip') {
+                updateRoundTripLogic();
+            } else if (el.id === 'card-private') {
+                updatePrivateLogic();
+            }
+        }
         el.classList.toggle('lvl-flipped');
     }
 
-    // --- RESET FUNCTION ---
-    // Exposed globally so Block 6 can call it on payment success
+    // --- RESET FUNCTION (FIXED) ---
     window.resetAllCards = function() {
-        document.querySelectorAll('.lvl-card-container').forEach(c => c.classList.remove('lvl-flipped'));
-        document.querySelectorAll('select').forEach(s => s.selectedIndex = 0);
-        document.querySelectorAll('input[type="checkbox"]').forEach(c => c.checked = false);
-        document.querySelectorAll('input[type="text"], input[type="number"]').forEach(i => i.value = '');
+        // First, remove the flipped class from all cards
+        document.querySelectorAll('.lvl-card-container').forEach(card => {
+            card.classList.remove('lvl-flipped');
+            
+            // Remove any inline styles that might be causing issues
+            card.querySelectorAll('.lvl-text-front, .lvl-text-back, .lvl-van').forEach(layer => {
+                layer.removeAttribute('style');
+            });
+        });
         
-        // Clear generated HTML
+        // Reset form elements to defaults
+        document.querySelectorAll('select').forEach(select => {
+            select.selectedIndex = 0;
+        });
+        
+        // Reset one-way direction to default
+        document.querySelectorAll('input[name="dir-oneway"]').forEach(radio => {
+            radio.checked = (radio.value === 'TO');
+        });
+        
+        // Reset radio buttons
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            if (!radio.name.includes('dir-oneway')) {
+                radio.checked = false;
+            }
+        });
+        
+        // Reset checkboxes
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.checked = false;
+        });
+        
+        // Reset number inputs
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            if (input.id.includes('pass-quantity')) {
+                input.value = 1;
+            } else if (input.id.includes('glow-kits')) {
+                input.value = 1;
+            } else if (input.id === 'pax-private') {
+                input.value = '';
+            }
+        });
+        
+        // Clear generated content
         document.getElementById('schedule-oneway').innerHTML = '';
         document.getElementById('schedule-roundtrip').innerHTML = '';
         document.getElementById('schedule-private').innerHTML = '';
         
-        // Reset counters
+        // Clear additional rider forms
+        document.querySelectorAll('.lvl-additional-riders-container').forEach(container => {
+            container.style.display = 'none';
+            const forms = container.querySelector('.lvl-rider-forms');
+            if (forms) forms.innerHTML = '';
+        });
+        
+        // Reset Glow Kit displays
         ['oneway', 'roundtrip', 'private'].forEach(type => {
-            const input = document.getElementById(`glow-kits-${type}`);
-            if(input) input.value = 1;
             updateGlowKitTotal(type);
             updateShirtSizes(type);
+            updatePassQuantity(type);
+        });
+        
+        // Hide validation messages
+        document.querySelectorAll('.lvl-validation-msg').forEach(msg => {
+            msg.style.display = 'none';
+        });
+        
+        // Enable all book buttons
+        document.querySelectorAll('.lvl-book-btn').forEach(btn => {
+            btn.disabled = false;
+        });
+        
+        // Re-initialize logic
+        updateOneWayLogic();
+        updateRoundTripLogic();
+        updatePrivateLogic();
+        
+        // Scroll to top of page
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        
+        // Force a reflow to ensure CSS is applied
+        setTimeout(() => {
+            document.querySelectorAll('.lvl-card-container').forEach(card => {
+                card.style.display = 'none';
+                card.offsetHeight; // Trigger reflow
+                card.style.display = '';
+            });
+        }, 100);
+        
+        console.log("✅ All cards reset to front position");
+    };
+     
+    // --- FORCE CARD RESET HELPER ---
+    window.forceCardReset = function() {
+        document.querySelectorAll('.lvl-card-container').forEach(card => {
+            card.style.transition = 'none';
+            card.classList.remove('lvl-flipped');
+            void card.offsetWidth;
+            card.style.transition = '';
         });
     };
 
-    // Glow Kit Functions
+    // --- MULTI-PASS FUNCTIONS ---
+    function adjustPassQuantity(cardType, change) {
+        const input = document.getElementById(`pass-quantity-${cardType}`);
+        let current = parseInt(input.value);
+        current += change;
+        if (current < 1) current = 1;
+        if (current > 10) current = 10;
+        input.value = current;
+        
+        updatePassQuantity(cardType);
+    }
+    
+    function updatePassQuantity(cardType) {
+        const input = document.getElementById(`pass-quantity-${cardType}`);
+        const totalPasses = parseInt(input.value);
+        
+        // Update display
+        document.getElementById(`pass-total-${cardType}`).textContent = totalPasses;
+        document.getElementById(`pass-count-${cardType}`).textContent = totalPasses;
+        
+        // Show/hide additional riders section
+        const ridersContainer = document.getElementById(`additional-riders-${cardType}`);
+        const formsContainer = ridersContainer.querySelector('.lvl-rider-forms');
+        
+        if (totalPasses > 1) {
+            ridersContainer.style.display = 'block';
+            
+            // Clear and regenerate forms
+            if (formsContainer) formsContainer.innerHTML = '';
+            
+            for (let i = 2; i <= totalPasses; i++) {
+                const riderForm = document.createElement('div');
+                riderForm.className = 'lvl-rider-form';
+                riderForm.innerHTML = `
+                    <div class="lvl-rider-header">
+                        <div class="lvl-rider-label">Rider ${i} Information</div>
+                        <div class="lvl-rider-required">Required</div>
+                    </div>
+                    <div class="lvl-rider-fields">
+                        <div class="lvl-rider-field-group">
+                            <label>First Name *</label>
+                            <input type="text" class="lvl-rider-fname" data-rider="${i}" placeholder="First Name" 
+                                   oninput="validateRiderField(this, '${cardType}')">
+                            <div class="lvl-rider-validation" id="rider-${cardType}-${i}-fname-error"></div>
+                        </div>
+                        <div class="lvl-rider-field-group">
+                            <label>Last Name *</label>
+                            <input type="text" class="lvl-rider-lname" data-rider="${i}" placeholder="Last Name" 
+                                   oninput="validateRiderField(this, '${cardType}')">
+                            <div class="lvl-rider-validation" id="rider-${cardType}-${i}-lname-error"></div>
+                        </div>
+                        <div class="lvl-rider-field-group">
+                            <label>Email *</label>
+                            <input type="email" class="lvl-rider-email" data-rider="${i}" placeholder="email@example.com" 
+                                   oninput="validateRiderField(this, '${cardType}')">
+                            <div class="lvl-rider-validation" id="rider-${cardType}-${i}-email-error"></div>
+                        </div>
+                        <div class="lvl-rider-field-group">
+                            <label>Phone *</label>
+                            <input type="tel" class="lvl-rider-phone" data-rider="${i}" placeholder="(555) 123-4567" 
+                                   oninput="validateRiderField(this, '${cardType}')">
+                            <div class="lvl-rider-validation" id="rider-${cardType}-${i}-phone-error"></div>
+                        </div>
+                    </div>
+                `;
+                formsContainer.appendChild(riderForm);
+            }
+        } else {
+            ridersContainer.style.display = 'none';
+            if (formsContainer) formsContainer.innerHTML = '';
+        }
+        
+        // Update pricing display
+        updatePassPricing(cardType);
+        
+        // Update book button state
+        updateBookButtonState(cardType);
+    }
+    
+    function updatePassPricing(cardType) {
+        const totalPasses = parseInt(document.getElementById(`pass-quantity-${cardType}`).value);
+        let priceDisplay = document.getElementById(`pass-price-${cardType}`);
+        
+        if (cardType === 'oneway') {
+            const days = parseInt(document.getElementById('days-oneway').value) || 1;
+            const passPrice = 105 * days;
+            const totalPrice = passPrice * totalPasses;
+            priceDisplay.innerHTML = `($${passPrice} × ${totalPasses} = $${totalPrice})`;
+        } else if (cardType === 'roundtrip') {
+            const daysSelect = document.getElementById('days-roundtrip');
+            const days = daysSelect.value ? parseInt(daysSelect.value) : 1;
+            let passPrice = 0;
+            if (days === 1) passPrice = 150;
+            else if (days === 2) passPrice = 299;
+            else if (days === 3) passPrice = 350;
+            
+            const totalPrice = passPrice * totalPasses;
+            priceDisplay.innerHTML = `($${passPrice} × ${totalPasses} = $${totalPrice})`;
+        }
+    }
+    
+    function validateRiderField(input, cardType) {
+        const riderNum = input.getAttribute('data-rider');
+        const fieldType = input.className.replace('lvl-rider-', '');
+        const errorElement = document.getElementById(`rider-${cardType}-${riderNum}-${fieldType}-error`);
+        const value = input.value.trim();
+        
+        let isValid = true;
+        let errorMessage = '';
+        
+        switch(fieldType) {
+            case 'fname':
+            case 'lname':
+                isValid = value.length >= 2;
+                errorMessage = isValid ? '' : `${fieldType === 'fname' ? 'First' : 'Last'} name must be at least 2 characters`;
+                break;
+            case 'email':
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                isValid = emailRegex.test(value);
+                errorMessage = isValid ? '' : 'Please enter a valid email address';
+                break;
+            case 'phone':
+                const cleanPhone = value.replace(/\D/g, '');
+                isValid = cleanPhone.length >= 10;
+                errorMessage = isValid ? '' : 'Please enter a valid phone number';
+                break;
+        }
+        
+        if (errorElement) {
+            errorElement.style.display = isValid ? 'none' : 'block';
+            errorElement.textContent = errorMessage;
+            errorElement.style.color = 'var(--lvl-error)';
+            errorElement.style.fontSize = '10px';
+            errorElement.style.marginTop = '5px';
+        }
+        
+        updateBookButtonState(cardType);
+        
+        return isValid;
+    }
+    
+    function validateAllRiderFields(cardType) {
+        const totalPasses = parseInt(document.getElementById(`pass-quantity-${cardType}`).value);
+        
+        if (totalPasses <= 1) return true;
+        
+        let allValid = true;
+        
+        for (let i = 2; i <= totalPasses; i++) {
+            const fields = ['fname', 'lname', 'email', 'phone'];
+            
+            fields.forEach(field => {
+                const input = document.querySelector(`.lvl-rider-${field}[data-rider="${i}"]`);
+                if (input) {
+                    if (!validateRiderField(input, cardType)) {
+                        allValid = false;
+                    }
+                }
+            });
+        }
+        
+        const errorElement = document.getElementById(`error-${cardType}-riders`);
+        if (errorElement) {
+            errorElement.style.display = allValid ? 'none' : 'block';
+        }
+        
+        return allValid;
+    }
+    
+    function collectRiderData(cardType) {
+        const totalPasses = parseInt(document.getElementById(`pass-quantity-${cardType}`).value);
+        const riders = [];
+        
+        // Note: Primary rider (Rider 1) is collected in Block 6 checkout form
+        // We collect additional riders here (Rider 2 and up)
+        
+        for (let i = 2; i <= totalPasses; i++) {
+            const rider = {
+                rider_number: i,
+                first_name: document.querySelector(`.lvl-rider-fname[data-rider="${i}"]`)?.value || '',
+                last_name: document.querySelector(`.lvl-rider-lname[data-rider="${i}"]`)?.value || '',
+                email: document.querySelector(`.lvl-rider-email[data-rider="${i}"]`)?.value || '',
+                phone: document.querySelector(`.lvl-rider-phone[data-rider="${i}"]`)?.value || ''
+            };
+            
+            // Only add if we have at least a name
+            if (rider.first_name.trim() && rider.last_name.trim()) {
+                riders.push(rider);
+            }
+        }
+        
+        return riders;
+    }
+
+    // --- GLOVE KIT FUNCTIONS ---
     function adjustGlowKit(cardType, change) {
         const input = document.getElementById(`glow-kits-${cardType}`);
         let current = parseInt(input.value);
@@ -1721,45 +1954,45 @@ const PRIVATE_TIMES_RETURN = [
         
         if (glowKits > 0) {
             container.style.display = 'block';
+            inputsContainer.innerHTML = '';
             
-            const currentSelects = inputsContainer.querySelectorAll('select').length;
-            if(currentSelects !== glowKits) {
-                inputsContainer.innerHTML = ''; 
-                const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
+            const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
+            
+            for (let i = 0; i < glowKits; i++) {
+                const div = document.createElement('div');
+                div.className = 'lvl-input-group';
+                div.style.marginBottom = '8px';
                 
-                for (let i = 0; i < glowKits; i++) {
-                    const div = document.createElement('div');
-                    div.className = 'lvl-input-group';
-                    div.style.marginBottom = '8px';
-                    
-                    const label = i === 0 ?
-                        `<label style="color: var(--lvl-gold); font-size: 10px;">FREE - Kit ${i+1} Shirt Size</label>` :
-                        `<label style="color: #ccc; font-size: 10px;">Kit ${i+1} Shirt Size</label>`;
-                    div.innerHTML = label;
-                    
-                    const select = document.createElement('select');
-                    select.name = `shirt_size_${i+1}`;
-                    select.required = true;
-                    select.style.cssText = 'width: 100%; padding: 8px; background: #111; border: 1px solid #333; color: #fff; font-size: 11px;';
-                    select.onchange = () => {
-                        const err = document.getElementById(`error-${cardType}-shirts`);
-                        if(err) err.style.display = 'none';
-                    };
-                    
+                const label = document.createElement('label');
+                label.style.color = i === 0 ? 'var(--lvl-gold)' : '#ccc';
+                label.style.fontSize = '10px';
+                label.textContent = i === 0 ? `FREE - Kit ${i+1} Shirt Size` : `Kit ${i+1} Shirt Size`;
+                div.appendChild(label);
+                
+                const select = document.createElement('select');
+                select.name = `shirt_size_${i+1}`;
+                select.required = true;
+                select.style.cssText = 'width: 100%; padding: 8px; background: #111; border: 1px solid #333; color: #fff; font-size: 11px;';
+                select.onchange = () => {
+                    const err = document.getElementById(`error-${cardType}-shirts`);
+                    if(err) err.style.display = 'none';
+                    updateBookButtonState(cardType);
+                };
+                
+                const defaultOption = document.createElement('option');
+                defaultOption.value = '';
+                defaultOption.textContent = 'Select Size';
+                select.appendChild(defaultOption);
+                
+                sizes.forEach(size => {
                     const option = document.createElement('option');
-                    option.value = '';
-                    option.textContent = 'Select Size';
+                    option.value = size;
+                    option.textContent = size;
                     select.appendChild(option);
-                    
-                    sizes.forEach(size => {
-                        const option = document.createElement('option');
-                        option.value = size;
-                        option.textContent = size;
-                        select.appendChild(option);
-                    });
-                    div.appendChild(select);
-                    inputsContainer.appendChild(div);
-                }
+                });
+                
+                div.appendChild(select);
+                inputsContainer.appendChild(div);
             }
         } else {
             container.style.display = 'none';
@@ -1779,17 +2012,26 @@ const PRIVATE_TIMES_RETURN = [
         selects.forEach(select => {
             if (!select.value) {
                 allSelected = false;
+                select.style.borderColor = 'var(--lvl-error)';
+            } else {
+                select.style.borderColor = '#333';
             }
         });
+        
+        const errorElement = document.getElementById(`error-${cardType}-shirts`);
+        if (errorElement) {
+            errorElement.style.display = allSelected ? 'none' : 'block';
+        }
+        
         return allSelected;
     }
 
-    // Logic Updates
+    // --- LOGIC UPDATES ---
     function updateOneWayLogic() {
         const container = document.getElementById('schedule-oneway');
         const daysSelect = document.getElementById('days-oneway');
         const days = daysSelect.value ? parseInt(daysSelect.value) : 0;
-        const direction = document.querySelector('input[name="dir-oneway"]:checked').value;
+        const direction = document.querySelector('input[name="dir-oneway"]:checked')?.value || 'TO';
         const timeOptions = direction === "TO" ? TIMES_TO : TIMES_FROM;
         
         let html = '';
@@ -1797,18 +2039,18 @@ const PRIVATE_TIMES_RETURN = [
             html += `
             <div class="lvl-day-row">
                 <div class="lvl-day-title">Day ${i + 1} Selection</div>
-                <select class="lvl-date-select" style="margin-bottom:5px;" onchange="validateOneWay()">
+                <select class="lvl-date-select" style="margin-bottom:5px;" onchange="updateBookButtonState('oneway')">
                     <option value="">Select Date</option>
-                    ${DATES.map((d, idx) => `<option value="${d}">${d}</option>`).join('')}
+                    ${DATES.map(d => `<option value="${d}">${d}</option>`).join('')}
                 </select>
-                <select class="lvl-time-select" onchange="validateOneWay()">
+                <select class="lvl-time-select" onchange="updateBookButtonState('oneway')">
                     <option value="">Select Time</option>
                     ${timeOptions.map(t => `<option value="${t}">${t}</option>`).join('')}
                 </select>
             </div>`;
         }
         container.innerHTML = html;
-        validateOneWay();
+        updateBookButtonState('oneway');
     }
 
     function updateRoundTripLogic() {
@@ -1821,16 +2063,16 @@ const PRIVATE_TIMES_RETURN = [
             html += `
             <div class="lvl-day-row">
                 <div class="lvl-day-title">Day ${i + 1} Schedule</div>
-                <select class="lvl-date-select" style="margin-bottom:5px;" onchange="validateRoundTrip()">
+                <select class="lvl-date-select" style="margin-bottom:5px;" onchange="updateBookButtonState('roundtrip')">
                     <option value="">Select Date</option>
-                    ${DATES.map((d, idx) => `<option value="${d}">${d}</option>`).join('')}
+                    ${DATES.map(d => `<option value="${d}">${d}</option>`).join('')}
                 </select>
                 <div class="lvl-flex-row">
-                    <select class="lvl-dep-select" onchange="validateRoundTrip()">
+                    <select class="lvl-dep-select" onchange="updateBookButtonState('roundtrip')">
                         <option value="">Departs</option>
                         ${TIMES_TO.map(t => `<option value="${t}">${t}</option>`).join('')}
                     </select>
-                    <select class="lvl-ret-select" onchange="validateRoundTrip()">
+                    <select class="lvl-ret-select" onchange="updateBookButtonState('roundtrip')">
                         <option value="">Returns</option>
                         ${TIMES_FROM.map(t => `<option value="${t}">${t}</option>`).join('')}
                     </select>
@@ -1838,7 +2080,7 @@ const PRIVATE_TIMES_RETURN = [
             </div>`;
         }
         container.innerHTML = html;
-        validateRoundTrip();
+        updateBookButtonState('roundtrip');
     }
 
     function updatePrivateLogic() {
@@ -1848,78 +2090,26 @@ const PRIVATE_TIMES_RETURN = [
         const vehicleElement = document.querySelector('input[name="veh-private"]:checked');
         const vehicle = vehicleElement ? vehicleElement.value : '';
         const paxInput = document.getElementById('pax-private');
-        const bartenderSection = document.getElementById('bartender-section');
-        const bartenderCheckbox = document.getElementById('bartender');
-        const bartenderOptions = document.getElementById('bartender-options');
-        const bartenderDailyContainer = document.getElementById('bartender-daily-container');
-        
-        updateShirtSizes('private');
-
-        if (vehicle && BARTENDER_ALLOWED_VEHICLES.includes(vehicle)) {
-            bartenderSection.style.display = 'block';
-            if (bartenderCheckbox.checked) {
-                bartenderOptions.style.display = 'block';
-                if (days > 1) {
-                    bartenderDailyContainer.style.display = 'block';
-                    let dailyHtml = '';
-                    for(let i = 1; i <= days; i++) {
-                        dailyHtml += `
-                        <div class="lvl-bartender-daily-option">
-                            <span class="lvl-bartender-day-label">Day ${i}:</span>
-                            <div class="lvl-bartender-radio-group">
-                                <span class="lvl-bartender-radio ${i === 1 ? 'selected' : ''}" data-day="${i}" data-value="yes">YES</span>
-                                <span class="lvl-bartender-radio ${i !== 1 ? 'selected' : ''}" data-day="${i}" data-value="no">NO</span>
-                            </div>
-                        </div>`;
-                    }
-                    bartenderDailyContainer.innerHTML = dailyHtml;
-                    const bartenderRadios = document.querySelectorAll('.lvl-bartender-radio');
-                    bartenderRadios.forEach(radio => {
-                        radio.addEventListener('click', function() {
-                            const day = this.getAttribute('data-day');
-                            document.querySelectorAll(`.lvl-bartender-radio[data-day="${day}"]`).forEach(r => {
-                                r.classList.remove('selected');
-                            });
-                            this.classList.add('selected');
-                            validatePrivate();
-                        });
-                    });
-                } else {
-                    bartenderDailyContainer.style.display = 'none';
-                }
-            } else {
-                bartenderOptions.style.display = 'none';
-            }
-        } else {
-            bartenderSection.style.display = 'none';
-            bartenderCheckbox.checked = false;
-            bartenderOptions.style.display = 'none';
-        }
         
         if (vehicle && PRIVATE_PRICES[vehicle]) {
             paxInput.max = PRIVATE_PRICES[vehicle].maxPax;
-            // Removed direct text content update to handle safely
-            // document.getElementById('max-pax').textContent = PRIVATE_PRICES[vehicle].maxPax; 
-            if (paxInput.value && parseInt(paxInput.value) > PRIVATE_PRICES[vehicle].maxPax) {
-                paxInput.value = PRIVATE_PRICES[vehicle].maxPax;
-            }
         }
         
-                let html = '';
+        let html = '';
         for(let i = 0; i < days; i++) {
             html += `
             <div class="lvl-day-row">
                 <div class="lvl-day-title">Day ${i + 1} Custom Service</div>
-                <select class="lvl-date-select" style="margin-bottom:5px;" onchange="validatePrivate()">
+                <select class="lvl-date-select" style="margin-bottom:5px;" onchange="updateBookButtonState('private')">
                     <option value="">Select Date</option>
-                    ${DATES.map((d, idx) => `<option value="${d}">${d}</option>`).join('')}
+                    ${DATES.map(d => `<option value="${d}">${d}</option>`).join('')}
                 </select>
                 <div class="lvl-flex-row">
-                    <select class="lvl-cust-dep" onchange="validatePrivate()">
+                    <select class="lvl-cust-dep" onchange="updateBookButtonState('private')">
                         <option value="">Depart (TO)</option>
                         ${PRIVATE_TIMES_DEPART.map(t => `<option value="${t}">${t}</option>`).join('')}
                     </select>
-                    <select class="lvl-cust-ret" onchange="validatePrivate()">
+                    <select class="lvl-cust-ret" onchange="updateBookButtonState('private')">
                         <option value="">Return (FROM)</option>
                         ${PRIVATE_TIMES_RETURN.map(t => `<option value="${t}">${t}</option>`).join('')}
                     </select>
@@ -1928,34 +2118,39 @@ const PRIVATE_TIMES_RETURN = [
             </div>`;
         }
         container.innerHTML = html;
-        validatePrivate();
+        updateBookButtonState('private');
     }
 
-    // Validation
+    // --- VALIDATION FUNCTIONS ---
     function validateOneWay() {
         const daysSelect = document.getElementById('days-oneway');
         const dateSelects = document.querySelectorAll('#schedule-oneway .lvl-date-select');
         const timeSelects = document.querySelectorAll('#schedule-oneway .lvl-time-select');
-        const errorRequired = document.getElementById('error-oneway-required');
-        const errorDates = document.getElementById('error-oneway-dates');
-        const errorShirts = document.getElementById('error-oneway-shirts');
-        const bookBtn = document.querySelector('#card-oneway .lvl-book-btn');
         
         let isValid = true;
-        if (!daysSelect.value || dateSelects.length === 0 || timeSelects.length === 0) isValid = false;
-        else {
-            for (let i = 0; i < dateSelects.length; i++) if (!dateSelects[i].value || !timeSelects[i].value) isValid = false;
+        if (!daysSelect.value || dateSelects.length === 0 || timeSelects.length === 0) {
+            isValid = false;
+        } else {
+            for (let i = 0; i < dateSelects.length; i++) {
+                if (!dateSelects[i].value || !timeSelects[i].value) {
+                    isValid = false;
+                    break;
+                }
+            }
         }
         
-        if(isValid) {
+        // Check for duplicate dates
+        if (isValid) {
             const dates = Array.from(dateSelects).map(sel => sel.value);
-            if(new Set(dates).size !== dates.length) { errorDates.style.display = 'block'; bookBtn.disabled = true; return false; }
-            else errorDates.style.display = 'none';
+            if (new Set(dates).size !== dates.length) {
+                document.getElementById('error-oneway-dates').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('error-oneway-dates').style.display = 'none';
+            }
         }
-
-        if(errorShirts) errorShirts.style.display = 'none';
-        errorRequired.style.display = isValid ? 'none' : 'block';
-        bookBtn.disabled = !isValid;
+        
+        document.getElementById('error-oneway-required').style.display = isValid ? 'none' : 'block';
         return isValid;
     }
 
@@ -1964,26 +2159,31 @@ const PRIVATE_TIMES_RETURN = [
         const dateSelects = document.querySelectorAll('#schedule-roundtrip .lvl-date-select');
         const depSelects = document.querySelectorAll('#schedule-roundtrip .lvl-dep-select');
         const retSelects = document.querySelectorAll('#schedule-roundtrip .lvl-ret-select');
-        const errorRequired = document.getElementById('error-roundtrip-required');
-        const errorDates = document.getElementById('error-roundtrip-dates');
-        const errorShirts = document.getElementById('error-roundtrip-shirts');
-        const bookBtn = document.querySelector('#card-roundtrip .lvl-book-btn');
         
         let isValid = true;
-        if (!daysSelect.value || dateSelects.length === 0) isValid = false;
-        else {
-            for (let i = 0; i < dateSelects.length; i++) if (!dateSelects[i].value || !depSelects[i].value || !retSelects[i].value) isValid = false;
+        if (!daysSelect.value || dateSelects.length === 0) {
+            isValid = false;
+        } else {
+            for (let i = 0; i < dateSelects.length; i++) {
+                if (!dateSelects[i].value || !depSelects[i].value || !retSelects[i].value) {
+                    isValid = false;
+                    break;
+                }
+            }
         }
-
-        if(isValid) {
+        
+        // Check for duplicate dates
+        if (isValid) {
             const dates = Array.from(dateSelects).map(sel => sel.value);
-            if(new Set(dates).size !== dates.length) { errorDates.style.display = 'block'; bookBtn.disabled = true; return false; }
-            else errorDates.style.display = 'none';
+            if (new Set(dates).size !== dates.length) {
+                document.getElementById('error-roundtrip-dates').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('error-roundtrip-dates').style.display = 'none';
+            }
         }
-
-        if(errorShirts) errorShirts.style.display = 'none';
-        errorRequired.style.display = isValid ? 'none' : 'block';
-        bookBtn.disabled = !isValid;
+        
+        document.getElementById('error-roundtrip-required').style.display = isValid ? 'none' : 'block';
         return isValid;
     }
 
@@ -1994,61 +2194,155 @@ const PRIVATE_TIMES_RETURN = [
         const dateSelects = document.querySelectorAll('#schedule-private .lvl-date-select');
         const depSelects = document.querySelectorAll('#schedule-private .lvl-cust-dep');
         const retSelects = document.querySelectorAll('#schedule-private .lvl-cust-ret');
-        const bookBtn = document.querySelector('#card-private .lvl-book-btn');
-        const errorShirts = document.getElementById('error-private-shirts');
         
-        if(!vehicle) { document.getElementById('error-private-novehicle').style.display='block'; bookBtn.disabled=true; return false; }
-        else document.getElementById('error-private-novehicle').style.display='none';
-
-        let isValid = true;
-        if (!daysSelect.value || !paxInput.value) isValid = false;
-        else {
-            for (let i = 0; i < dateSelects.length; i++) if (!dateSelects[i].value || !depSelects[i].value || !retSelects[i].value) isValid = false;
+        if (!vehicle) {
+            document.getElementById('error-private-novehicle').style.display = 'block';
+            return false;
+        } else {
+            document.getElementById('error-private-novehicle').style.display = 'none';
         }
         
-        // Check Pax
-        const pax = parseInt(paxInput.value);
-        if (PRIVATE_PRICES[vehicle.value] && pax > PRIVATE_PRICES[vehicle.value].maxPax) {
-            document.getElementById('error-private-pax').style.display = 'block'; bookBtn.disabled = true; return false;
-        } else document.getElementById('error-private-pax').style.display = 'none';
-
-        if(errorShirts) errorShirts.style.display = 'none';
+        let isValid = true;
+        if (!daysSelect.value || !paxInput.value) {
+            isValid = false;
+        } else {
+            for (let i = 0; i < dateSelects.length; i++) {
+                if (!dateSelects[i].value || !depSelects[i].value || !retSelects[i].value) {
+                    isValid = false;
+                    break;
+                }
+            }
+        }
+        
+        // Check passenger count
+        if (isValid && paxInput.value) {
+            const pax = parseInt(paxInput.value);
+            const vehicleInfo = PRIVATE_PRICES[vehicle.value];
+            if (vehicleInfo && pax > vehicleInfo.maxPax) {
+                document.getElementById('error-private-pax').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('error-private-pax').style.display = 'none';
+            }
+        }
+        
         document.getElementById('error-private-required').style.display = isValid ? 'none' : 'block';
-        bookBtn.disabled = !isValid;
         return isValid;
     }
 
-    // --- SUBMIT FUNCTION (FIX #6 & #8 & #9) ---
+    // --- BOOK BUTTON STATE MANAGEMENT ---
+    function updateBookButtonState(cardType) {
+        const bookBtn = document.querySelector(`#card-${cardType} .lvl-book-btn`);
+        if (!bookBtn) return;
+        
+        let isValid = false;
+        let riderValid = true;
+        let shirtsValid = true;
+        
+        // Base validation
+        if (cardType === 'oneway') {
+            isValid = validateOneWay();
+        } else if (cardType === 'roundtrip') {
+            isValid = validateRoundTrip();
+        } else if (cardType === 'private') {
+            isValid = validatePrivate();
+        }
+        
+        // Additional rider validation
+        if (cardType === 'oneway' || cardType === 'roundtrip') {
+            const totalPasses = parseInt(document.getElementById(`pass-quantity-${cardType}`).value);
+            if (totalPasses > 1) {
+                riderValid = validateAllRiderFields(cardType);
+            }
+        }
+        
+        // Shirt sizes validation
+        shirtsValid = validateShirtSizes(cardType);
+        
+        // Update button state
+        bookBtn.disabled = !(isValid && riderValid && shirtsValid);
+    }
+
+    // --- UPDATED SUBMIT FUNCTION WITH COMPLETE DATA ---
     function submitPass(type) {
         let mapKey = "";
-        if(type === 'One-Way') { if (!validateOneWay()) return; mapKey = "oneway"; }
-        else if(type === 'Round Trip') { if (!validateRoundTrip()) return; mapKey = "roundtrip"; }
-        else if(type === 'Private') { if (!validatePrivate()) return; mapKey = "private"; }
-
-        // --- 🛑 VALIDATE SHIRT SIZES ---
-        if (!validateShirtSizes(mapKey)) {
-            const errorEl = document.getElementById(`error-${mapKey}-shirts`);
-            if(errorEl) errorEl.style.display = 'block';
-            return; 
-        } else {
-            const errorEl = document.getElementById(`error-${mapKey}-shirts`);
-            if(errorEl) errorEl.style.display = 'none';
+        let baseValid = false;
+        
+        if(type === 'One-Way') { 
+            baseValid = validateOneWay();
+            if (!baseValid) return;
+            
+            const riderValid = validateAllRiderFields('oneway');
+            if (!riderValid) {
+                document.getElementById('error-oneway-riders').style.display = 'block';
+                return;
+            }
+            mapKey = "oneway"; 
         }
-
+        else if(type === 'Round Trip') { 
+            baseValid = validateRoundTrip();
+            if (!baseValid) return;
+            
+            const riderValid = validateAllRiderFields('roundtrip');
+            if (!riderValid) {
+                document.getElementById('error-roundtrip-riders').style.display = 'block';
+                return;
+            }
+            mapKey = "roundtrip"; 
+        }
+        else if(type === 'Private') { 
+            baseValid = validatePrivate();
+            if (!baseValid) return;
+            mapKey = "private"; 
+        }
+        
+        // Validate shirt sizes
+        if (!validateShirtSizes(mapKey)) {
+            return;
+        }
+        
         let subtotal = 0, detailsHtml = "", detailsText = "", vehicleName = "Shuttle";
         let days = 0;
-        let passengerCount = 1; 
+        let passengerCount = 1;
         let lineItems = [];
         let glowKits = parseInt(document.getElementById(`glow-kits-${mapKey}`).value);
         let rideStyleText = "";
-
+        let additionalRiders = [];
+        let pricingBreakdown = [];
+        
+        // Collect additional rider data
+        if (mapKey === 'oneway' || mapKey === 'roundtrip') {
+            additionalRiders = collectRiderData(mapKey);
+        }
+        
         if(type === 'One-Way') {
             days = parseInt(document.getElementById('days-oneway').value);
+            const totalPasses = parseInt(document.getElementById('pass-quantity-oneway').value);
             const dir = document.querySelector('input[name="dir-oneway"]:checked').value;
             rideStyleText = (dir === "TO" ? "To Event" : "From Event") + " | One-Way";
             
-            subtotal = 105 * days;
-            lineItems.push({ name: `One-Way Pass (${dir}) - ${days} Days`, price: 105, quantity: days, total: subtotal });
+            const passPrice = 105 * days;
+            subtotal = passPrice * totalPasses;
+            
+            // Create detailed pricing breakdown
+            for (let i = 0; i < totalPasses; i++) {
+                const itemName = i === 0 ? 
+                    `One-Way Pass (${dir}) - ${days} Days` : 
+                    `Additional Rider ${i+1} - One-Way Pass (${dir}) - ${days} Days`;
+                
+                lineItems.push({ 
+                    name: itemName, 
+                    price: passPrice, 
+                    quantity: 1, 
+                    total: passPrice 
+                });
+                
+                pricingBreakdown.push({
+                    type: 'pass',
+                    description: itemName,
+                    price: passPrice
+                });
+            }
             
             const rows = document.querySelectorAll('#schedule-oneway .lvl-day-row');
             rows.forEach(row => {
@@ -2057,18 +2351,38 @@ const PRIVATE_TIMES_RETURN = [
                 detailsHtml += `<div><strong>${d}:</strong> ${t} (${dir})</div>`;
                 detailsText += `${d}: ${t} (${dir}) | `;
             });
+            
+            passengerCount = totalPasses;
 
         } else if (type === 'Round Trip') {
             days = parseInt(document.getElementById('days-roundtrip').value);
+            const totalPasses = parseInt(document.getElementById('pass-quantity-roundtrip').value);
             rideStyleText = "Round Trip";
             let passPrice = 0;
             if(days == 1) passPrice = 150;
             else if(days == 2) passPrice = 299;
             else if(days == 3) passPrice = 350;
-            subtotal = passPrice;
+            subtotal = passPrice * totalPasses;
             
-            document.getElementById('input-ride-style').value = "Round Trip (" + days + " Days)";
-            lineItems.push({ name: "Round Trip Pass", price: passPrice, quantity: 1, total: passPrice });
+            // Create detailed pricing breakdown
+            for (let i = 0; i < totalPasses; i++) {
+                const itemName = i === 0 ? 
+                    `Round Trip Pass - ${days} Days` : 
+                    `Additional Rider ${i+1} - Round Trip Pass - ${days} Days`;
+                
+                lineItems.push({ 
+                    name: itemName, 
+                    price: passPrice, 
+                    quantity: 1, 
+                    total: passPrice 
+                });
+                
+                pricingBreakdown.push({
+                    type: 'pass',
+                    description: itemName,
+                    price: passPrice
+                });
+            }
             
             const rows = document.querySelectorAll('#schedule-roundtrip .lvl-day-row');
             rows.forEach(row => {
@@ -2078,6 +2392,8 @@ const PRIVATE_TIMES_RETURN = [
                 detailsHtml += `<div><strong>${d}:</strong> ${dep} (TO) / ${ret} (FROM)</div>`;
                 detailsText += `${d}: ${dep} to ${ret} | `;
             });
+            
+            passengerCount = totalPasses;
 
         } else if (type === 'Private') {
             days = parseInt(document.getElementById('days-private').value);
@@ -2089,28 +2405,30 @@ const PRIVATE_TIMES_RETURN = [
             
             const vehicleInfo = PRIVATE_PRICES[vehicleVal];
             vehicleName = vehicleInfo.displayName;
-            document.getElementById('input-ride-style').value = "Private Charter";
-
-            // NEW: Flat rate pricing (no per-person fees)
+            
             const vehicleTotal = vehicleInfo.flatRate * days;
             subtotal = vehicleTotal;
+            
             lineItems.push({ 
                 name: `${vehicleName} (Flat Rate)`, 
                 price: vehicleInfo.flatRate, 
                 quantity: days, 
                 total: vehicleTotal 
             });
-
+            
+            pricingBreakdown.push({
+                type: 'vehicle',
+                description: `${vehicleName} - ${days} Days`,
+                price: vehicleTotal
+            });
+            
+            // Bartender logic
             const bartenderCheckbox = document.getElementById('bartender');
             const bartender = bartenderCheckbox && bartenderCheckbox.checked;
             
-            let bartenderDaysSelected = 0;
-            let bartenderType = "";
-            let addonsStr = "";
-            
             if (bartender && BARTENDER_ALLOWED_VEHICLES.includes(vehicleVal)) {
-                bartenderType = document.querySelector('input[name="bartender-type"]:checked')?.value;
-                bartenderDaysSelected = 0;
+                const bartenderType = document.querySelector('input[name="bartender-type"]:checked')?.value;
+                let bartenderDaysSelected = 0;
                 
                 if (days > 1) {
                     let selectedDays = [];
@@ -2132,9 +2450,13 @@ const PRIVATE_TIMES_RETURN = [
                             quantity: bartenderDaysSelected,
                             total: bartenderTotal
                         });
-                        // CLEARER FORMAT: Shows "Day 1, Day 3" instead of just "1,3"
+                        
                         const formattedDays = selectedDays.map(day => `Day ${day}`).join(', ');
-                        addonsStr = `Bartender: ${bartenderType} | Selected Days: ${formattedDays}`;
+                        pricingBreakdown.push({
+                            type: 'bartender',
+                            description: `Bartender Service (${bartenderType}) - Days: ${formattedDays}`,
+                            price: bartenderTotal
+                        });
                     }
                 } else {
                     bartenderDaysSelected = 1;
@@ -2147,8 +2469,12 @@ const PRIVATE_TIMES_RETURN = [
                         quantity: 1,
                         total: bartenderTotal
                     });
-                    // CLEARER FORMAT: Shows "Selected Days: Day 1" instead of just "Day: 1"
-                    addonsStr = `Bartender: ${bartenderType} | Selected Days: Day 1`;
+                    
+                    pricingBreakdown.push({
+                        type: 'bartender',
+                        description: `Bartender Service (${bartenderType}) - Day 1`,
+                        price: bartenderTotal
+                    });
                 }
             }
             
@@ -2159,9 +2485,14 @@ const PRIVATE_TIMES_RETURN = [
             const shirtQty = collectedSizes.length;
             
             // Store in hidden fields
-            document.getElementById('input-shirt-summary').value = shirtString;
-            document.getElementById('input-glow-kits').value = shirtQty;
-            document.getElementById('input-shirt-qty').value = shirtQty; // ADD THIS LINE
+            const shirtSummaryInput = document.getElementById('input-shirt-summary');
+            if (shirtSummaryInput) shirtSummaryInput.value = shirtString;
+            
+            const glowKitsInput = document.getElementById('input-glow-kits');
+            if (glowKitsInput) glowKitsInput.value = shirtQty;
+            
+            const shirtQtyInput = document.getElementById('input-shirt-qty');
+            if (shirtQtyInput) shirtQtyInput.value = shirtQty;
             
             const rows = document.querySelectorAll('#schedule-private .lvl-day-row');
             rows.forEach(row => {
@@ -2176,28 +2507,59 @@ const PRIVATE_TIMES_RETURN = [
                     detailsText += `${d}: ${dep} (TO) / ${ret} (FROM) | `;
                 }
             });
-            
-            // Pass ALL data to Block 6
-            if(typeof setAddonsInput === 'function') {
-                setAddonsInput(addonsStr);
-            }
         }
-
-        // Glow Kits
+        
+        // Add Glow Kits to pricing
         const additionalKits = glowKits - 1;
         if (additionalKits > 0) {
             const glowKitCost = additionalKits * 30;
             subtotal += glowKitCost;
-            lineItems.push({ name: `Additional Glow Kits`, price: 30, quantity: additionalKits, total: glowKitCost });
+            lineItems.push({ 
+                name: `Additional Glow Kits`, 
+                price: 30, 
+                quantity: additionalKits, 
+                total: glowKitCost 
+            });
+            
+            pricingBreakdown.push({
+                type: 'glow_kit',
+                description: `Additional Glow Kits (${additionalKits})`,
+                price: glowKitCost
+            });
         }
-
-        // Hidden Inputs
-        document.getElementById('input-pass-type').value = type;
-        document.getElementById('input-vehicle').value = vehicleName;
-        document.getElementById('input-qty').value = passengerCount; 
-        document.getElementById('input-schedule').value = detailsText;
         
-        // Shirt Sizes Capture
+        // Ensure hidden inputs exist
+        let totalPassesInput = document.getElementById('input-total-passes');
+        if (!totalPassesInput) {
+            totalPassesInput = document.createElement('input');
+            totalPassesInput.type = 'hidden';
+            totalPassesInput.id = 'input-total-passes';
+            totalPassesInput.name = 'total_passes';
+            document.querySelector('form')?.appendChild(totalPassesInput);
+        }
+        totalPassesInput.value = passengerCount;
+        
+        let additionalRidersInput = document.getElementById('input-additional-riders');
+        if (!additionalRidersInput) {
+            additionalRidersInput = document.createElement('input');
+            additionalRidersInput.type = 'hidden';
+            additionalRidersInput.id = 'input-additional-riders';
+            additionalRidersInput.name = 'additional_riders';
+            document.querySelector('form')?.appendChild(additionalRidersInput);
+        }
+        additionalRidersInput.value = JSON.stringify(additionalRiders);
+        
+        let pricingBreakdownInput = document.getElementById('input-pricing-breakdown');
+        if (!pricingBreakdownInput) {
+            pricingBreakdownInput = document.createElement('input');
+            pricingBreakdownInput.type = 'hidden';
+            pricingBreakdownInput.id = 'input-pricing-breakdown';
+            pricingBreakdownInput.name = 'pricing_breakdown';
+            document.querySelector('form')?.appendChild(pricingBreakdownInput);
+        }
+        pricingBreakdownInput.value = JSON.stringify(pricingBreakdown);
+        
+        // Shirt Sizes
         const shirtSelects = document.querySelectorAll(`#shirt-inputs-${mapKey} select`);
         const collectedSizes = Array.from(shirtSelects).map(sel => sel.value).filter(val => val !== "");
         const shirtString = collectedSizes.join(', ');
@@ -2207,57 +2569,121 @@ const PRIVATE_TIMES_RETURN = [
             shirtSummaryInput = document.createElement('input');
             shirtSummaryInput.type = 'hidden';
             shirtSummaryInput.id = 'input-shirt-summary';
-            document.getElementById('lvl-custom-form').appendChild(shirtSummaryInput);
+            shirtSummaryInput.name = 'shirt_summary';
+            document.querySelector('form')?.appendChild(shirtSummaryInput);
         }
         shirtSummaryInput.value = shirtString;
-
-        // --- 🟢 SAFELY CALL CHECKOUT FUNCTION ---
+        
+        // Update other hidden fields
+        const passTypeInput = document.getElementById('input-pass-type');
+        if (passTypeInput) passTypeInput.value = type;
+        
+        const vehicleInput = document.getElementById('input-vehicle');
+        if (vehicleInput) vehicleInput.value = vehicleName;
+        
+        const qtyInput = document.getElementById('input-qty');
+        if (qtyInput) qtyInput.value = passengerCount;
+        
+        const scheduleInput = document.getElementById('input-schedule');
+        if (scheduleInput) scheduleInput.value = detailsText;
+        
+        // Call checkout function with COMPLETE data
         if (typeof updateCheckoutSummary === 'function') {
-            // Pass the card type to Block 6 so it knows which card to flip back to
-            updateCheckoutSummary(subtotal, days, passengerCount, glowKits, lineItems, rideStyleText, detailsHtml, vehicleName, mapKey);
+            updateCheckoutSummary(
+                subtotal, 
+                days, 
+                passengerCount, 
+                glowKits, 
+                lineItems, 
+                rideStyleText, 
+                detailsHtml, 
+                vehicleName, 
+                mapKey, 
+                additionalRiders,
+                pricingBreakdown  // Pass the detailed breakdown
+            );
             
-            // --- SCROLL TO CHECKOUT ---
+            // Scroll to checkout
             const checkoutBlock = document.getElementById('lvl-checkout');
             if(checkoutBlock) {
-                // Ensure it's visible
                 checkoutBlock.classList.remove('lvl-hidden-checkout');
-                checkoutBlock.style.display = 'block'; 
-                checkoutBlock.style.height = 'auto'; 
-                checkoutBlock.style.opacity = '1'; 
-                checkoutBlock.style.overflow = 'visible';
-
-                if(window.gsap) {
-                    gsap.to(window, {duration: 1, scrollTo: "#lvl-checkout", ease: "power2.inOut"});
-                    gsap.fromTo("#lvl-checkout", {height: 0, opacity: 0}, {height: "auto", opacity: 1, duration: 1, ease: "power2.out"});
-                } else {
-                    checkoutBlock.scrollIntoView({ behavior: 'smooth' });
-                }
-            } else {
-                console.error("CRITICAL ERROR: Checkout Block #lvl-checkout not found in DOM.");
-                alert("System Error: Checkout form unavailable. Please refresh.");
+                checkoutBlock.style.display = 'block';
+                
+                setTimeout(() => {
+                    checkoutBlock.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }, 100);
             }
         } else {
-            console.error("CRITICAL ERROR: updateCheckoutSummary function missing. Block 6 likely not loaded.");
-            alert("System Error: Pricing logic unavailable. Please refresh.");
+            console.error("updateCheckoutSummary function not found");
+            alert("System error. Please refresh the page.");
         }
     }
 
-    // Initialize
-    updateOneWayLogic();
-    updateRoundTripLogic();
-    updatePrivateLogic();
-    updateGlowKitTotal('oneway');
-    updateGlowKitTotal('roundtrip');
-    updateGlowKitTotal('private');
-    updateShirtSizes('oneway');
-    updateShirtSizes('roundtrip');
-    updateShirtSizes('private');
+    // --- INITIALIZATION ---
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize all logic
+        updateOneWayLogic();
+        updateRoundTripLogic();
+        updatePrivateLogic();
+        
+        // Initialize multi-pass
+        updatePassQuantity('oneway');
+        updatePassQuantity('roundtrip');
+        
+        // Initialize pricing displays
+        updatePassPricing('oneway');
+        updatePassPricing('roundtrip');
+        
+        // Initialize Glow Kits
+        updateGlowKitTotal('oneway');
+        updateGlowKitTotal('roundtrip');
+        updateGlowKitTotal('private');
+        
+        // Initialize shirt sizes
+        updateShirtSizes('oneway');
+        updateShirtSizes('roundtrip');
+        updateShirtSizes('private');
+        
+        // Set up event listeners for dynamic updates
+        document.getElementById('days-oneway')?.addEventListener('change', function() {
+            updateOneWayLogic();
+            updatePassPricing('oneway');
+        });
+        
+        document.getElementById('days-roundtrip')?.addEventListener('change', function() {
+            updateRoundTripLogic();
+            updatePassPricing('roundtrip');
+        });
+        
+        // Add event listeners for radio buttons
+        document.querySelectorAll('input[name="dir-oneway"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                updateOneWayLogic();
+            });
+        });
+        
+        // Initialize button states
+        updateBookButtonState('oneway');
+        updateBookButtonState('roundtrip');
+        updateBookButtonState('private');
+        
+        console.log("✅ Block 3 initialized successfully");
+    });
+
+    // Make functions available globally
+    window.toggleCard = toggleCard;
+    window.adjustPassQuantity = adjustPassQuantity;
+    window.updatePassQuantity = updatePassQuantity;
+    window.validateRiderField = validateRiderField;
+    window.adjustGlowKit = adjustGlowKit;
+    window.updateGlowKitTotal = updateGlowKitTotal;
+    window.updateShirtSizes = updateShirtSizes;
+    window.submitPass = submitPass;
    </script>
 </section>
-  
-  END OF BLOCK 3 - PURCHASE CARDS
-  
-  START OF BLOCK 4 - MY EDC LINEUP
   
   <section id="lvl-schedule" class="lvl-section-wrapper" aria-label="EDC Las Vegas 2026 Set Times">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -3291,10 +3717,6 @@ const PRIVATE_TIMES_RETURN = [
     }, 800);
 </script>
 </section>
-  
-  END OF BLOCK 4 - MY EDC LINEUP
-  
-  START OF BLOCK 5 - MAP
 
 <section id="lvl-route" class="lvl-section-wrapper" aria-label="Official Shuttle Route & Traffic Info">
     
@@ -3838,10 +4260,6 @@ const PRIVATE_TIMES_RETURN = [
         });
     </script>
 </section>
-
-END OF BLOCK 5 - MAP
-  
-START OF BLOCK 6 - CHECKOUT
   
   <section id="lvl-checkout" class="lvl-section-wrapper lvl-hidden-checkout" aria-label="Secure Payment Terminal">
   <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
@@ -3936,7 +4354,7 @@ START OF BLOCK 6 - CHECKOUT
     .lvl-terms-wrapper input { width: 18px; height: 18px; margin-top: 2px; cursor: pointer; }
     .lvl-terms-wrapper a { color: var(--lvl-gold); text-decoration: none; font-weight: bold; }
 
-        /* Pay Button */
+    /* Pay Button */
     #stripe-pay-btn {
       width: 100%; padding: 16px; font-size: 18px; font-family: var(--lvl-font-heading);
       text-transform: uppercase; background: #111; color: #fff; border: none; border-radius: 4px;
@@ -3972,6 +4390,57 @@ START OF BLOCK 6 - CHECKOUT
     #private-location-group { display: none; margin-top: 20px; }
     .lvl-split-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
     @media (max-width: 500px) { .lvl-split-notes { grid-template-columns: 1fr; } }
+
+    /* --- Additional Riders Summary Styles --- */
+    #lvl-checkout .lvl-additional-riders-summary {
+        margin: 20px 0;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        border: 1px dashed rgba(212, 175, 55, 0.3);
+    }
+    
+    #lvl-checkout .lvl-riders-title {
+        font-size: 14px;
+        color: var(--lvl-gold);
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+    
+    #lvl-checkout .lvl-rider-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        margin-bottom: 8px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+    }
+    
+    #lvl-checkout .lvl-rider-info {
+        flex: 1;
+    }
+    
+    #lvl-checkout .lvl-rider-name {
+        font-weight: 600;
+        color: #fff;
+    }
+    
+    #lvl-checkout .lvl-rider-contact {
+        font-size: 12px;
+        color: #aaa;
+    }
+    
+    #lvl-checkout .lvl-rider-number {
+        background: var(--lvl-gold);
+        color: #000;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 11px;
+        font-weight: 700;
+        margin-left: 10px;
+    }
 
     /* --- SUCCESS MODAL --- */
     .lvl-modal-overlay {
@@ -4072,6 +4541,19 @@ START OF BLOCK 6 - CHECKOUT
         </div>
 
         <div id="summ-line-items" class="lvl-line-items" style="display:none;"></div>
+        
+        <!-- Additional Riders Summary -->
+        <div id="riders-summary-container" style="display: none;">
+            <div class="lvl-additional-riders-summary">
+                <div class="lvl-riders-title">Riders in This Order</div>
+                <div id="riders-list">
+                    <!-- Will be populated with JavaScript -->
+                </div>
+                <div class="lvl-note" style="font-size: 11px; color: #aaa; margin-top: 10px;">
+                    The QR code is for the entire group. All riders must board together.
+                </div>
+            </div>
+        </div>
 
         <div id="summ-schedule-details">Select a pass to see details.</div>
         
@@ -4124,6 +4606,11 @@ START OF BLOCK 6 - CHECKOUT
         <input type="hidden" name="tax" id="input-tax">
         <input type="hidden" name="total_days" id="input-total-days">
         <input type="hidden" name="bartender_info" id="input-bartender-info">
+        
+        <!-- NEW: Additional riders data will be populated here -->
+        <input type="hidden" id="input-additional-riders" name="additional_riders" value="">
+        <input type="hidden" id="input-total-passes" name="total_passes" value="1">
+        <input type="hidden" id="input-pricing-breakdown" name="pricing_breakdown" value="">
         
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
           <div class="lvl-input-group"><label>First Name</label><input type="text" name="first_name" required></div>
@@ -4190,13 +4677,13 @@ function startFireworks() {
   setTimeout(() => { if(fireworksInstance) fireworksInstance.stop(true); fireworksInstance = null; }, 6000);
 }
 
-/* UI UPDATE */
-function updateCheckoutSummary(subtotal, days, passengerCount, glowKits, lineItems, rideStyleOverride, scheduleHtml, vehicleName) {
+/* UI UPDATE - UPDATED FUNCTION */
+function updateCheckoutSummary(subtotal, days, passengerCount, glowKits, lineItems, rideStyleText, scheduleHtml, vehicleName, cardType, additionalRiders = [], pricingBreakdown = []) {
   const passType = document.getElementById('input-pass-type').value;
   document.getElementById('summ-pass-type').textContent = passType || '--';
   
   if(scheduleHtml) document.getElementById('summ-schedule-details').innerHTML = scheduleHtml;
-  if(rideStyleOverride) document.getElementById('summ-ride-style').textContent = rideStyleOverride;
+  if(rideStyleText) document.getElementById('summ-ride-style').textContent = rideStyleText;
 
   const dayLabel = days === 1 ? 'Day' : 'Days';
   document.getElementById('summ-days').textContent = days > 0 ? `${days} ${dayLabel}` : '--';
@@ -4211,6 +4698,50 @@ function updateCheckoutSummary(subtotal, days, passengerCount, glowKits, lineIte
     lineItemsContainer.style.display = 'block';
   } else {
     lineItemsContainer.style.display = 'none';
+  }
+
+  // Additional Riders Summary
+  const ridersContainer = document.getElementById('riders-summary-container');
+  const ridersList = document.getElementById('riders-list');
+  const totalPasses = 1 + (additionalRiders ? additionalRiders.length : 0);
+
+  if (additionalRiders && additionalRiders.length > 0) {
+    ridersContainer.style.display = 'block';
+    
+    let ridersHtml = `
+      <div class="lvl-rider-item">
+        <div class="lvl-rider-info">
+          <div class="lvl-rider-name">Primary Rider (You)</div>
+          <div class="lvl-rider-contact">Details from checkout form</div>
+        </div>
+        <div class="lvl-rider-number">Rider 1</div>
+      </div>
+    `;
+    
+    additionalRiders.forEach((rider, index) => {
+      ridersHtml += `
+        <div class="lvl-rider-item">
+          <div class="lvl-rider-info">
+            <div class="lvl-rider-name">${rider.first_name} ${rider.last_name}</div>
+            <div class="lvl-rider-contact">${rider.email} • ${rider.phone}</div>
+          </div>
+          <div class="lvl-rider-number">Rider ${index + 2}</div>
+        </div>
+      `;
+    });
+    
+    ridersList.innerHTML = ridersHtml;
+  } else {
+    ridersContainer.style.display = 'none';
+  }
+
+  // Set the hidden inputs for additional riders and total passes
+  document.getElementById('input-additional-riders').value = JSON.stringify(additionalRiders || []);
+  document.getElementById('input-total-passes').value = totalPasses;
+  
+  // Set pricing breakdown
+  if (pricingBreakdown && pricingBreakdown.length > 0) {
+    document.getElementById('input-pricing-breakdown').value = JSON.stringify(pricingBreakdown);
   }
 
   // PRIVATE LOGIC - SET ALL HIDDEN FIELDS
@@ -4308,7 +4839,7 @@ function shareLink() {
     else { navigator.clipboard.writeText(text + " https://edcshuttle.com"); alert("Link copied!"); }
 }
   
- function changeOptionsAndGoBack() {
+function changeOptionsAndGoBack() {
     // Hide checkout section
     const chk = document.getElementById('lvl-checkout');
     chk.classList.add('lvl-hidden-checkout');
@@ -4321,12 +4852,19 @@ function shareLink() {
         if(card) card.clear(); 
     }
     document.getElementById('lvl-stripe-payment-card').style.display = 'none';
-    
+
     // Reset payment button text
     const payBtn = document.getElementById('stripe-pay-btn');
     if(payBtn) {
         payBtn.textContent = "Pay Securely";
         payBtn.disabled = true;
+    }
+
+    // Simply reset all cards after payment success
+    if(window.resetAllCards) {
+        setTimeout(() => {
+            window.resetAllCards();
+        }, 300);
     }
     
     // Get the pass type from the summary - CLEAN the text
@@ -4381,7 +4919,7 @@ function closeSuccessAndReset() {
     chk.classList.add('lvl-hidden-checkout');
     chk.style.display = 'none'; // FORCE HIDE
     
-    // Reset checkout form only (don't reset cards)
+    // Reset checkout form only
     document.getElementById('lvl-custom-form').reset();
     if(elements) { 
         const card = elements.getElement('card'); 
@@ -4396,14 +4934,16 @@ function closeSuccessAndReset() {
         payBtn.disabled = true;
     }
     
-    // Reset checkout summary (but keep cards as they were)
+    // Reset checkout summary
     document.getElementById('summ-pass-type').textContent = '--';
     document.getElementById('summ-ride-style').textContent = '--';
     document.getElementById('summ-schedule-details').innerHTML = 'Select a pass to see details.';
     document.getElementById('summ-total').textContent = '$0.00';
     
-    // DON'T reset Block 3 cards - keep them as they were
-    // if(window.resetAllCards) window.resetAllCards();
+    // ✅ FIXED: RESET ALL BLOCK 3 CARDS PROPERLY
+    if(window.resetAllCards) {
+        window.resetAllCards();
+    }
     
     // Scroll to top (for success modal close)
     window.scrollTo({top:0, behavior:'smooth'});
@@ -4460,6 +5000,11 @@ document.getElementById("stripe-pay-btn").addEventListener("click", async functi
     subtotal: document.getElementById('input-subtotal').value,
     tax: document.getElementById('input-tax').value,
     addons: document.getElementById('input-addons').value,
+    
+    // Additional Riders Data
+    additional_riders: document.getElementById('input-additional-riders').value,
+    total_passes: document.getElementById('input-total-passes').value,
+    pricing_breakdown: document.getElementById('input-pricing-breakdown').value,
     
     firstName: formData.get("first_name"),
     lastName: formData.get("last_name"),
@@ -4521,11 +5066,7 @@ document.getElementById("stripe-pay-btn").addEventListener("click", async functi
 });
 </script>
 </section>
-  
-END OF BLOCK 6 - CHECKOUT
-  
-START OF BLOCK 7 - TRUST
-  
+
   <section id="lvl-reviews" class="lvl-section-wrapper">
     
     <script type="application/ld+json">
@@ -4758,10 +5299,6 @@ START OF BLOCK 7 - TRUST
     </div>
 </section>
   
-END OF BLOCK 7 - TRUST
-  
-START OF BLOCK 8 - 
-  
   <section id="lvl-faq" class="lvl-section-wrapper" aria-label="Frequently Asked Questions">
     
     <script type="application/ld+json">
@@ -4991,10 +5528,6 @@ START OF BLOCK 8 -
         }
     </script>
 </section>
-
-END OF BLOCK 7 - TRUST
-  
-START OF BLOCK 8 - FOOTERT
   
   <div id="lvl-footer-wrapper">
 
@@ -5490,5 +6023,3 @@ START OF BLOCK 8 - FOOTERT
         });
     </script>
 </div>
-
-End of Block 8 - FOOTER
